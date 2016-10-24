@@ -1,0 +1,48 @@
+Ime aplikacije: Autoškola
+
+Èlanovi: Jurica Buniæ
+	 Dalibor Kofjaè
+	 Matija Lazar
+
+** Podaci o tvrtki partneru: -
+
+** Model: Model 3 trenutno, još nije potvrðeno
+
+Git repozitorij: https://github.com/jurbunic/Autoskola-Premuz	
+
+Hardware: Android smartphone, racunalo
+
+Software: Android Studio, MS SQL Server
+Platforme: Android
+
+**OPIS:
+
+Tri tipa korisnika: zaposlenik, registirani korisnik, neregistrirani korisnik
+
+Funkcionalnosti
+
+Neregistirani korisnik:
+1. O nama
+2. Instuktori
+3. Vozila
+4. Testovi znanja (propisi, prva pomoæ)
+5. Prijava u autoskolu putem aplikacije
+6. Lokacija autoskole (maps)
+7. Kontakt 
+
+Registrirani korisnik:
+0. Funkcionalnosti neregistiranog korisnika
+1. Prijava u aplikaciju
+2. Praæenje informacija vezanih uz ispite
+3. Status vožnje (broj sati)
+4. Sljedeæa vožnja (datum i vrijeme)
+
+Zaposlenik
+0. Funkcionalnosti neregistiranog korisnika
+1. Prijava u aplikaciju
+2. Inforamcije o polaznicima
+3. Slanje obavjesti polaznicima
+4. Ažuriranje stanja ispita i vožnje polaznika
+5. Kreiranje rasporeda vožnje
+6. Registriranje novog polaznika
+
