@@ -1,14 +1,14 @@
-Ime aplikacije: Autoškola
+Ime aplikacije: mDrivingSchool
 
 Èlanovi: Jurica Buniæ
 	 Dalibor Kofjaè
 	 Matija Lazar
 
-** Podaci o tvrtki partneru: -
+** Podaci o tvrtki partneru: Autoškola Premuž, Varaždin
 
-** Model: Model 3 trenutno, još nije potvrðeno
+** Model: Model 3 - prebaceno na Model 1
 
-Git repozitorij: https://github.com/jurbunic/Autoskola-Premuz	
+Git repozitorij: https://github.com/jurbunic/mDrivingSchool	
 
 Hardware: Android smartphone, racunalo
 
@@ -26,7 +26,7 @@ Neregistirani korisnik:
 2. Instuktori
 3. Vozila
 4. Testovi znanja (propisi, prva pomoæ)
-5. Prijava u autoskolu putem aplikacije
+5. Prijava u autoskolu putem aplikacije (online upis)
 6. Lokacija autoskole (maps)
 7. Kontakt 
 
