@@ -1,4 +1,4 @@
-package com.bkl.air.foi.mdrivingschool.vozila;
+package com.bkl.air.foi.mdrivingschool.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,12 +8,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bkl.air.foi.database.Vozilo;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import butterknife.BindView;
 
 /**
  * Created by Dalibor on 1.11.2016..
@@ -26,10 +25,16 @@ public class VozilaAdapter extends RecyclerView.Adapter<VozilaAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView naziv;
         public ImageView slika;
+        public TextView kategorija;
+        public TextView motor;
+        public TextView detalji;
 
         public MyViewHolder(View view) {
             super(view);
             naziv = (TextView) view.findViewById(R.id.naziv_vozila);
+            kategorija = (TextView) view.findViewById(R.id.kategorija);
+            motor = (TextView) view.findViewById(R.id.motor);
+            detalji = (TextView) view.findViewById(R.id.detalji_vozila);
             slika = (ImageView) view.findViewById(R.id.slika_vozila);
         }
     }
@@ -52,6 +57,9 @@ public class VozilaAdapter extends RecyclerView.Adapter<VozilaAdapter.MyViewHold
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Vozilo vozilo = listaVozila.get(position);
         holder.naziv.setText(vozilo.getNaziv());
+        holder.kategorija.setText(vozilo.getKategorija());
+        holder.motor.setText(vozilo.getMotor());
+        holder.detalji.setText(vozilo.getDetalji());
         Picasso.with(context).load(vozilo.getImgUrl()).into(holder.slika);
     }
 

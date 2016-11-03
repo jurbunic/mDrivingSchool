@@ -7,8 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
-import com.bkl.air.foi.mdrivingschool.vozila.VozilaAdapter;
-import com.bkl.air.foi.mdrivingschool.vozila.Vozilo;
+import com.bkl.air.foi.mdrivingschool.adapters.VozilaAdapter;
+import com.bkl.air.foi.database.Vozilo;
 
 import java.util.ArrayList;
 import java.util.List;
