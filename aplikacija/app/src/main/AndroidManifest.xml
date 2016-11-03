@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".VozilaActivity"></activity>
+        <activity android:name=".KontaktActivity"></activity>
     </application>
 
 </manifest>
