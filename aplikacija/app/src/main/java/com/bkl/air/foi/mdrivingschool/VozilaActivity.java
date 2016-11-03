@@ -6,6 +6,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
 import com.bkl.air.foi.mdrivingschool.vozila.VozilaAdapter;
 import com.bkl.air.foi.mdrivingschool.vozila.Vozilo;
 
@@ -17,6 +18,7 @@ public class VozilaActivity extends AppCompatActivity {
     private List<Vozilo> listaVozila = new ArrayList<>();
     private RecyclerView recyclerView;
     private VozilaAdapter mAdapter;
+    private VozilaData podaci = new VozilaData();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,19 +32,9 @@ public class VozilaActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        nabaviPodatkeVozila();
-    }
 
-    private void nabaviPodatkeVozila() {
-        Vozilo vozilo = new Vozilo(1, "Škoda Fabia", "http://autoskola-premuz.hr/wp-content/uploads/2014/12/fabia-silver1.jpg");
-        listaVozila.add(vozilo);
-
-        vozilo = new Vozilo(2, "Škoda Rapid", "http://autoskola-premuz.hr/wp-content/uploads/2012/09/rapid.jpg");
-        listaVozila.add(vozilo);
-
-        vozilo = new Vozilo(3, "Škoda Octavia", "http://autoskola-premuz.hr/wp-content/uploads/2012/09/octavia.jpg");
-        listaVozila.add(vozilo);
-
+        podaci.nabaviPodatkeVozila(listaVozila);
         mAdapter.notifyDataSetChanged();
     }
+
 }
