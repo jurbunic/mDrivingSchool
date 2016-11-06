@@ -40,4 +40,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, KontaktActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.button_login)
+    public void buttonLoginClicked(){
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
+
 }

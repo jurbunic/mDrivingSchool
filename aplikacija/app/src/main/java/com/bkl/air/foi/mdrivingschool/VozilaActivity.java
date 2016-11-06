@@ -18,7 +18,6 @@ public class VozilaActivity extends AppCompatActivity {
     private List<Vozilo> listaVozila = new ArrayList<>();
     private RecyclerView recyclerView;
     private VozilaAdapter mAdapter;
-    private VozilaData podaci = new VozilaData();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +32,7 @@ public class VozilaActivity extends AppCompatActivity {
         recyclerView.setAdapter(mAdapter);
 
 
-        podaci.nabaviPodatkeVozila(listaVozila);
+        VozilaData.nabaviPodatkeVozila(listaVozila);
         mAdapter.notifyDataSetChanged();
     }
 

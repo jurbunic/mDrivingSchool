@@ -33,4 +33,14 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="34dp"
         android:id="@+id/button_kontakt" />
+
+    <Button
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="45dp"
+        android:id="@+id/button_login"
+        android:layout_alignBaseline="@+id/button_vozila"
+        android:layout_alignBottom="@+id/button_vozila"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
