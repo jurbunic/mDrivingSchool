@@ -90,8 +90,7 @@
                 android:hint="Upišite korisničko ime..."
                 tools:text="Upišite korisničko ime..."
                 android:background="@android:drawable/alert_light_frame"
-                android:layout_width="275dp"
-                android:textColor="#999EA0" />
+                android:layout_width="275dp" />
 
             <EditText
                 android:layout_height="65dp"
@@ -100,8 +99,7 @@
                 android:id="@+id/editText_password"
                 android:hint="Upišite lozinku..."
                 tools:text="Upišite lozinku..."
-                android:textColor="#999EA0"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:background="@android:drawable/alert_light_frame"
                 android:layout_width="275dp" />
 
