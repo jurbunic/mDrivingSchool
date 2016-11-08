@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+
+        <item
+            android:id="@+id/kontakt_navigation"
+            android:title="Kontakt" />
+        <item
+            android:id="@+id/vozila_navigation"
+            android:title="Vozila" />
+
+    </group>
+
+    <item android:title=".................">
+        <menu>
+            <item
+                android:id="@+id/prijava_navigation"
+                android:title="Prijava" />
+
+        </menu>
+    </item>
+
+</menu>
