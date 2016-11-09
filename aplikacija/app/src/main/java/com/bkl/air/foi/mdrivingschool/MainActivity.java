@@ -1,6 +1,6 @@
 package com.bkl.air.foi.mdrivingschool;
 
-import android.content.Context;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,18 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.bkl.air.foi.database.Kontakt;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
-import java.util.ArrayList;
-
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
-import butterknife.Optional;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -45,6 +38,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        MainScreenFragment msf = new MainScreenFragment();
+        FragmentTransaction fm = getFragmentManager().beginTransaction();
+        fm.replace(R.id.fragment_container, msf);
+        fm.commit();
+
     }
 
 
@@ -59,8 +57,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             System.out.println("Drugi ulaz");
         }
         else if(id==R.id.vozila_navigation){
-            Intent intent = new Intent(this, VozilaActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(this, VozilaFragment.class);
+            //startActivity(intent);
+            VozilaFragment fv = new VozilaFragment();
+
+            FragmentTransaction fm = getFragmentManager().beginTransaction();
+            fm.replace(R.id.fragment_container, fv);
+            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            fm.addToBackStack("vozila");
+            fm.commit();
         }
         else if(id==R.id.prijava_navigation){
             Intent intent = new Intent(this, LoginActivity.class);
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Optional
     @OnClick(R.id.button_vozila)
     public void buttonVozilaClicked(){
-        Intent intent = new Intent(this, VozilaActivity.class);
+        Intent intent = new Intent(this, VozilaFragment.class);
         startActivity(intent);
     }
     @Optional

@@ -17,7 +17,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VozilaActivity" />
+        <activity android:name=".VozilaFragment" />
         <activity android:name=".KontaktActivity" />
         <activity android:name=".LoginActivity"></activity>
     </application>
