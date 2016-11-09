@@ -32,7 +32,7 @@ public class VozilaFragment extends Fragment{
     @Override
     public void onStart() {
         super.onStart();
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Vozila");
         recyclerView = (RecyclerView) getView().findViewById(R.id.main_recycler);
 
         mAdapter = new VozilaAdapter(listaVozila, getActivity());

@@ -3,6 +3,7 @@ package com.bkl.air.foi.mdrivingschool;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class OnlinePrijavaFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
     }
 
     @Override

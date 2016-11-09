@@ -2,6 +2,7 @@ package com.bkl.air.foi.mdrivingschool;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,7 +37,7 @@ public class KontaktFragment extends Fragment  {
     public void onStart() {
         super.onStart();
 
-
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Kontakti");
         KontaktData.loadKontaktData(listKontakt);
         recyclerView = (RecyclerView) getView().findViewById(R.id.kontakt_recycler);
 
