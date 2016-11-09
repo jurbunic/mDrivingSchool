@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+
+    <TextView
+        android:text="O nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="55sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite"
+        android:id="@+id/textView"/>
+
+    <TextView
+        android:text="BLABLABLABLABLABLABLABLABLABLABLSBDLASBDLBSDSJAKDLHJSADHLASHDLSKAHDLASKDHASJKDHSALJKDHSLAKDJHSJLAKDHASLKJDHSKALJHSLAHDSKLAJDHSLKAJDHAKLHSDJKLSA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:id="@+id/textView4" />
+</LinearLayout>
