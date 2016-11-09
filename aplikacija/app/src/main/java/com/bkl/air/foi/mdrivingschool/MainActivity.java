@@ -92,6 +92,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fm.addToBackStack("online upis");
             fm.commit();
         }
+        else if(id==R.id.o_nama_navigation){
+            OnamaFragment onf = new OnamaFragment();
+            FragmentTransaction fm = getFragmentManager().beginTransaction();
+            fm.replace(R.id.fragment_container, onf);
+            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            fm.addToBackStack("o nama");
+            fm.commit();
+        }
         else if(id==R.id.prijava_navigation){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);

@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
-
-
+        <item
+            android:id="@+id/o_nama_navigation"
+            android:icon="@drawable/ikona_o_nama"
+            android:title="O nama" />
         <item
             android:id="@+id/kontakt_navigation"
             android:title="Kontakt"
