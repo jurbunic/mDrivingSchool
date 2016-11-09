@@ -60,14 +60,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fm.commit();
         }
         else if(id==R.id.vozila_navigation){
-            //Intent intent = new Intent(this, VozilaFragment.class);
-            //startActivity(intent);
             VozilaFragment fv = new VozilaFragment();
-
             FragmentTransaction fm = getFragmentManager().beginTransaction();
             fm.replace(R.id.fragment_container, fv);
             fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             fm.addToBackStack("vozila");
+            fm.commit();
+        }
+        else if(id==R.id.online_prijava_navigation) {
+            OnlinePrijavaFragment opn = new OnlinePrijavaFragment();
+            FragmentTransaction fm = getFragmentManager().beginTransaction();
+            fm.replace(R.id.fragment_container, opn);
+            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            fm.addToBackStack("online upis");
             fm.commit();
         }
         else if(id==R.id.prijava_navigation){

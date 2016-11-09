@@ -10,6 +10,9 @@
         <item
             android:id="@+id/vozila_navigation"
             android:title="Vozila" />
+        <item
+            android:id="@+id/online_prijava_navigation"
+            android:title="Online upis" />
 
     </group>
 
