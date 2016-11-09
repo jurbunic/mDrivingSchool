@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".VozilaFragment" />
-        <activity android:name=".KontaktActivity" />
+        <activity android:name=".KontaktFragment" />
         <activity android:name=".LoginActivity"></activity>
     </application>
 

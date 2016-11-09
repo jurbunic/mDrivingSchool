@@ -50,11 +50,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
-        System.out.println("Prvi ulaz");
         if (id==R.id.kontakt_navigation){
-            Intent intent = new Intent(this, KontaktActivity.class);
-            startActivity(intent);
-            System.out.println("Drugi ulaz");
+
+            KontaktFragment fk = new KontaktFragment();
+            FragmentTransaction fm = getFragmentManager().beginTransaction();
+            fm.replace(R.id.fragment_container, fk);
+            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            fm.addToBackStack("kontakt");
+            fm.commit();
         }
         else if(id==R.id.vozila_navigation){
             //Intent intent = new Intent(this, VozilaFragment.class);
@@ -88,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void buttonKontaktClicked(){
 
 
-        Intent intent = new Intent(this, KontaktActivity.class);
+        Intent intent = new Intent(this, KontaktFragment.class);
         startActivity(intent);
     }
     @Optional
