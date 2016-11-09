@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
 
 
         <item
             android:id="@+id/kontakt_navigation"
-            android:title="Kontakt" />
+            android:title="Kontakt"
+            android:icon="@drawable/ikona_kontakt"/>
         <item
             android:id="@+id/vozila_navigation"
+            android:icon="@drawable/ikona_vozila"
             android:title="Vozila" />
         <item
             android:id="@+id/online_prijava_navigation"
+            android:icon="@drawable/ikona_upis"
             android:title="Online upis" />
 
     </group>
 
-    <item android:title=".................">
+    <item android:title="Korisničke opcije">
         <menu>
             <item
                 android:id="@+id/prijava_navigation"

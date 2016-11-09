@@ -5,10 +5,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.bkl.air.foi.mdrivingschool.LoginActivity">
 
     <LinearLayout
@@ -18,8 +15,6 @@
         android:id="@+id/layoutsHolder"
         android:background="#01668A"
         android:gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true">
 

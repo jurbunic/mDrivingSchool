@@ -15,30 +15,21 @@
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="139dp"
+        android:layout_height="130dp"
         android:orientation="vertical"
-        android:layout_margin="5dp"
+
+        android:paddingRight="16dp"
         android:weightSum="1">
 
         <ImageView
             android:id="@+id/kontakt_slike"
-            android:layout_height="95dp"
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="89dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/kontakt_email"
-            tools:text="Email"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="16dp"
-            android:layout_alignRight="@id/kontakt_slike"
-            android:layout_alignParentBottom="true"
-            android:layout_alignStart="@+id/kontakt_mobitel"
-            android:layout_toRightOf="@id/kontakt_slike" />
+            android:layout_width="100dp"
+
+            android:layout_centerVertical="true"
+            android:layout_marginRight="16dp"
+            android:src="@mipmap/ic_launcher"
+            />
 
         <TextView
             android:id="@+id/kontakt_ime"
@@ -48,31 +39,45 @@
             android:textIsSelectable="false"
             tools:text="Ime"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="16dp"
+
             android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/kontakt_slike"
             android:layout_toRightOf="@id/kontakt_slike" />
 
         <TextView
             android:id="@+id/kontakt_prezime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="10dp"
             android:textIsSelectable="false"
             tools:text="Prezime"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_below="@+id/kontakt_ime"
-            android:layout_toRightOf="@id/kontakt_slike" />
+
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/kontakt_ime"
+            android:layout_toRightOf="@id/kontakt_ime" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/kontakt_email"
+            tools:text="Email"
+
+            android:layout_toEndOf="@id/kontakt_slike"
+            android:layout_below="@id/kontakt_ime"
+            android:layout_toRightOf="@id/kontakt_slike"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/kontakt_mobitel"
             tools:text="Mobitel"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:textSize="16dp"
-            android:layout_above="@+id/kontakt_email"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:layout_toEndOf="@id/kontakt_slike"
+            android:layout_below="@id/kontakt_email"
             android:layout_toRightOf="@id/kontakt_slike"/>
 
     </RelativeLayout>
