@@ -20,6 +20,8 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    DrawerLayout drawer;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ButterKnife.bind(this);
         FlowManager.init(new FlowConfig.Builder(this).build());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.white));
-        toolbar.setTitle("Početna stranica");
-        setSupportActionBar(toolbar);
-
+        setToolbar();
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
         drawer.addDrawerListener(toggle);
@@ -55,17 +53,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        getSupportActionBar().setTitle("Početna");
+
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else {
+            getSupportActionBar().setTitle("Početna");
             super.onBackPressed();
         }
     }
 
 
 
-
+    /**Metoda setToolbar
+     *
+     * Metoda kreira novi toolbar i veže ga za toolbar koji je definiran u navigation_app_bar_main
+     * Postavlja boju "hamburger" ikone u bijelu i postavlja naslov u "Početna stranica"
+     */
+    private Toolbar setToolbar (){
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.white));
+        toolbar.setTitle("Početna stranica");
+        setSupportActionBar(toolbar);
+        return toolbar;
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -113,26 +123,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    /*
-    @Optional
-    @OnClick(R.id.button_vozila)
-    public void buttonVozilaClicked(){
-        Intent intent = new Intent(this, VozilaFragment.class);
-        startActivity(intent);
-    }
-    @Optional
-    @OnClick(R.id.button_kontakt)
-    public void buttonKontaktClicked(){
 
-
-        Intent intent = new Intent(this, KontaktFragment.class);
-        startActivity(intent);
-    }
-    @Optional
-    @OnClick(R.id.button_login)
-    public void buttonLoginClicked(){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
-*/
 }
