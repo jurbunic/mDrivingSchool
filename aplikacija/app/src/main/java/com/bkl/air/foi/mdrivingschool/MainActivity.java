@@ -1,5 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
+
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,8 +13,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+
 
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
@@ -22,6 +24,8 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     Toolbar toolbar;
+    NavigationView navigationView;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,12 +42,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         drawer.addDrawerListener(toggle);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
         MainScreenFragment msf = new MainScreenFragment();
         FragmentTransaction fm = getFragmentManager().beginTransaction();
+        fm.addToBackStack("pocetna");
         fm.replace(R.id.fragment_container, msf);
         fm.commit();
 
@@ -52,12 +57,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+        FragmentManager fm = getFragmentManager();
 
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else {
-            getSupportActionBar().setTitle("Početna");
+            getSupportActionBar().setTitle("Početna stranica");
+
+            if((fm.getBackStackEntryCount()-1)==0){
+                super.onBackPressed();
+            }
+            else {
+                String naziv = fm.getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 2).getName();
+
+
+                if (naziv == "o nama") {
+                    navigationView.getMenu().getItem(0).setChecked(true);
+                } else if (naziv == "kontakt") {
+                    navigationView.getMenu().getItem(1).setChecked(true);
+                } else if (naziv == "vozila") {
+                    navigationView.getMenu().getItem(2).setChecked(true);
+                } else if (naziv == "online upis") {
+                    navigationView.getMenu().getItem(3).setChecked(true);
+                } else {
+                    for (int i = 0; i < 4; i++) {
+                        navigationView.getMenu().getItem(i).setChecked(false);
+                    }
+                }
+            }
             super.onBackPressed();
         }
     }
@@ -84,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id==R.id.kontakt_navigation){
 
             KontaktFragment fk = new KontaktFragment();
+
             FragmentTransaction fm = getFragmentManager().beginTransaction();
             fm.replace(R.id.fragment_container, fk);
             fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
@@ -120,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
