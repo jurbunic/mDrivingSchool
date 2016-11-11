@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.bkl.air.foi.mdrivingschool.helpers.EmailSender;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,6 +24,8 @@ import butterknife.Unbinder;
  */
 
 public class OnlinePrijavaFragment extends Fragment {
+
+    private EmailSender mEmailSender = new EmailSender();
 
     private Unbinder unbinder;
 
@@ -55,7 +59,7 @@ public class OnlinePrijavaFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Online upis");
     }
 
     @Override
@@ -64,20 +68,11 @@ public class OnlinePrijavaFragment extends Fragment {
         unbinder.unbind();
     }
 
-    private void posaljiMail(String poruka){
-        Intent i = new Intent(Intent.ACTION_SEND);
-        i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"dadolg22@gmail.com"});
-        i.putExtra(Intent.EXTRA_SUBJECT, "Novi polaznik - online upis");
-        i.putExtra(Intent.EXTRA_TEXT, poruka);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        try {
-            startActivity(Intent.createChooser(i, "Mail se šalje..."));
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getActivity(), "Nažalost, nije pronađen e-mail client na vašem uređaju.", Toast.LENGTH_LONG).show();
-        }
-    }
 
+    /**
+     * nabaviKategoriju metoda čita vrijednosti iz RadioGroup-a, tj. vrača kategoriju koju je korisnik odabrao
+     * @return
+     */
     private String nabaviKategoriju(){
         String kategorija = "";
 
@@ -96,6 +91,11 @@ public class OnlinePrijavaFragment extends Fragment {
         return kategorija;
     }
 
+    /**
+     * kreiranjePoruke metoda uzima vrijednosti koje je korisnik upisao preko screen-a i vraća jedan string finalne poruke
+     *
+     * @return
+     */
     private String kreiranjePoruke(){
         String finalnaPoruka = "";
 
@@ -110,7 +110,7 @@ public class OnlinePrijavaFragment extends Fragment {
 
     @OnClick(R.id.button_posalji)
     public void onButtonPosaljiClicked(){
-        posaljiMail(kreiranjePoruke());
+        mEmailSender.posaljiMail(kreiranjePoruke(), "Novi polaznik - online upis", getActivity());
         Toast.makeText(getActivity(), kreiranjePoruke(), Toast.LENGTH_SHORT).show();
     }
 }
