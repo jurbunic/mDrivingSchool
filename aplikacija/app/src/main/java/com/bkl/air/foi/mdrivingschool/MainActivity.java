@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -104,6 +105,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return toolbar;
     }
 
+    private void StartFragment(Fragment fragment, String tag){
+        FragmentTransaction fm = getFragmentManager().beginTransaction();
+        fm.replace(R.id.fragment_container, fragment);
+        fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fm.addToBackStack(tag);
+        fm.commit();
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -111,36 +120,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id==R.id.kontakt_navigation){
 
             KontaktFragment fk = new KontaktFragment();
+            StartFragment(fk,"kontakt");
 
-            FragmentTransaction fm = getFragmentManager().beginTransaction();
-            fm.replace(R.id.fragment_container, fk);
-            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            fm.addToBackStack("kontakt");
-            fm.commit();
         }
         else if(id==R.id.vozila_navigation){
             VozilaFragment fv = new VozilaFragment();
-            FragmentTransaction fm = getFragmentManager().beginTransaction();
-            fm.replace(R.id.fragment_container, fv);
-            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            fm.addToBackStack("vozila");
-            fm.commit();
+            StartFragment(fv, "vozila");
         }
         else if(id==R.id.online_prijava_navigation) {
             OnlinePrijavaFragment opn = new OnlinePrijavaFragment();
-            FragmentTransaction fm = getFragmentManager().beginTransaction();
-            fm.replace(R.id.fragment_container, opn);
-            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            fm.addToBackStack("online upis");
-            fm.commit();
+            StartFragment(opn, "online upis");
+
         }
         else if(id==R.id.o_nama_navigation){
             OnamaFragment onf = new OnamaFragment();
-            FragmentTransaction fm = getFragmentManager().beginTransaction();
-            fm.replace(R.id.fragment_container, onf);
-            fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            fm.addToBackStack("o nama");
-            fm.commit();
+            StartFragment(onf,"o nama");
         }
         else if(id==R.id.prijava_navigation){
             Intent intent = new Intent(this, LoginActivity.class);
