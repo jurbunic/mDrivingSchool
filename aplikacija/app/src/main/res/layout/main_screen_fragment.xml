@@ -1,16 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="Autoškola Premuž - WELCOME"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <ViewFlipper
+            android:id="@+id/bckgrndViewFlipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
+
+            <ImageView
+                android:id="@+id/img_view1"
+                android:adjustViewBounds="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/prvomjesto"
+                android:cropToPadding="true" />
+            <ImageView
+                android:id="@+id/img_view2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/kategorijaa"/>
+            <ImageView
+                android:id="@+id/img_view3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/kategorijaa1"/>
+            <ImageView
+                android:id="@+id/img_view4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/kategorijab1"/>
+        </ViewFlipper>
+
+    </LinearLayout>
+
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="@color/colorWhite"
-        android:textStyle="normal|bold" />
+        app:srcCompat="@drawable/prvomjesto"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/imageButton"
+        android:layout_weight="0.17"
+        android:cropToPadding="true"
+        android:adjustViewBounds="true" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/imageButton2" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/ikona_vozila"
+        android:id="@+id/imageButton3"
+        android:layout_weight="0.19" />
 </LinearLayout>
