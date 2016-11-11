@@ -23,9 +23,9 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    DrawerLayout drawer;
-    Toolbar toolbar;
-    NavigationView navigationView;
+    private DrawerLayout drawer;
+    private Toolbar toolbar;
+    private NavigationView navigationView;
     
 
     @Override
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FlowManager.init(new FlowConfig.Builder(this).build());
 
 
-        setToolbar();
+        SetToolbar();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
@@ -91,13 +91,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
-    /**Metoda setToolbar
-     *
-     * Metoda kreira novi toolbar i veže ga za toolbar koji je definiran u navigation_app_bar_main
-     * Postavlja boju "hamburger" ikone u bijelu i postavlja naslov u "Početna stranica"
+    /**SetToolbar
+     * Metoda služi za postavljanje toolbara, boje i naslova toolbara;
+     * @return
      */
-    private Toolbar setToolbar (){
+    private Toolbar SetToolbar(){
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.white));
         toolbar.setTitle("Početna stranica");
@@ -105,6 +103,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return toolbar;
     }
 
+    /**StartFragment
+     * Metoda prima dva parametra. Dobiveni fragment pokreće i sprema ga na BackStack pod prosljeđenim
+     * drugim tagom
+     *
+     * @param fragment tip Fragment
+     * @param tag   tip String
+     */
     private void StartFragment(Fragment fragment, String tag){
         FragmentTransaction fm = getFragmentManager().beginTransaction();
         fm.replace(R.id.fragment_container, fragment);

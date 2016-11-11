@@ -62,7 +62,6 @@ public class KontaktAdapter extends RecyclerView.Adapter<KontaktAdapter.KontaktV
         holder.mKontaktPrezime.setText(kontakt.getPrezime());
         holder.mKontaktMobitel.setText(kontakt.getMobitel());
         holder.mKontaktEmail.setText(kontakt.getEmail());
-        holder.mKontaktSlika.setImageResource(R.mipmap.ic_launcher);
         Picasso.with(context).load(kontakt.getSlikaUrl()).into(holder.mKontaktSlika);
     }
 
