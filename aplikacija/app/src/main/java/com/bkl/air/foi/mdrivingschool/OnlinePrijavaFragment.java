@@ -70,7 +70,7 @@ public class OnlinePrijavaFragment extends Fragment {
 
 
     /**
-     * nabaviKategoriju metoda čita vrijednosti iz RadioGroup-a, tj. vrača kategoriju koju je korisnik odabrao
+     * nabaviKategoriju metoda čita vrijednosti iz RadioGroup-a, tj. vraća kategoriju koju je korisnik odabrao
      * @return
      */
     private String nabaviKategoriju(){
@@ -111,6 +111,5 @@ public class OnlinePrijavaFragment extends Fragment {
     @OnClick(R.id.button_posalji)
     public void onButtonPosaljiClicked(){
         mEmailSender.posaljiMail(kreiranjePoruke(), "Novi polaznik - online upis", getActivity());
-        Toast.makeText(getActivity(), kreiranjePoruke(), Toast.LENGTH_SHORT).show();
     }
 }

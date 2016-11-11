@@ -21,7 +21,7 @@ public class EmailSender{
     public void posaljiMail(String poruka, String naslov, Activity mActivity){
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"dadolg22@gmail.com"});
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{"info.autoskola.premuz@gmail.com"});
         i.putExtra(Intent.EXTRA_SUBJECT, naslov);
         i.putExtra(Intent.EXTRA_TEXT, poruka);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
