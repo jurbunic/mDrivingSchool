@@ -7,20 +7,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:layout_marginTop="36dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
     android:weightSum="1">
-
-
-
-    <TextView
-        android:text="O nama"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textSize="55sp"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"
-        android:id="@+id/textView"/>
 
     <TextView
         android:text="Autoškola PREMUŽ je škola sa dugogodišnjim iskustvom u osposobljavanju kandidata za vozača. Da bi vam bili što bliže i dostupniji od 01.08.2006. poslujemo na dvije lokacije, u Varaždinu ul. Ivana Kukuljevića 28 i u Gornjem Vratnu, ul. S.Radića br.1. Djelatnici autoškola su stručno osposobljeni i obavljaju osposobljavanje kandidata za vozače sljedećih kategorija vozila:"
