@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 
+import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
@@ -103,20 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return toolbar;
     }
 
-    /**StartFragment
-     * Metoda prima dva parametra. Dobiveni fragment pokreće i sprema ga na BackStack pod prosljeđenim
-     * drugim tagom
-     *
-     * @param fragment tip Fragment
-     * @param tag   tip String
-     */
-    private void StartFragment(Fragment fragment, String tag){
-        FragmentTransaction fm = getFragmentManager().beginTransaction();
-        fm.replace(R.id.fragment_container, fragment);
-        fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fm.addToBackStack(tag);
-        fm.commit();
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -125,21 +113,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id==R.id.kontakt_navigation){
 
             KontaktFragment fk = new KontaktFragment();
-            StartFragment(fk,"kontakt");
-
+            StartFragment.StartNewFragment(fk,"kontakt", this);
         }
         else if(id==R.id.vozila_navigation){
             VozilaFragment fv = new VozilaFragment();
-            StartFragment(fv, "vozila");
+            StartFragment.StartNewFragment(fv, "vozila", this);
         }
         else if(id==R.id.online_prijava_navigation) {
             OnlinePrijavaFragment opn = new OnlinePrijavaFragment();
-            StartFragment(opn, "online upis");
+            StartFragment.StartNewFragment(opn, "online upis",this);
 
         }
         else if(id==R.id.o_nama_navigation){
             OnamaFragment onf = new OnamaFragment();
-            StartFragment(onf,"o nama");
+            StartFragment.StartNewFragment(onf,"o nama",this);
         }
         else if(id==R.id.prijava_navigation){
             Intent intent = new Intent(this, LoginActivity.class);
