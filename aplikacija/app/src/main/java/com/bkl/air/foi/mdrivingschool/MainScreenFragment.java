@@ -3,6 +3,7 @@ package com.bkl.air.foi.mdrivingschool;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ViewFlipper;
+
+import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +41,8 @@ public class MainScreenFragment extends Fragment {
     @BindView(R.id.imageButton3)
     ImageButton imageButton3;
 
+    NavigationView navigationView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View calcView = inflater.inflate(R.layout.main_screen_fragment, container, false);
@@ -49,6 +54,8 @@ public class MainScreenFragment extends Fragment {
 
         viewFlipper.setInAnimation(Fade_in);
         viewFlipper.setOutAnimation(Fade_out);
+
+        navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
 
         viewFlipper.setAutoStart(true);
         viewFlipper.setFlipInterval(4000);
@@ -64,30 +71,21 @@ public class MainScreenFragment extends Fragment {
     @OnClick(R.id.imageButton)
     public void onButtonImageClick1(){
         OnlinePrijavaFragment fop = new OnlinePrijavaFragment();
-        FragmentTransaction fm = getFragmentManager().beginTransaction();
-        fm.replace(R.id.fragment_container, fop);
-        fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fm.addToBackStack("Online prijava     ");
-        fm.commit();
+        StartFragment.StartNewFragment(fop,"online upis",getActivity());
+        navigationView.getMenu().getItem(4).setChecked(true);
     }
 
     @OnClick(R.id.imageButton2)
     public void onButtonImageClick2(){
         KontaktFragment fk = new KontaktFragment();
-        FragmentTransaction fm = getFragmentManager().beginTransaction();
-        fm.replace(R.id.fragment_container, fk);
-        fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fm.addToBackStack("Kontakt     ");
-        fm.commit();
+        StartFragment.StartNewFragment(fk,"kontakt",getActivity());
+        navigationView.getMenu().getItem(2).setChecked(true);
     }
 
     @OnClick(R.id.imageButton3)
     public void onButtonImageClick3(){
         VozilaFragment fv = new VozilaFragment();
-        FragmentTransaction fm = getFragmentManager().beginTransaction();
-        fm.replace(R.id.fragment_container, fv);
-        fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fm.addToBackStack("vozila   ");
-        fm.commit();
+        StartFragment.StartNewFragment(fv,"vozila",getActivity());
+        navigationView.getMenu().getItem(3).setChecked(true);
     }
 }
