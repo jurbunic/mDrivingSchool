@@ -4,6 +4,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/pocetna_navigation"
+            android:icon="@drawable/ikona_pocetna"
+            android:title="Početna stranica"/>
+        <item
             android:id="@+id/o_nama_navigation"
             android:icon="@drawable/ikona_o_nama"
             android:title="O nama" />

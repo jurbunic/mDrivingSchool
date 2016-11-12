@@ -50,10 +50,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         MainScreenFragment msf = new MainScreenFragment();
-        FragmentTransaction fm = getFragmentManager().beginTransaction();
-        fm.addToBackStack("pocetna");
-        fm.replace(R.id.fragment_container, msf);
-        fm.commit();
+        StartFragment.StartNewFragment(msf, "pocetna", this);
 
     }
 
@@ -75,17 +72,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
                 if (naziv == "o nama") {
-                    navigationView.getMenu().getItem(0).setChecked(true);
-                } else if (naziv == "kontakt") {
                     navigationView.getMenu().getItem(1).setChecked(true);
-                } else if (naziv == "vozila") {
+                } else if (naziv == "kontakt") {
                     navigationView.getMenu().getItem(2).setChecked(true);
-                } else if (naziv == "online upis") {
+                } else if (naziv == "vozila") {
                     navigationView.getMenu().getItem(3).setChecked(true);
+                } else if (naziv == "online upis") {
+                    navigationView.getMenu().getItem(4).setChecked(true);
                 } else {
-                    for (int i = 0; i < 4; i++) {
-                        navigationView.getMenu().getItem(i).setChecked(false);
-                    }
+
+                    navigationView.getMenu().getItem(0).setChecked(true);
                 }
             }
             super.onBackPressed();
