@@ -3,7 +3,7 @@ package com.bkl.air.foi.mdrivingschool;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.transition.Fade;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +41,7 @@ public class MainScreenFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View calcView = inflater.inflate(R.layout.main_screen_fragment, container, false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Početna stranica");
         unbinder = ButterKnife.bind(this,calcView);
 
         Fade_in = AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_in);

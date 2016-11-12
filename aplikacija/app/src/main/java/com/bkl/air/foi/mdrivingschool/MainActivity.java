@@ -1,10 +1,8 @@
 package com.bkl.air.foi.mdrivingschool;
 
 
-import android.app.Activity;
-import android.app.Fragment;
+
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -127,6 +125,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if(id==R.id.prijava_navigation){
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+        }
+        else if (id==R.id.pocetna_navigation){
+            MainScreenFragment msf = new MainScreenFragment();
+            StartFragment.StartNewFragment(msf, "pocetna", this);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

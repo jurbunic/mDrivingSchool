@@ -1,10 +1,7 @@
 package com.bkl.air.foi.mdrivingschool.helpers;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 /**
