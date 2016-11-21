@@ -23,6 +23,10 @@
             android:id="@+id/online_prijava_navigation"
             android:icon="@drawable/ikona_upis"
             android:title="Online upis" />
+        <item
+            android:id="@+id/map_navigation"
+            android:icon="@drawable/ikona_mapa"
+            android:title="Lokacija na mapi"/>
 
     </group>
 

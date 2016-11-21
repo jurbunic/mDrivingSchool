@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
+import com.google.android.gms.maps.MapFragment;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
@@ -129,6 +130,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (id==R.id.pocetna_navigation){
             MainScreenFragment msf = new MainScreenFragment();
             StartFragment.StartNewFragment(msf, "pocetna", this);
+        }else if(id==R.id.map_navigation){
+            MapFragment mf = new MapFragment();
+            StartFragment.StartNewFragment(mf, "map", this);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
