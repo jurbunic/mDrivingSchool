@@ -17,7 +17,7 @@ import android.view.MenuItem;
 
 
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
-import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
+import com.google.android.gms.maps.MapFragment;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
@@ -56,11 +56,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+        FragmentManager fm = getFragmentManager();
 
         if (drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else {
+            getSupportActionBar().setTitle("Početna stranica");
+
+            if((fm.getBackStackEntryCount()-1)==0){
+                super.onBackPressed();
+            }
+            else {
+                String naziv = fm.getBackStackEntryAt(getFragmentManager().getBackStackEntryCount() - 2).getName();
+
+
+                if (naziv == "o nama") {
+                    navigationView.getMenu().getItem(1).setChecked(true);
+                } else if (naziv == "kontakt") {
+                    navigationView.getMenu().getItem(2).setChecked(true);
+                } else if (naziv == "vozila") {
+                    navigationView.getMenu().getItem(3).setChecked(true);
+                } else if (naziv == "online upis") {
+                    navigationView.getMenu().getItem(4).setChecked(true);
+                } else {
+
+                    navigationView.getMenu().getItem(0).setChecked(true);
+                }
+            }
             super.onBackPressed();
         }
     }
@@ -116,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         drawer.closeDrawer(GravityCompat.START);
-        return false;
+        return true;
     }
 
 }

@@ -1,55 +1,44 @@
 package com.bkl.air.foi.mdrivingschool.maps;
 
-import android.app.Fragment;
+
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.FragmentActivity;
 
 import com.bkl.air.foi.mdrivingschool.R;
-import com.google.android.gms.maps.*;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
- * Created by Jurica Bunić on 22.11.2016..
+ * Created by Bunic on 21.11.2016..
  */
 
-public class MapFragment extends Fragment implements OnMapReadyCallback {
-    private com.google.android.gms.maps.MapFragment mapFragment;
-    private GoogleMap map = null;
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(com.bkl.air.foi.mdrivingschool.R.layout.fragment_map, container, false);
-        mapFragment = new com.google.android.gms.maps.MapFragment();
-        getFragmentManager().beginTransaction().add(R.id.frame, mapFragment).commit();
-        return v;
-
-    }
+public class MapFragment extends FragmentActivity implements OnMapReadyCallback{
+    private GoogleMap mMap;
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Mapa");
-    }
-
-    @Override
     public void onMapReady(GoogleMap googleMap) {
-        map = googleMap;
-        map.setMyLocationEnabled(true);
-        LatLng position = new LatLng(46.309999,16.341981);
-        map.addMarker(new MarkerOptions().position(position).title("Autoškola Premuž"));
-        map.moveCamera(CameraUpdateFactory.newLatLng(position));
-        map.moveCamera(CameraUpdateFactory.zoomTo(13));
+        mMap = googleMap;
+
+        LatLng varazdin = new LatLng(33,33);
+        mMap.addMarker(new MarkerOptions().position(varazdin).title("Autoskola"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(varazdin));
     }
 }
