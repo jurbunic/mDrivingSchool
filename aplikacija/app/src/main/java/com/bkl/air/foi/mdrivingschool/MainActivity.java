@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,19 +58,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        }else {
+        } else {
             super.onBackPressed();
         }
     }
 
 
-    /**SetToolbar
+    /**
+     * SetToolbar
      * Metoda služi za postavljanje toolbara, boje i naslova toolbara;
+     *
      * @return
      */
-    private Toolbar SetToolbar(){
+    private Toolbar SetToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.white));
         toolbar.setTitle("Početna stranica");
@@ -83,40 +85,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
-        if (id==R.id.kontakt_navigation){
+        if (id == R.id.kontakt_navigation) {
 
             KontaktFragment fk = new KontaktFragment();
-            StartFragment.StartNewFragment(fk,"kontakt", this);
-        }
-        else if(id==R.id.vozila_navigation){
+            StartFragment.StartNewFragment(fk, "kontakt", this);
+        } else if (id == R.id.vozila_navigation) {
             VozilaFragment fv = new VozilaFragment();
             StartFragment.StartNewFragment(fv, "vozila", this);
-        }
-        else if(id==R.id.online_prijava_navigation) {
+        } else if (id == R.id.online_prijava_navigation) {
             OnlinePrijavaFragment opn = new OnlinePrijavaFragment();
-            StartFragment.StartNewFragment(opn, "online upis",this);
+            StartFragment.StartNewFragment(opn, "online upis", this);
 
-        }
-        else if(id==R.id.o_nama_navigation){
+        } else if (id == R.id.o_nama_navigation) {
             OnamaFragment onf = new OnamaFragment();
-            StartFragment.StartNewFragment(onf,"o nama",this);
-        }
-        else if(id==R.id.prijava_navigation){
+            StartFragment.StartNewFragment(onf, "o nama", this);
+        } else if (id == R.id.prijava_navigation) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        }
-        else if (id==R.id.pocetna_navigation){
+        } else if (id == R.id.pocetna_navigation) {
             MainScreenFragment msf = new MainScreenFragment();
             StartFragment.StartNewFragment(msf, "pocetna", this);
-        }else if(id==R.id.map_navigation){
+
+        } else if (id == R.id.map_navigation) {
             MapFragment mf = new MapFragment();
             StartFragment.StartNewFragment(mf, "map", this);
+
+        } else if (id == R.id.test_znanja_navigation) {
+            TestoviMainFragment tmf = new TestoviMainFragment();
+            StartFragment.StartNewFragment(tmf, "testovi main", this);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        drawer.closeDrawer(GravityCompat.START);
-        return false;
+            drawer.closeDrawer(GravityCompat.START);
+            return false;
+        }
+
     }
-
-}
