@@ -7,20 +7,56 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bkl.air.foi.database.Pitanje;
+import com.bkl.air.foi.database.TipPitanja;
+import com.bkl.air.foi.mdrivingschool.helpers.PitanjaData;
+import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
+
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Random;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 /**
  * Created by Dalibor on 23.11.2016..
  */
 
 public class TestoviMainFragment extends Fragment {
 
+    private Unbinder unbinder;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_testovi_main,container,false);
+        View calcView = inflater.inflate(R.layout.fragment_testovi_main, container, false);
+        unbinder = ButterKnife.bind(this,calcView);
+        return calcView;
     }
 
     @Override
     public void onStart(){
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
+
+
+    }
+    @OnClick(R.id.button_propisi)
+    public void onPropisiButtonClicked(){
+
+        Random rand = new Random();
+        int [] poljeZadataka = new int[5];
+        for(int i=0;i<5;i++){
+            poljeZadataka[i]= rand.nextInt(5) + 1;
+        }
+
+        Bundle args=new Bundle();
+        args.putString("tipPitanja", "propisi");
+        args.putIntArray("randomZadaci", poljeZadataka);
+        args.putInt("TrenutnoPitanje", 1);
+        TestoviPitanjeFragment tpf = new TestoviPitanjeFragment();
+        tpf.setArguments(args);
+        StartFragment.StartNewFragment(tpf,"pitanja propisa",getActivity());
     }
 }
