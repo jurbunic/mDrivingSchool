@@ -41,12 +41,11 @@ public class TestoviMainFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
 
-
     }
     @OnClick(R.id.button_propisi)
     public void onPropisiButtonClicked(){
         ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
-        generiranjeRandomBrojeva(5, poljeZadataka);
+        generiranjeRandomBrojeva(5, 7, poljeZadataka);
 
         Bundle args=new Bundle();
         args.putString("tipPitanja", "propisi");
@@ -57,10 +56,10 @@ public class TestoviMainFragment extends Fragment {
     }
 
     //metoda generira polje od n elemenata. Ti elementi su random brojevi (int) koji se ne ponavljaju
-    private void generiranjeRandomBrojeva(int n, ArrayList<Integer> polje){
+    private void generiranjeRandomBrojeva(int n,int opseg,  ArrayList<Integer> polje){
         Random rand = new Random();
         while(polje.size() < n){
-            int randomBroj = rand.nextInt(n+1);
+            int randomBroj = rand.nextInt(opseg);
             if (!polje.contains(randomBroj)) {
                 polje.add(randomBroj);
             }

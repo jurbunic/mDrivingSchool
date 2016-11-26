@@ -4,6 +4,7 @@ import com.bkl.air.foi.database.Pitanje;
 import com.bkl.air.foi.database.TipPitanja;
 import com.bkl.air.foi.database.Vozilo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -46,5 +47,12 @@ public class PitanjaData {
         pitanje = new Pitanje(7, 1, "Ejj?", "Ej", "opaaa",
                 "jj", true, false, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
         listaPitanja.add(pitanje);
+    }
+    public static void nabaviPodatkeOdredenihPitanja(List<Pitanje> listaPitanja, List<Integer> listaOdredenih){
+        List<Pitanje> privremenaLista = new ArrayList<>();;
+        PitanjaData.nabaviPodatkePitanja(privremenaLista);
+        for(int i=0;i<listaOdredenih.size();i++){
+            listaPitanja.add(privremenaLista.get(listaOdredenih.get(i)));
+        }
     }
 }

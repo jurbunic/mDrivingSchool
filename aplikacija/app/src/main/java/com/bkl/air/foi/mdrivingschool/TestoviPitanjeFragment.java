@@ -35,12 +35,14 @@ import butterknife.Unbinder;
  */
 
 public class TestoviPitanjeFragment extends Fragment {
-    ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
+    private ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
     private String tipPitanja;
     private Unbinder unbinder;
     private List<Pitanje> listaPitanja = new ArrayList<>();
     private int trenutnoPitanje = 1;
     private int tocniOdgovori = 0;
+
+    private ArrayList<Integer> tocniIds = new ArrayList<>(5);
 
     @BindView(R.id.textView_broj)
     TextView brojPitanja;
@@ -95,7 +97,13 @@ public class TestoviPitanjeFragment extends Fragment {
         }
         else{
             provjeraTocnosti();
-            Toast.makeText(getActivity(), "Kraj! Točni odgovori: " + tocniOdgovori + "/5", Toast.LENGTH_LONG).show();
+            Bundle args=new Bundle();
+            args.putIntegerArrayList("tocniIds", tocniIds);
+            args.putIntegerArrayList("randomZadaci", poljeZadataka);
+            args.putInt("Tocnost", tocniOdgovori);
+            TestoviRezultatiFragment trf = new TestoviRezultatiFragment();
+            trf.setArguments(args);
+            StartFragment.StartNewFragment(trf,"rezultati testova",getActivity());
         }
     }
 
@@ -125,6 +133,12 @@ public class TestoviPitanjeFragment extends Fragment {
                 || (odg3.isChecked() == false && listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).isTocan3() == false)){
             stanjeTocnosti++;
         }
-        if(stanjeTocnosti == 3){ tocniOdgovori++;}
+        if(stanjeTocnosti == 3){
+            tocniOdgovori++;
+            tocniIds.add(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getId());
+        }
+        else{
+            tocniIds.add(999);
+        }
     }
 }
