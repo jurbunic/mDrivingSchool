@@ -27,20 +27,24 @@ public class PitanjaData {
                 "pozicijska svjetla", false, true, false, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
         listaPitanja.add(pitanje);
 
-        pitanje = new Pitanje(3, 1, "AAa?", "a", "aa",
-                "aaa", false, true, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
+        pitanje = new Pitanje(3, 1, "ASP?", "A", "MN",
+                "SP", true, false, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
         listaPitanja.add(pitanje);
 
-        pitanje = new Pitanje(4, 1, "BBb?", "b", "bb",
-                "bbb", true, true, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
+        pitanje = new Pitanje(4, 1, "BBb?", "B", "ggg",
+                "ll", true, false, false, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
         listaPitanja.add(pitanje);
 
-        pitanje = new Pitanje(5, 1, "CCc?", "c", "cc",
-                "ccc", true, true, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
+        pitanje = new Pitanje(5, 1, "CCc?", "er", "Cc",
+                "CCc", false, true, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
         listaPitanja.add(pitanje);
 
-        pitanje = new Pitanje(6, 1, "DDd?", "d", "dd",
-                "ddd", false, true, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
+        pitanje = new Pitanje(6, 1, "DDd?", "DD", "d",
+                "DDd", true, true, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
+        listaPitanja.add(pitanje);
+
+        pitanje = new Pitanje(7, 1, "Ejj?", "Ej", "opaaa",
+                "jj", true, false, true, "http://www.vecernji.hr/media/cache/11/1b/111b17a4e5c0476a27b1c9a49c38bdb6.jpg");
         listaPitanja.add(pitanje);
     }
 }

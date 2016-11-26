@@ -13,6 +13,7 @@ import com.bkl.air.foi.mdrivingschool.helpers.PitanjaData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -44,19 +45,25 @@ public class TestoviMainFragment extends Fragment {
     }
     @OnClick(R.id.button_propisi)
     public void onPropisiButtonClicked(){
-
-        Random rand = new Random();
-        int [] poljeZadataka = new int[5];
-        for(int i=0;i<5;i++){
-            poljeZadataka[i]= rand.nextInt(5) + 1;
-        }
+        ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
+        generiranjeRandomBrojeva(5, poljeZadataka);
 
         Bundle args=new Bundle();
         args.putString("tipPitanja", "propisi");
-        args.putIntArray("randomZadaci", poljeZadataka);
-        args.putInt("TrenutnoPitanje", 1);
+        args.putIntegerArrayList("randomZadaci", poljeZadataka);
         TestoviPitanjeFragment tpf = new TestoviPitanjeFragment();
         tpf.setArguments(args);
         StartFragment.StartNewFragment(tpf,"pitanja propisa",getActivity());
+    }
+
+    //metoda generira polje od n elemenata. Ti elementi su random brojevi (int) koji se ne ponavljaju
+    private void generiranjeRandomBrojeva(int n, ArrayList<Integer> polje){
+        Random rand = new Random();
+        while(polje.size() < n){
+            int randomBroj = rand.nextInt(n+1);
+            if (!polje.contains(randomBroj)) {
+                polje.add(randomBroj);
+            }
+        }
     }
 }
