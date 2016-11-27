@@ -29,6 +29,13 @@
                 android:id="@+id/imageView_logo_cijeli"
                 android:layout_height="55dp" />
         </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/questionNavigation">
+
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"

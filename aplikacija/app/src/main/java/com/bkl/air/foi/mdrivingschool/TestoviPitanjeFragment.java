@@ -2,6 +2,7 @@ package com.bkl.air.foi.mdrivingschool;
 
 import android.app.Fragment;
 import android.media.Image;
+import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ public class TestoviPitanjeFragment extends Fragment {
     private List<Pitanje> listaPitanja = new ArrayList<>();
     private int trenutnoPitanje = 1;
     private int tocniOdgovori = 0;
+
 
     private ArrayList<Integer> tocniIds = new ArrayList<>(5);
 
@@ -75,11 +78,59 @@ public class TestoviPitanjeFragment extends Fragment {
         return calcView;
     }
 
+    ArrayList<Button> navButtons = new ArrayList<Button>();
 
     @Override
     public void onStart(){
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
+
+        for (int i=0; i<listaPitanja.size()-2;i++){
+            Button navButton = new Button(getActivity().getApplicationContext());
+            navButton.setText(Integer.toString(i+1));
+            navButtons.add(navButton);
+            LinearLayout navigationLayout = (LinearLayout) getActivity().findViewById(R.id.questionNavigation);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            navigationLayout.addView(navButton,lp);
+        }
+        for(int i=0; i<listaPitanja.size()-2;i++){
+            Tocnost tocnost = new Tocnost();
+            tocnost.brojPitanja = i+1;
+            listaTocnosti.add(tocnost);
+        }
+        for (int i=0; i<navButtons.size();i++){
+            Button button = navButtons.get(i);
+            final int j=i;
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    brojPitanja.setText("Pitanje " + (j+1));
+
+
+                    pitanje.setText(listaPitanja.get(poljeZadataka.get(j)).getPitanje());
+                    odg1.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg1());
+                    odg2.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg2());
+                    odg3.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg3());
+                    Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(j)).getImgUrl()).into(slika);
+                    odg1.setChecked(false);odg2.setChecked(false);odg3.setChecked(false);
+                    try {
+                        Tocnost tocnost = listaTocnosti.get(j);
+                        if (tocnost.odgovor1 == true)
+                            odg1.setChecked(true);
+                        if (tocnost.odgovor2 == true) {
+                            odg2.setChecked(true);
+                        }
+                        if (tocnost.odgovor3 == true) {
+                            odg3.setChecked(true);
+                        }
+                    }catch (Exception a) {
+
+                    }
+                    trenutnoPitanje = j + 1;
+
+                }
+            });
+        }
 
         if(tipPitanja.equals("propisi")){
             pripremiPitanja();
@@ -92,6 +143,7 @@ public class TestoviPitanjeFragment extends Fragment {
     public void onButtonDaljeClicked(){
         if(trenutnoPitanje <5) {
             provjeraTocnosti();
+            spremiOdg(trenutnoPitanje);
             trenutnoPitanje++;
             pripremiPitanja();
         }
@@ -116,6 +168,19 @@ public class TestoviPitanjeFragment extends Fragment {
         odg2.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg2());
         odg3.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg3());
         Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getImgUrl()).into(slika);
+        try {
+            Tocnost tocnost = listaTocnosti.get(trenutnoPitanje-1);
+            if (tocnost.odgovor1 == true)
+                odg1.setChecked(true);
+            if (tocnost.odgovor2 == true) {
+                odg2.setChecked(true);
+            }
+            if (tocnost.odgovor3 == true) {
+                odg3.setChecked(true);
+            }
+        }catch (Exception a) {
+
+        }
     }
 
     //metoda provjerava tocnost odgovora koje je korisnik dao, tj. usporeduje checkbox sa predefiniranom tocnosti odgovora
@@ -140,5 +205,45 @@ public class TestoviPitanjeFragment extends Fragment {
         else{
             tocniIds.add(999);
         }
+    }
+
+    private static class Tocnost{
+        protected int brojPitanja;
+        protected boolean odgovor1=false;
+        protected boolean odgovor2=false;
+        protected boolean odgovor3=false;
+
+    }
+
+    ArrayList<Tocnost> listaTocnosti = new ArrayList<>();
+
+    private void spremiOdg(int broj){
+        Tocnost tocnost = new Tocnost();
+        tocnost.brojPitanja = broj-1;
+        if (odg1.isChecked()==true){
+            tocnost.odgovor1=true;
+        }else {
+            tocnost.odgovor1=false;
+        }
+        if (odg2.isChecked()==true){
+            tocnost.odgovor2=true;
+        }else {
+            tocnost.odgovor2=false;
+        }
+        if (odg3.isChecked()==true){
+            tocnost.odgovor3=true;
+        }else {
+            tocnost.odgovor3=false;
+        }
+        try {
+            if(listaTocnosti.get(broj-1) != null){
+                listaTocnosti.remove(broj-1);
+                listaTocnosti.add(broj-1,tocnost);
+
+            }
+        }catch (Exception e){
+            listaTocnosti.add(tocnost);
+        }
+
     }
 }
