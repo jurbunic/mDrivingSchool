@@ -64,9 +64,13 @@ public class RezultatiTestaAdapter extends RecyclerView.Adapter<RezultatiTestaAd
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Pitanje pitanje = listaPitanja.get(position);
         holder.pitanje.setText(pitanje.getPitanje());
+
         holder.odg1.setText("a) " + pitanje.getOdg1());
+        if(pitanje.isTocan1()==true){holder.odg1.setTextColor(Color.GREEN);}
         holder.odg2.setText("b) " + pitanje.getOdg2());
+        if(pitanje.isTocan2()==true){holder.odg2.setTextColor(Color.GREEN);}
         holder.odg3.setText("c) " + pitanje.getOdg3());
+        if(pitanje.isTocan3()==true){holder.odg3.setTextColor(Color.GREEN);}
         Picasso.with(context).load(pitanje.getImgUrl()).into(holder.slika);
         for (int i = 0; i < tocniIds.size(); i++) {
             if (pitanje.getId() == tocniIds.get(i)) {

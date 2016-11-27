@@ -3,6 +3,8 @@ package com.bkl.air.foi.mdrivingschool;
 
 
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -23,11 +25,12 @@ import com.raizlabs.android.dbflow.config.FlowManager;
 
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener{
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
-
+    ActionBarDrawerToggle toggle;
+    private FragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +43,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         SetToolbar();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         toggle.syncState();
         drawer.addDrawerListener(toggle);
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mFragmentManager = getFragmentManager();
+        mFragmentManager.addOnBackStackChangedListener(this);
 
 
         MainScreenFragment msf = new MainScreenFragment();
@@ -55,13 +61,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+        if (mFragmentManager.getBackStackEntryCount() !=0){
+            if(drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            else {
+                mFragmentManager.popBackStack();
+            }
+        }else {
+            if (drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }else {
+                super.onBackPressed();
+            }
         }
     }
 
@@ -78,6 +90,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setTitle("Početna stranica");
         setSupportActionBar(toolbar);
         return toolbar;
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==0);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>0);
+        toggle.syncState();
     }
 
 
