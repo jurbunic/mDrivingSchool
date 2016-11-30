@@ -93,7 +93,7 @@ public class TestoviPitanjeFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
 
-        Button navButton = (Button) getActivity().findViewById(R.id.button_nav_test1);
+        final Button navButton = (Button) getActivity().findViewById(R.id.button_nav_test1);
         navButtons.add(navButton);
         Button navButton1 = (Button) getActivity().findViewById(R.id.button_nav_test2);
         navButtons.add(navButton1);
@@ -104,6 +104,7 @@ public class TestoviPitanjeFragment extends Fragment {
         Button navButton4 = (Button) getActivity().findViewById(R.id.button_nav_test5);
         navButtons.add(navButton4);
 
+        navButton.setEnabled(false);
         for(int i=0; i<5;i++){
             Tocnost tocnost = new Tocnost();
             tocnost.brojPitanja = i+1;
@@ -120,7 +121,7 @@ public class TestoviPitanjeFragment extends Fragment {
                     //Spremanje trenutno otvorenog pitanja
                     spremiOdg(lastOpenedQuestion);
                     provjeraTocnosti();
-
+                    navButtons.get(lastOpenedQuestion-1).setEnabled(true);
 
                     pitanje.setText(listaPitanja.get(poljeZadataka.get(j)).getPitanje());
                     odg1.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg1());
@@ -144,6 +145,7 @@ public class TestoviPitanjeFragment extends Fragment {
                     trenutnoPitanje = j+1;
                     lastOpenedQuestion = j+1;
 
+                    navButtons.get(j).setEnabled(false);
 
                 }
             });
@@ -155,10 +157,14 @@ public class TestoviPitanjeFragment extends Fragment {
     }
     @OnClick(R.id.button_dalje)
     public void onButtonDaljeClicked(){
+        navButtons.get(trenutnoPitanje-1).setEnabled(true);
         if(trenutnoPitanje <5) {
             provjeraTocnosti();
             spremiOdg(trenutnoPitanje);
+            navButtons.get(trenutnoPitanje).setEnabled(false);
             trenutnoPitanje++;
+            lastOpenedQuestion = trenutnoPitanje;
+
             pripremiPitanja();
         }
         else{
