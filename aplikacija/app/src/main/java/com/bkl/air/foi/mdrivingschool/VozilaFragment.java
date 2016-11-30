@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
 import com.bkl.air.foi.mdrivingschool.adapters.VozilaAdapter;
 import com.bkl.air.foi.database.Vozilo;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,14 +35,18 @@ public class VozilaFragment extends Fragment{
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Vozila");
         recyclerView = (RecyclerView) getView().findViewById(R.id.main_recycler);
 
+        if(SQLite.select().from(Vozilo.class).queryList().isEmpty()){
+            VozilaData.nabaviPodatkeVozila(listaVozila);
+        }
+        else{
+            listaVozila = Vozilo.getAll();
+        }
+
         mAdapter = new VozilaAdapter(listaVozila, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
-
-        VozilaData.nabaviPodatkeVozila(listaVozila);
         mAdapter.notifyDataSetChanged();
     }
 

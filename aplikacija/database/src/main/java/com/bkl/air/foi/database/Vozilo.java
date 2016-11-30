@@ -1,18 +1,26 @@
 package com.bkl.air.foi.database;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import java.util.List;
 
 /**
  * Created by Dalibor on 1.11.2016..
  */
 
-public class Vozilo {
-    int id;
-    String naziv;
-    String imgUrl;
-    String kategorija;
-    String motor;
-    String detalji;
+@Table(database = MainDatabase.class)
+public class Vozilo extends BaseModel{
+    @PrimaryKey
+    @Column int id;
+    @Column String naziv;
+    @Column String imgUrl;
+    @Column String kategorija;
+    @Column String motor;
+    @Column String detalji;
 
     public Vozilo() {
     }
@@ -72,5 +80,13 @@ public class Vozilo {
 
     public void setDetalji(String detalji) {
         this.detalji = detalji;
+    }
+
+    public static List<Vozilo> getAll(){
+        return SQLite.select().from(Vozilo.class).queryList();
+    }
+
+    public static Vozilo getSpecific(int id) {
+        return SQLite.select().from(Vozilo.class).where(Vozilo_Table.id.eq(id)).querySingle();
     }
 }
