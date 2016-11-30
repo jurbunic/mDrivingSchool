@@ -4,7 +4,10 @@ import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+
+import java.util.List;
 
 /**
  * Created by Dalibor on 23.11.2016..
@@ -121,6 +124,16 @@ public class Pitanje extends BaseModel {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public static List<Pitanje> getAll(){ return SQLite.select().from(Pitanje.class).queryList(); }
+
+    public static List<Pitanje> getOnlyPropisi(){
+        return SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(1)).queryList();
+    }
+
+    public static List<Pitanje> getOnlyPrvaPomoc(){
+        return SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(2)).queryList();
     }
 
 }

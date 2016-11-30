@@ -64,17 +64,18 @@ public class TestoviRezultatiFragment extends Fragment {
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_rezultati);
 
+        if (tipPitanja=="propisi") {
+            PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka, 1);
+        }else {
+            PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka, 2);
+        }
+
         mAdapter = new RezultatiTestaAdapter(listaPitanja, tocniIds, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-        if (tipPitanja=="propisi") {
-            PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka,1);
-        }else {
-            PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka,2);
-        }
         mAdapter.notifyDataSetChanged();
     }
 }

@@ -16,11 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bkl.air.foi.database.Pitanje;
+import com.bkl.air.foi.database.Pitanje_Table;
 import com.bkl.air.foi.database.TipPitanja;
 import com.bkl.air.foi.database.Vozilo;
 import com.bkl.air.foi.mdrivingschool.helpers.PitanjaData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -77,10 +79,20 @@ public class TestoviPitanjeFragment extends Fragment {
         View calcView = inflater.inflate(R.layout.fragment_testovi_pitanje, container, false);
         unbinder = ButterKnife.bind(this,calcView);
         if (tipPitanja == "propisi"){
-            PitanjaData.nabaviPodatkePitanja(listaPitanja);
+            if(SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(1)).queryList().isEmpty()){
+                PitanjaData.nabaviPitanjaPropisi(listaPitanja);
+            }
+            else{
+                listaPitanja = Pitanje.getOnlyPropisi();
+            }
         }
         else{
-            PitanjaData.nabaviPitanjaPrvaPomoc(listaPitanja);
+            if(SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(2)).queryList().isEmpty()){
+                PitanjaData.nabaviPitanjaPrvaPomoc(listaPitanja);
+            }
+            else{
+                listaPitanja = Pitanje.getOnlyPrvaPomoc();
+            }
         }
 
         return calcView;
