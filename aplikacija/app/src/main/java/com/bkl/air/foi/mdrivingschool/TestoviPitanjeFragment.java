@@ -43,6 +43,7 @@ public class TestoviPitanjeFragment extends Fragment {
     private List<Pitanje> listaPitanja = new ArrayList<>();
     private int trenutnoPitanje = 1;
     private int tocniOdgovori = 0;
+    private int lastOpenedQuestion = 1;
 
 
 
@@ -92,14 +93,17 @@ public class TestoviPitanjeFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
 
-        for (int i=0; i<5;i++){
-            Button navButton = new Button(getActivity().getApplicationContext());
-            navButton.setText(Integer.toString(i+1));
-            navButtons.add(navButton);
-            LinearLayout navigationLayout = (LinearLayout) getActivity().findViewById(R.id.questionNavigation);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            navigationLayout.addView(navButton,lp);
-        }
+        Button navButton = (Button) getActivity().findViewById(R.id.button_nav_test1);
+        navButtons.add(navButton);
+        Button navButton1 = (Button) getActivity().findViewById(R.id.button_nav_test2);
+        navButtons.add(navButton1);
+        Button navButton2 = (Button) getActivity().findViewById(R.id.button_nav_test3);
+        navButtons.add(navButton2);
+        Button navButton3 = (Button) getActivity().findViewById(R.id.button_nav_test4);
+        navButtons.add(navButton3);
+        Button navButton4 = (Button) getActivity().findViewById(R.id.button_nav_test5);
+        navButtons.add(navButton4);
+
         for(int i=0; i<5;i++){
             Tocnost tocnost = new Tocnost();
             tocnost.brojPitanja = i+1;
@@ -112,6 +116,10 @@ public class TestoviPitanjeFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     brojPitanja.setText("Pitanje " + (j+1));
+
+                    //Spremanje trenutno otvorenog pitanja
+                    spremiOdg(lastOpenedQuestion);
+                    provjeraTocnosti();
 
 
                     pitanje.setText(listaPitanja.get(poljeZadataka.get(j)).getPitanje());
@@ -133,7 +141,9 @@ public class TestoviPitanjeFragment extends Fragment {
                     }catch (Exception a) {
 
                     }
-                    trenutnoPitanje = j + 1;
+                    trenutnoPitanje = j+1;
+                    lastOpenedQuestion = j+1;
+
 
                 }
             });

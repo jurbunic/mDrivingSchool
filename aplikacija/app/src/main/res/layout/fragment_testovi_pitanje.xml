@@ -29,14 +29,44 @@
                 android:id="@+id/imageView_logo_cijeli"
                 android:layout_height="55dp" />
         </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/questionNavigation">
-
-        </LinearLayout>
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:layout_centerInParent="true"
+                android:id="@+id/questionNavigation">
+                <Button
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:id="@+id/button_nav_test1"/>
+                <Button
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:id="@+id/button_nav_test2"/>
+                <Button
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="3"
+                    android:id="@+id/button_nav_test3"/>
+                <Button
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:id="@+id/button_nav_test4"/>
+                <Button
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:id="@+id/button_nav_test5"/>
+            </LinearLayout>
+        </RelativeLayout>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
