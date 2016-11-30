@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -53,6 +54,19 @@ public class TestoviMainFragment extends Fragment {
         TestoviPitanjeFragment tpf = new TestoviPitanjeFragment();
         tpf.setArguments(args);
         StartFragment.StartNewFragment(tpf,"pitanja propisa",getActivity());
+    }
+
+    @OnClick(R.id.button_prvaPomoc)
+    public void onPrvaPomocClicked(){
+        ArrayList<Integer> poljeZadataka = new ArrayList<>(5);
+        generiranjeRandomBrojeva(5,12, poljeZadataka);
+
+        Bundle args = new Bundle();
+        args.putString("tipPitanja", "prvaPomoc");
+        args.putIntegerArrayList("randomZadaci", poljeZadataka);
+        TestoviPitanjeFragment tpf = new TestoviPitanjeFragment();
+        tpf.setArguments(args);
+        StartFragment.StartNewFragment(tpf,"",getActivity());
     }
 
     //metoda generira polje od n elemenata. Ti elementi su random brojevi (int) koji se ne ponavljaju

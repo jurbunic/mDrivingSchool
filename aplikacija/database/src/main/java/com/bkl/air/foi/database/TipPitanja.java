@@ -1,12 +1,18 @@
 package com.bkl.air.foi.database;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 /**
  * Created by Dalibor on 23.11.2016..
  */
-
-public class TipPitanja {
-    int id;
-    String naziv;
+@Table(database = MainDatabase.class)
+public class TipPitanja extends BaseModel {
+    @PrimaryKey
+    @Column int id;
+    @Column String naziv;
 
     public TipPitanja() {
     }

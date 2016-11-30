@@ -45,6 +45,7 @@ public class TestoviPitanjeFragment extends Fragment {
     private int tocniOdgovori = 0;
 
 
+
     private ArrayList<Integer> tocniIds = new ArrayList<>(5);
 
     @BindView(R.id.textView_broj)
@@ -74,7 +75,13 @@ public class TestoviPitanjeFragment extends Fragment {
         poljeZadataka=getArguments().getIntegerArrayList("randomZadaci");
         View calcView = inflater.inflate(R.layout.fragment_testovi_pitanje, container, false);
         unbinder = ButterKnife.bind(this,calcView);
-        PitanjaData.nabaviPodatkePitanja(listaPitanja);
+        if (tipPitanja == "propisi"){
+            PitanjaData.nabaviPodatkePitanja(listaPitanja);
+        }
+        else{
+            PitanjaData.nabaviPitanjaPrvaPomoc(listaPitanja);
+        }
+
         return calcView;
     }
 
@@ -85,7 +92,7 @@ public class TestoviPitanjeFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
 
-        for (int i=0; i<listaPitanja.size()-2;i++){
+        for (int i=0; i<5;i++){
             Button navButton = new Button(getActivity().getApplicationContext());
             navButton.setText(Integer.toString(i+1));
             navButtons.add(navButton);
@@ -93,7 +100,7 @@ public class TestoviPitanjeFragment extends Fragment {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             navigationLayout.addView(navButton,lp);
         }
-        for(int i=0; i<listaPitanja.size()-2;i++){
+        for(int i=0; i<5;i++){
             Tocnost tocnost = new Tocnost();
             tocnost.brojPitanja = i+1;
             listaTocnosti.add(tocnost);
@@ -111,7 +118,7 @@ public class TestoviPitanjeFragment extends Fragment {
                     odg1.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg1());
                     odg2.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg2());
                     odg3.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg3());
-                    Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(j)).getImgUrl()).into(slika);
+//                    Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(j)).getImgUrl()).into(slika);
                     odg1.setChecked(false);odg2.setChecked(false);odg3.setChecked(false);
                     try {
                         Tocnost tocnost = listaTocnosti.get(j);
@@ -132,12 +139,9 @@ public class TestoviPitanjeFragment extends Fragment {
             });
         }
 
-        if(tipPitanja.equals("propisi")){
+
             pripremiPitanja();
-        }
-        else{
-        //to be added...
-        }
+
     }
     @OnClick(R.id.button_dalje)
     public void onButtonDaljeClicked(){
@@ -152,6 +156,7 @@ public class TestoviPitanjeFragment extends Fragment {
             Bundle args=new Bundle();
             args.putIntegerArrayList("tocniIds", tocniIds);
             args.putIntegerArrayList("randomZadaci", poljeZadataka);
+            args.putString("tipPitanja", tipPitanja);
             args.putInt("Tocnost", tocniOdgovori);
             TestoviRezultatiFragment trf = new TestoviRezultatiFragment();
             trf.setArguments(args);
@@ -167,7 +172,7 @@ public class TestoviPitanjeFragment extends Fragment {
         odg1.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg1());
         odg2.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg2());
         odg3.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg3());
-        Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getImgUrl()).into(slika);
+        //Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getImgUrl()).into(slika);
         try {
             Tocnost tocnost = listaTocnosti.get(trenutnoPitanje-1);
             if (tocnost.odgovor1 == true)

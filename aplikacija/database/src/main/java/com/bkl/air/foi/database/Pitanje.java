@@ -1,23 +1,31 @@
 package com.bkl.air.foi.database;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ForeignKey;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 /**
  * Created by Dalibor on 23.11.2016..
  */
+@Table(database = MainDatabase.class)
+public class Pitanje extends BaseModel {
+    @PrimaryKey
+    @Column int id;
+    @ForeignKey(tableClass = TipPitanja.class)
+    @Column int id_tipa;
 
-public class Pitanje {
-    int id;
-    int id_tipa;
+    @Column String pitanje;
+    @Column String odg1;
+    @Column String odg2;
+    @Column String odg3;
 
-    String pitanje;
-    String odg1;
-    String odg2;
-    String odg3;
+    @Column boolean tocan1;
+    @Column boolean tocan2;
+    @Column boolean tocan3;
 
-    boolean tocan1;
-    boolean tocan2;
-    boolean tocan3;
-
-    String imgUrl;
+    @Column String imgUrl;
 
     public Pitanje() {
     }
@@ -114,4 +122,5 @@ public class Pitanje {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
 }

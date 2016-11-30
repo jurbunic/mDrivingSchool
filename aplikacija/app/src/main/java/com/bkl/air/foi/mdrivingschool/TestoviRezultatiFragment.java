@@ -40,6 +40,8 @@ public class TestoviRezultatiFragment extends Fragment {
     private RecyclerView recyclerView;
     private RezultatiTestaAdapter mAdapter;
 
+    private String tipPitanja;
+
 
     @BindView(R.id.textView_tocnost)
     TextView tocnostTesta;
@@ -48,6 +50,7 @@ public class TestoviRezultatiFragment extends Fragment {
         tocnost=getArguments().getInt("Tocnost");
         poljeZadataka=getArguments().getIntegerArrayList("randomZadaci");
         tocniIds=getArguments().getIntegerArrayList("tocniIds");
+        tipPitanja = getArguments().getString("tipPitanja");
         View calcView = inflater.inflate(R.layout.fragment_testovi_rezultati, container, false);
         unbinder = ButterKnife.bind(this,calcView);
         return calcView;
@@ -67,8 +70,11 @@ public class TestoviRezultatiFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
 
-
-        PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka);
+        if (tipPitanja=="propisi") {
+            PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka,1);
+        }else {
+            PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka,2);
+        }
         mAdapter.notifyDataSetChanged();
     }
 }
