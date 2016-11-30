@@ -46,7 +46,7 @@ public class TestoviMainFragment extends Fragment {
     @OnClick(R.id.button_propisi)
     public void onPropisiButtonClicked(){
         ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
-        generiranjeRandomBrojeva(5, 7, poljeZadataka);
+        generiranjeRandomBrojeva(5, 20, poljeZadataka);
 
         Bundle args=new Bundle();
         args.putString("tipPitanja", "propisi");

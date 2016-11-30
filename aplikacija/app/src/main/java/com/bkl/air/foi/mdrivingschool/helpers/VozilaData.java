@@ -23,11 +23,19 @@ public class VozilaData {
                 "B kategorija", "Dizelski motor", "105ks, 77kw, 1600ccm");
         listaVozila.add(vozilo);
 
-        vozilo = new Vozilo(4, "Kymco Zing 125", "http://autoskola-premuz.hr/wp-content/uploads/2012/09/kimco.jpg",
+        vozilo = new Vozilo(4, "Golf VII", "http://autoskola-premuz.hr/wp-content/uploads/2016/11/golf.jpg",
+                "B kategorija", "Dizelski motor", "110 ks, 81 kw, 1600 ccm");
+        listaVozila.add(vozilo);
+
+        vozilo = new Vozilo(5, "Renault Clio", "http://autoskola-premuz.hr/wp-content/uploads/2016/11/clio1.jpg",
+                "B kategorija", "Dizelski motor", "75 ks, 55 kw, 1500 ccm");
+        listaVozila.add(vozilo);
+
+        vozilo = new Vozilo(6, "Kymco Zing 125", "http://autoskola-premuz.hr/wp-content/uploads/2012/09/kimco.jpg",
                 "A1 kategorija", "Motocikl", "125 ccm");
         listaVozila.add(vozilo);
 
-        vozilo = new Vozilo(5, "Kawasaki Er 6n", "http://autoskola-premuz.hr/wp-content/uploads/2012/09/kawasaki.jpg",
+        vozilo = new Vozilo(7, "Kawasaki Er 6n", "http://autoskola-premuz.hr/wp-content/uploads/2012/09/kawasaki.jpg",
                 "A kategorija", "Motocikl", "650ccm");
         listaVozila.add(vozilo);
 

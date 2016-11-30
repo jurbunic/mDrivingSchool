@@ -71,7 +71,7 @@ public class RezultatiTestaAdapter extends RecyclerView.Adapter<RezultatiTestaAd
         if(pitanje.isTocan2()==true){holder.odg2.setTextColor(Color.GREEN);}
         holder.odg3.setText("c) " + pitanje.getOdg3());
         if(pitanje.isTocan3()==true){holder.odg3.setTextColor(Color.GREEN);}
-        //Picasso.with(context).load(pitanje.getImgUrl()).into(holder.slika);
+        Picasso.with(context).load(pitanje.getImgUrl()).into(holder.slika);
         for (int i = 0; i < tocniIds.size(); i++) {
             if (pitanje.getId() == tocniIds.get(i)) {
                 holder.status.setText("STATUS: TOČNO");

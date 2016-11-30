@@ -126,7 +126,7 @@ public class TestoviPitanjeFragment extends Fragment {
                     odg1.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg1());
                     odg2.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg2());
                     odg3.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg3());
-//                    Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(j)).getImgUrl()).into(slika);
+                    Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(j)).getImgUrl()).into(slika);
                     odg1.setChecked(false);odg2.setChecked(false);odg3.setChecked(false);
                     try {
                         Tocnost tocnost = listaTocnosti.get(j);
@@ -182,7 +182,7 @@ public class TestoviPitanjeFragment extends Fragment {
         odg1.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg1());
         odg2.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg2());
         odg3.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg3());
-        //Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getImgUrl()).into(slika);
+        Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getImgUrl()).into(slika);
         try {
             Tocnost tocnost = listaTocnosti.get(trenutnoPitanje-1);
             if (tocnost.odgovor1 == true)
