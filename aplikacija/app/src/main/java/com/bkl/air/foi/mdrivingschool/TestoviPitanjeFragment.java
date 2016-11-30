@@ -109,6 +109,7 @@ public class TestoviPitanjeFragment extends Fragment {
             Tocnost tocnost = new Tocnost();
             tocnost.brojPitanja = i+1;
             listaTocnosti.add(tocnost);
+            tocniIds.add(i+1);
         }
         for (int i=0; i<navButtons.size();i++){
             Button button = navButtons.get(i);
@@ -168,7 +169,13 @@ public class TestoviPitanjeFragment extends Fragment {
             pripremiPitanja();
         }
         else{
+            tocniOdgovori=0;
             provjeraTocnosti();
+            for (int i=0; i<tocniIds.size();i++){
+                if(tocniIds.get(i) != 999){
+                    tocniOdgovori++;
+                }
+            }
             Bundle args=new Bundle();
             args.putIntegerArrayList("tocniIds", tocniIds);
             args.putIntegerArrayList("randomZadaci", poljeZadataka);
@@ -220,11 +227,13 @@ public class TestoviPitanjeFragment extends Fragment {
             stanjeTocnosti++;
         }
         if(stanjeTocnosti == 3){
-            tocniOdgovori++;
-            tocniIds.add(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getId());
+           // tocniOdgovori++;
+            tocniIds.remove(lastOpenedQuestion-1);
+            tocniIds.add(lastOpenedQuestion-1,listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getId());
         }
         else{
-            tocniIds.add(999);
+            tocniIds.remove(lastOpenedQuestion-1);
+            tocniIds.add(lastOpenedQuestion-1, 999);
         }
     }
 

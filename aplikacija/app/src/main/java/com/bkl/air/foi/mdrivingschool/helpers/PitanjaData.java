@@ -47,7 +47,7 @@ public class PitanjaData {
         pitanje = new Pitanje( 16, 2, "Označite najčešći uzroke gubitka svijesti?", "Iščašenje zgloba", "Ozljeda glave" ,"Otrovanje ispušnim plinovima" , false, true, true, "blank");
         listaPitanja.add(pitanje);
         //pitanje.save();
-        pitanje = new Pitanje( 17, 2, "Koji je broj prve pomoći?", "194", "192" ,"112" , true, false, true, "");
+        pitanje = new Pitanje( 17, 2, "Koji je broj prve pomoći?", "194", "192" ,"112" , true, false, true, "blank");
         listaPitanja.add(pitanje);
         //pitanje.save();
         pitanje = new Pitanje( 18, 2, "Kada onesviještenog moramo staviti u položaj na trbuh?", "Kod ozljede trbuha", "Kod ozljede kralježnice" ,"Kod probojne rane prsnog koša" , false, true, false, "blank");
