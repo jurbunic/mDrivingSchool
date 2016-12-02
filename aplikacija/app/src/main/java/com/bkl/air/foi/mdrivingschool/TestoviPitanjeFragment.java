@@ -121,7 +121,7 @@ public class TestoviPitanjeFragment extends Fragment {
             Tocnost tocnost = new Tocnost();
             tocnost.brojPitanja = i+1;
             listaTocnosti.add(tocnost);
-            tocniIds.add(i+1);
+            tocniIds.add(999);
         }
         for (int i=0; i<navButtons.size();i++){
             Button button = navButtons.get(i);
