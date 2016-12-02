@@ -25,6 +25,7 @@ public class RezultatiTestaAdapter extends RecyclerView.Adapter<RezultatiTestaAd
     private List<Pitanje> listaPitanja;
     private List<Integer> tocniIds;
     Context context;
+    private int imgId;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView pitanje;
@@ -71,7 +72,8 @@ public class RezultatiTestaAdapter extends RecyclerView.Adapter<RezultatiTestaAd
         if(pitanje.isTocan2()==true){holder.odg2.setTextColor(Color.GREEN);}
         holder.odg3.setText("c) " + pitanje.getOdg3());
         if(pitanje.isTocan3()==true){holder.odg3.setTextColor(Color.GREEN);}
-        Picasso.with(context).load(pitanje.getImgUrl()).into(holder.slika);
+        imgId = context.getResources().getIdentifier(pitanje.getImgUrl(), "drawable", context.getPackageName());
+        holder.slika.setImageDrawable(context.getResources().getDrawable(imgId));
         for (int i = 0; i < tocniIds.size(); i++) {
             if (pitanje.getId() == tocniIds.get(i)) {
                 holder.status.setText("STATUS: TOČNO");

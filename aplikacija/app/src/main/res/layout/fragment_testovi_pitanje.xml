@@ -98,10 +98,10 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 app:srcCompat="@mipmap/ic_launcher"
                 android:id="@+id/imageView_slika"
-                android:cropToPadding="true" />
+                android:cropToPadding="true"
+                android:layout_height="130dp" />
 
             <TextView
                 android:text="Koja je najmanja dopuštena brzina vožnje u normalnim prometnim uvjetima ?"

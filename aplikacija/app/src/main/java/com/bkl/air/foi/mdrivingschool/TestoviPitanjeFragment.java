@@ -46,6 +46,7 @@ public class TestoviPitanjeFragment extends Fragment {
     private int trenutnoPitanje = 1;
     private int tocniOdgovori = 0;
     private int lastOpenedQuestion = 1;
+    private int imgId = 0;
 
 
 
@@ -135,26 +136,7 @@ public class TestoviPitanjeFragment extends Fragment {
                     spremiOdg(lastOpenedQuestion);
                     provjeraTocnosti();
                     navButtons.get(lastOpenedQuestion-1).setEnabled(true);
-
-                    pitanje.setText(listaPitanja.get(poljeZadataka.get(j)).getPitanje());
-                    odg1.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg1());
-                    odg2.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg2());
-                    odg3.setText(listaPitanja.get(poljeZadataka.get(j)).getOdg3());
-                    Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(j)).getImgUrl()).into(slika);
-                    odg1.setChecked(false);odg2.setChecked(false);odg3.setChecked(false);
-                    try {
-                        Tocnost tocnost = listaTocnosti.get(j);
-                        if (tocnost.odgovor1 == true)
-                            odg1.setChecked(true);
-                        if (tocnost.odgovor2 == true) {
-                            odg2.setChecked(true);
-                        }
-                        if (tocnost.odgovor3 == true) {
-                            odg3.setChecked(true);
-                        }
-                    }catch (Exception a) {
-
-                    }
+                    pripremiPitanja(j);
                     trenutnoPitanje = j+1;
                     lastOpenedQuestion = j+1;
 
@@ -164,8 +146,8 @@ public class TestoviPitanjeFragment extends Fragment {
             });
         }
 
-
-            pripremiPitanja();
+            brojPitanja.setText("Pitanje " + trenutnoPitanje);
+            pripremiPitanja(trenutnoPitanje-1);
 
     }
     @OnClick(R.id.button_dalje)
@@ -177,8 +159,8 @@ public class TestoviPitanjeFragment extends Fragment {
             navButtons.get(trenutnoPitanje).setEnabled(false);
             trenutnoPitanje++;
             lastOpenedQuestion = trenutnoPitanje;
-
-            pripremiPitanja();
+            brojPitanja.setText("Pitanje " + trenutnoPitanje);
+            pripremiPitanja(trenutnoPitanje-1);
         }
         else{
             tocniOdgovori=0;
@@ -199,17 +181,18 @@ public class TestoviPitanjeFragment extends Fragment {
         }
     }
 
-    //metoda priprema graficko sucelje za novo nadolazece pitanje
-    private void pripremiPitanja(){
-        brojPitanja.setText("Pitanje " + trenutnoPitanje);
+    //metoda priprema graficko sucelje za novo nadolazece pitanje, parametar tp označava broj trenutnog pitanja
+    private void pripremiPitanja(int tp){
         odg1.setChecked(false); odg2.setChecked(false); odg3.setChecked(false);
-        pitanje.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getPitanje());
-        odg1.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg1());
-        odg2.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg2());
-        odg3.setText(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getOdg3());
-        Picasso.with(getActivity()).load(listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).getImgUrl()).into(slika);
+        pitanje.setText(listaPitanja.get(poljeZadataka.get(tp)).getPitanje());
+        odg1.setText(listaPitanja.get(poljeZadataka.get(tp)).getOdg1());
+        odg2.setText(listaPitanja.get(poljeZadataka.get(tp)).getOdg2());
+        odg3.setText(listaPitanja.get(poljeZadataka.get(tp)).getOdg3());
+        imgId = getResources().getIdentifier(listaPitanja.get(poljeZadataka.get(tp)).getImgUrl(), "drawable", getActivity().getPackageName());
+        slika.setImageDrawable(getResources().getDrawable(imgId));
+
         try {
-            Tocnost tocnost = listaTocnosti.get(trenutnoPitanje-1);
+            Tocnost tocnost = listaTocnosti.get(tp);
             if (tocnost.odgovor1 == true)
                 odg1.setChecked(true);
             if (tocnost.odgovor2 == true) {
