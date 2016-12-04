@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ViewFlipper;
 
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
+import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,20 +73,17 @@ public class MainScreenFragment extends Fragment {
     public void onButtonImageClick1(){
         OnlinePrijavaFragment fop = new OnlinePrijavaFragment();
         StartFragment.StartNewFragment(fop,"online upis",getActivity());
-        navigationView.getMenu().getItem(4).setChecked(true);
     }
 
     @OnClick(R.id.imageButton2)
     public void onButtonImageClick2(){
-        KontaktFragment fk = new KontaktFragment();
-        StartFragment.StartNewFragment(fk,"kontakt",getActivity());
-        navigationView.getMenu().getItem(2).setChecked(true);
+        TestoviMainFragment fk = new TestoviMainFragment();
+        StartFragment.StartNewFragment(fk,"online testovi",getActivity());
     }
 
     @OnClick(R.id.imageButton3)
     public void onButtonImageClick3(){
-        VozilaFragment fv = new VozilaFragment();
-        StartFragment.StartNewFragment(fv,"vozila",getActivity());
-        navigationView.getMenu().getItem(3).setChecked(true);
+        MapFragment fv = new MapFragment();
+        StartFragment.StartNewFragment(fv,"mapa",getActivity());
     }
 }

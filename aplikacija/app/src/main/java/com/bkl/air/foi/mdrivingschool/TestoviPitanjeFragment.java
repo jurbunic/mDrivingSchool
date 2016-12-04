@@ -204,6 +204,13 @@ public class TestoviPitanjeFragment extends Fragment {
         }catch (Exception a) {
 
         }
+
+        if(tp==4){
+            dalje.setText("Predaj sve i završi");
+        }
+        else{
+            dalje.setText("Sljedeće pitanje");
+        }
     }
 
     //metoda provjerava tocnost odgovora koje je korisnik dao, tj. usporeduje checkbox sa predefiniranom tocnosti odgovora

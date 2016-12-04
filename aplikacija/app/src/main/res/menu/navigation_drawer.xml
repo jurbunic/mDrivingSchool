@@ -29,7 +29,7 @@
             android:title="Lokacija na mapi"/>
         <item
             android:id="@+id/test_znanja_navigation"
-            android:icon="@drawable/ikona_upis"
+            android:icon="@drawable/ikona_testovi"
             android:title="Testovi znanja"/>
 
     </group>
