@@ -1,8 +1,15 @@
 package com.bkl.air.foi.mdrivingschool.helpers;
 
 import android.app.AlertDialog;
+import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+
+import com.bkl.air.foi.mdrivingschool.EmployeeActivity;
+import com.bkl.air.foi.mdrivingschool.LoginActivity;
+import com.bkl.air.foi.mdrivingschool.MainActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -89,5 +96,7 @@ public class LoginData extends AsyncTask<String,Void,String> {
     protected void onPostExecute(String s) {
         alertDialog.setMessage(s);
         alertDialog.show();
+        Intent intent = new Intent(context,EmployeeActivity.class);
+        context.startActivity(intent);
     }
 }
