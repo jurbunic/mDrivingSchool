@@ -177,7 +177,7 @@ public class TestoviPitanjeFragment extends Fragment {
             args.putInt("Tocnost", tocniOdgovori);
             TestoviRezultatiFragment trf = new TestoviRezultatiFragment();
             trf.setArguments(args);
-            StartFragment.StartNewFragment(trf,"rezultati testova",getActivity());
+            StartFragment.StartNewFragment(trf, getActivity());
         }
     }
 

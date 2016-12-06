@@ -72,18 +72,18 @@ public class MainScreenFragment extends Fragment {
     @OnClick(R.id.imageButton)
     public void onButtonImageClick1(){
         OnlinePrijavaFragment fop = new OnlinePrijavaFragment();
-        StartFragment.StartNewFragment(fop,"online upis",getActivity());
+        StartFragment.StartNewFragment(fop,getActivity());
     }
 
     @OnClick(R.id.imageButton2)
     public void onButtonImageClick2(){
         TestoviMainFragment fk = new TestoviMainFragment();
-        StartFragment.StartNewFragment(fk,"online testovi",getActivity());
+        StartFragment.StartNewFragment(fk,getActivity());
     }
 
     @OnClick(R.id.imageButton3)
     public void onButtonImageClick3(){
         MapFragment fv = new MapFragment();
-        StartFragment.StartNewFragment(fv,"mapa",getActivity());
+        StartFragment.StartNewFragment(fv,getActivity());
     }
 }

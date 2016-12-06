@@ -3,9 +3,12 @@ package com.bkl.air.foi.mdrivingschool;
 
 
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
@@ -44,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SetToolbar();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        toggle.syncState();
         drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -53,9 +57,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mFragmentManager = getFragmentManager();
         mFragmentManager.addOnBackStackChangedListener(this);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getFragmentManager().getBackStackEntryCount()==0){
+                    drawer.openDrawer(GravityCompat.START);
+                }else {
+                    onBackPressed();
+                }
+            }
+        });
 
         MainScreenFragment msf = new MainScreenFragment();
-        StartFragment.StartNewFragment(msf, "pocetna", this);
+        StartFragment.StartNewFragment(msf, this);
 
     }
 
@@ -100,6 +114,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
+
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -107,31 +123,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.kontakt_navigation) {
 
             KontaktFragment fk = new KontaktFragment();
-            StartFragment.StartNewFragment(fk, "kontakt", this);
+            StartFragment.StartNewFragment(fk , this);
         } else if (id == R.id.vozila_navigation) {
             VozilaFragment fv = new VozilaFragment();
-            StartFragment.StartNewFragment(fv, "vozila", this);
+            StartFragment.StartNewFragment(fv, this);
         } else if (id == R.id.online_prijava_navigation) {
             OnlinePrijavaFragment opn = new OnlinePrijavaFragment();
-            StartFragment.StartNewFragment(opn, "online upis", this);
+            StartFragment.StartNewFragment(opn, this);
 
         } else if (id == R.id.o_nama_navigation) {
             OnamaFragment onf = new OnamaFragment();
-            StartFragment.StartNewFragment(onf, "o nama", this);
+            StartFragment.StartNewFragment(onf, this);
         } else if (id == R.id.prijava_navigation) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else if (id == R.id.pocetna_navigation) {
             MainScreenFragment msf = new MainScreenFragment();
-            StartFragment.StartNewFragment(msf, "pocetna", this);
+            StartFragment.StartNewFragment(msf, this);
 
         } else if (id == R.id.map_navigation) {
             MapFragment mf = new MapFragment();
-            StartFragment.StartNewFragment(mf, "map", this);
+            StartFragment.StartNewFragment(mf, this);
 
         } else if (id == R.id.test_znanja_navigation) {
             TestoviMainFragment tmf = new TestoviMainFragment();
-            StartFragment.StartNewFragment(tmf, "testovi main", this);
+            StartFragment.StartNewFragment(tmf, this);
         }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -13,21 +13,10 @@ import com.bkl.air.foi.mdrivingschool.R;
  */
 
 public class StartFragment {
-    /**StartFragment
-     * Metoda prima tri parametra. Dobiveni fragment pokreće i sprema ga na BackStack pod prosljeđenim
-     * tagom
-     *
-     * @param fragment tip Fragment
-     * @param mActivity tip Activity
-     * @param tag   tip String
-     */
-    public static void StartNewFragment (Fragment fragment, String tag, Activity mActivity){
+
+    public static void StartNewFragment (Fragment fragment, Activity mActivity){
         /*
-        FragmentTransaction fm = mActivity.getFragmentManager().beginTransaction();
-        fm.replace(R.id.fragment_container, fragment);
-        fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        fm.addToBackStack(tag);
-        fm.commit();
+
         */
 
         FragmentManager fragmentManager = mActivity.getFragmentManager();
@@ -36,5 +25,20 @@ public class StartFragment {
                 .replace(R.id.fragment_container, fragment)
                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .commit();
+    }
+    /**StartFragment
+     * Metoda prima tri parametra. Dobiveni fragment pokreće i sprema ga na BackStack pod prosljeđenim
+     * tagom
+     *
+     * @param fragment tip Fragment
+     * @param mActivity tip Activity
+     * @param tag   tip String
+     */
+    public static void StartNewFragment(Fragment fragment, Activity mActivity, String tag){
+        FragmentTransaction fm = mActivity.getFragmentManager().beginTransaction();
+        fm.replace(R.id.fragment_container, fragment);
+        fm.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        fm.addToBackStack(tag);
+        fm.commit();
     }
 }

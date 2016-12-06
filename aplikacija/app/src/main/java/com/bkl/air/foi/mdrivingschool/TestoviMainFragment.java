@@ -53,7 +53,7 @@ public class TestoviMainFragment extends Fragment {
         args.putIntegerArrayList("randomZadaci", poljeZadataka);
         TestoviPitanjeFragment tpf = new TestoviPitanjeFragment();
         tpf.setArguments(args);
-        StartFragment.StartNewFragment(tpf,"pitanja propisa",getActivity());
+        StartFragment.StartNewFragment(tpf,getActivity(),"propisi");
     }
 
     @OnClick(R.id.button_prvaPomoc)
@@ -66,7 +66,7 @@ public class TestoviMainFragment extends Fragment {
         args.putIntegerArrayList("randomZadaci", poljeZadataka);
         TestoviPitanjeFragment tpf = new TestoviPitanjeFragment();
         tpf.setArguments(args);
-        StartFragment.StartNewFragment(tpf,"",getActivity());
+        StartFragment.StartNewFragment(tpf,getActivity(),"prvapomoc");
     }
 
     //metoda generira polje od n elemenata. Ti elementi su random brojevi (int) koji se ne ponavljaju
