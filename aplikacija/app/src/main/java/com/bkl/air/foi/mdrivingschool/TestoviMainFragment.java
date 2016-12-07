@@ -28,13 +28,11 @@ import butterknife.Unbinder;
 
 public class TestoviMainFragment extends Fragment {
 
-    private Unbinder unbinder;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View calcView = inflater.inflate(R.layout.fragment_testovi_main, container, false);
-        unbinder = ButterKnife.bind(this,calcView);
-        return calcView;
+        View View = inflater.inflate(R.layout.fragment_testovi_main, container, false);
+        ButterKnife.bind(this, View);
+        return View;
     }
 
     @Override

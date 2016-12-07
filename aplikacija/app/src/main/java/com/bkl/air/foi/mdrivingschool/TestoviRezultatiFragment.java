@@ -30,7 +30,7 @@ import butterknife.Unbinder;
  */
 
 public class TestoviRezultatiFragment extends Fragment {
-    private Unbinder unbinder;
+
     private int tocnost;
 
     private ArrayList<Integer> poljeZadataka = new ArrayList<>(5);
@@ -51,9 +51,9 @@ public class TestoviRezultatiFragment extends Fragment {
         poljeZadataka=getArguments().getIntegerArrayList("randomZadaci");
         tocniIds=getArguments().getIntegerArrayList("tocniIds");
         tipPitanja = getArguments().getString("tipPitanja");
-        View calcView = inflater.inflate(R.layout.fragment_testovi_rezultati, container, false);
-        unbinder = ButterKnife.bind(this,calcView);
-        return calcView;
+        View View = inflater.inflate(R.layout.fragment_testovi_rezultati, container, false);
+        ButterKnife.bind(this, View);
+        return View;
     }
 
     @Override

@@ -41,7 +41,6 @@ import butterknife.Unbinder;
 public class TestoviPitanjeFragment extends Fragment {
     private ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
     private String tipPitanja;
-    private Unbinder unbinder;
     private List<Pitanje> listaPitanja = new ArrayList<>();
     private int trenutnoPitanje = 1;
     private int tocniOdgovori = 0;
@@ -77,8 +76,8 @@ public class TestoviPitanjeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         tipPitanja=getArguments().getString("tipPitanja");
         poljeZadataka=getArguments().getIntegerArrayList("randomZadaci");
-        View calcView = inflater.inflate(R.layout.fragment_testovi_pitanje, container, false);
-        unbinder = ButterKnife.bind(this,calcView);
+        View View = inflater.inflate(R.layout.fragment_testovi_pitanje, container, false);
+        ButterKnife.bind(this, View);
         if (tipPitanja == "propisi"){
             if(SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(1)).queryList().isEmpty()){
                 PitanjaData.nabaviPitanjaPropisi(listaPitanja);
@@ -96,7 +95,7 @@ public class TestoviPitanjeFragment extends Fragment {
             }
         }
 
-        return calcView;
+        return View;
     }
 
     ArrayList<Button> navButtons = new ArrayList<Button>();

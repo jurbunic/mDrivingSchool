@@ -25,8 +25,6 @@ public class OnlinePrijavaFragment extends Fragment {
 
     private EmailSender mEmailSender = new EmailSender();
 
-    private Unbinder unbinder;
-
     @BindView(R.id.button_posalji)
     Button buttonPosalji;
 
@@ -47,23 +45,15 @@ public class OnlinePrijavaFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View calcView = inflater.inflate(R.layout.fragment_online_prijava, container, false);
-
-        unbinder = ButterKnife.bind(this, calcView);
-
-        return calcView;
+        View View = inflater.inflate(R.layout.fragment_online_prijava, container, false);
+        ButterKnife.bind(this, View);
+        return View;
     }
 
     @Override
     public void onStart() {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Online upis");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
     }
 
 

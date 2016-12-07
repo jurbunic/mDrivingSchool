@@ -28,7 +28,6 @@ import butterknife.Unbinder;
 public class MainScreenFragment extends Fragment {
 
     Animation Fade_in, Fade_out;
-    private Unbinder unbinder;
 
     @BindView(R.id.bckgrndViewFlipper)
     ViewFlipper viewFlipper;
@@ -46,9 +45,9 @@ public class MainScreenFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View calcView = inflater.inflate(R.layout.main_screen_fragment, container, false);
+        View View = inflater.inflate(R.layout.main_screen_fragment, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Početna stranica");
-        unbinder = ButterKnife.bind(this,calcView);
+        ButterKnife.bind(this, View);
 
         Fade_in = AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_in);
         Fade_out = AnimationUtils.loadAnimation(getActivity(),android.R.anim.fade_out);
@@ -61,7 +60,7 @@ public class MainScreenFragment extends Fragment {
         viewFlipper.setAutoStart(true);
         viewFlipper.setFlipInterval(4000);
         viewFlipper.startFlipping();
-        return calcView;
+        return View;
     }
 
     @Override
