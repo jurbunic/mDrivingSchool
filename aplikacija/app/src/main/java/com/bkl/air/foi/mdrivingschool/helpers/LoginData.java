@@ -10,6 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import com.bkl.air.foi.mdrivingschool.EmployeeActivity;
 import com.bkl.air.foi.mdrivingschool.LoginActivity;
 import com.bkl.air.foi.mdrivingschool.MainActivity;
+import com.bkl.air.foi.mdrivingschool.TraineeActivity;
+import com.raizlabs.android.dbflow.sql.language.Condition;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -94,9 +100,26 @@ public class LoginData extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String s) {
-        alertDialog.setMessage(s);
-        alertDialog.show();
-        Intent intent = new Intent(context,EmployeeActivity.class);
-        context.startActivity(intent);
+        try {
+            JSONObject jsonObject = new JSONObject(s);
+            JSONArray jsonArray = jsonObject.getJSONArray("server_response");
+            JSONObject JO = jsonArray.getJSONObject(0);
+            String tip_id = JO.getString("tip_id");
+            String id = JO.getString("id");
+
+            if(tip_id.equals("1")){
+                Intent intent = new Intent(context,EmployeeActivity.class);
+                context.startActivity(intent);
+            }else if(tip_id.equals("2")){
+                Intent intent = new Intent(context, TraineeActivity.class);
+                context.startActivity(intent);
+            }else{
+                alertDialog.setMessage("Login feild");
+                alertDialog.show();
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 }
