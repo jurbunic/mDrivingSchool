@@ -2,18 +2,53 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/trainee_group_1">
         <item
-            android:id="@+id/pocetna_navigation"
+            android:id="@+id/trainee_pocetna_navigation"
             android:icon="@drawable/ikona_pocetna"
             android:title="Početna stranica"/>
 
     </group>
 
-    <item android:title="Korisničke opcije">
+    <group android:checkableBehavior="single" android:id="@+id/trainee_group_2">
+        <item
+            android:id="@+id/trainee_o_nama_navigation"
+            android:icon="@drawable/ikona_o_nama"
+            android:title="O nama" />
+        <item
+            android:id="@+id/trainee_kontakt_navigation"
+            android:title="Kontakt"
+            android:icon="@drawable/ikona_kontakt"/>
+        <item
+            android:id="@+id/trainee_vozila_navigation"
+            android:icon="@drawable/ikona_vozila"
+            android:title="Vozila" />
+        <item
+            android:id="@+id/trainee_map_navigation"
+            android:icon="@drawable/ikona_mapa"
+            android:title="Lokacija na mapi"/>
+        <item
+            android:id="@+id/trainee_test_znanja_navigation"
+            android:icon="@drawable/ikona_testovi"
+            android:title="Testovi znanja"/>
+    </group>
+
+    <item android:title="Korisničke opcije" android:id="@+id/trainee_group_3">
         <menu>
             <item
-                android:id="@+id/odjava_navigation"
+                android:id="@+id/trainee_moji_ispiti__navigation"
+                android:icon="@drawable/ikona_ispiti"
+                android:title="Moji ispiti" />
+            <item
+                android:id="@+id/trainee_moje_obavijesti_navigation"
+                android:icon="@drawable/ikona_obavijesti"
+                android:title="Moje obavijesti" />
+            <item
+                android:id="@+id/trainee_moji_satovi_voznje_navigation"
+                android:icon="@drawable/ikona_auto"
+                android:title="Moji satovi vožnje" />
+            <item
+                android:id="@+id/trainee_odjava_navigation"
                 android:title="Odjava" />
 
         </menu>

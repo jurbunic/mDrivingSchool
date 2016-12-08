@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
 import android.app.FragmentManager;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
@@ -9,11 +10,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
+import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
 
-public class TraineeActivity extends AppCompatActivity {
+public class TraineeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -32,6 +35,7 @@ public class TraineeActivity extends AppCompatActivity {
         toggle.syncState();
 
         navigationView = (NavigationView) findViewById(R.id.nav_view_trainee);
+        navigationView.setNavigationItemSelectedListener(this);
 
         mFragmentManager = getFragmentManager();
 
@@ -49,11 +53,51 @@ public class TraineeActivity extends AppCompatActivity {
         TraineeMSFragment tmsf = new TraineeMSFragment();
         StartFragment.StartNewFragment(tmsf, this);
     }
+
     private Toolbar SetToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.white));
         toolbar.setTitle("Početna stranica");
         setSupportActionBar(toolbar);
         return toolbar;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        if (id == R.id.trainee_odjava_navigation) {
+            //trenutniKorisnik = null;
+            this.finish();
+        }
+        else if (id == R.id.trainee_pocetna_navigation) {
+            TraineeMSFragment tmsf = new TraineeMSFragment();
+            StartFragment.StartNewFragment(tmsf, this);
+        }
+        else if (id == R.id.trainee_o_nama_navigation) {
+            OnamaFragment onf = new OnamaFragment();
+            StartFragment.StartNewFragment(onf, this);
+        }
+        else if (id == R.id.trainee_vozila_navigation) {
+            VozilaFragment fv = new VozilaFragment();
+            StartFragment.StartNewFragment(fv, this);
+        }
+        else if (id == R.id.trainee_kontakt_navigation){
+            KontaktFragment fk = new KontaktFragment();
+            StartFragment.StartNewFragment(fk , this);
+        }
+        else if (id == R.id.trainee_test_znanja_navigation) {
+            TestoviMainFragment tmf = new TestoviMainFragment();
+            StartFragment.StartNewFragment(tmf, this);
+        }
+        else if (id == R.id.trainee_map_navigation) {
+            MapFragment mf = new MapFragment();
+            StartFragment.StartNewFragment(mf, this);
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_trainee);
+
+        drawer.closeDrawer(GravityCompat.START);
+        return false;
     }
 }
