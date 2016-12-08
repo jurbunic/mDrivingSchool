@@ -110,16 +110,14 @@ public class LoginData extends AsyncTask<String,Void,String> {
             if(tip_id.equals("1")){
                 Intent intent = new Intent(context,EmployeeActivity.class);
                 context.startActivity(intent);
-            }else if(tip_id.equals("2")){
+            }else {
                 Intent intent = new Intent(context, TraineeActivity.class);
                 context.startActivity(intent);
-            }else{
-                alertDialog.setMessage("Login feild");
-                alertDialog.show();
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
+            alertDialog.setMessage("Pogrešno korisničko ime ili lozinka");
+            alertDialog.show();
         }
     }
 }
