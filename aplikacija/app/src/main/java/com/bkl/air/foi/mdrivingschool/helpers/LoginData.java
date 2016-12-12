@@ -28,6 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by HP on 29.11.2016..
@@ -109,6 +110,9 @@ public class LoginData extends AsyncTask<String,Void,String> {
 
             if(tip_id.equals("1")){
                 Intent intent = new Intent(context,EmployeeActivity.class);
+                RetriveData data = new RetriveData(context);
+                String fetchedData = data.execute("2",id).get();
+                intent.putExtra("USER",id);
                 context.startActivity(intent);
             }else {
                 Intent intent = new Intent(context, TraineeActivity.class);
@@ -118,6 +122,10 @@ public class LoginData extends AsyncTask<String,Void,String> {
             e.printStackTrace();
             alertDialog.setMessage("Pogrešno korisničko ime ili lozinka");
             alertDialog.show();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -10,7 +10,7 @@ public class Korisnik {
     private int id;
     private String ime;
     private String prezime;
-    private Date datum_rodenja;
+    private String datum_rodenja;
     private  String mjesto_rodenja;
     private String mobitel;
     private  String telefon;
@@ -23,7 +23,10 @@ public class Korisnik {
     private String user_pass;
     private int tip_id;
 
-    public Korisnik(int id, int tip_id, String ime, String prezime, Date datum_rodenja, String mjesto_rodenja, String mobitel, String telefon, String email, String adresa, String propisi, String prva_pomoc, int sati_voznje, String user_name, String user_pass) {
+    public Korisnik() {
+    }
+
+    public Korisnik(int id, int tip_id, String ime, String prezime, String datum_rodenja, String mjesto_rodenja, String mobitel, String telefon, String email, String adresa, String propisi, String prva_pomoc, int sati_voznje, String user_name, String user_pass) {
         this.id = id;
         this.tip_id = tip_id;
         this.ime = ime;
@@ -65,11 +68,11 @@ public class Korisnik {
         this.prezime = prezime;
     }
 
-    public Date getDatum_rodenja() {
+    public String getDatum_rodenja() {
         return datum_rodenja;
     }
 
-    public void setDatum_rodenja(Date datum_rodenja) {
+    public void setDatum_rodenja(String datum_rodenja) {
         this.datum_rodenja = datum_rodenja;
     }
 

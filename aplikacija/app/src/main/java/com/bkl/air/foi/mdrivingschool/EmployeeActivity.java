@@ -15,11 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MainEmployeeFragment;
-import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
+import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
 
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Jurica Bunić on 6.12.2016..
@@ -53,6 +52,8 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
 
         mFragmentManager = getFragmentManager();
         mFragmentManager.addOnBackStackChangedListener(this);
+
+
 
         MainEmployeeFragment mef = new MainEmployeeFragment();
         StartFragment.StartNewFragment(mef,this);
@@ -105,7 +106,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                 StartFragment.StartNewFragment(mf,this);
                 break;
             case R.id.employee_test_znanja_navigation:
-                
+
                 TestoviMainFragment tmf = new TestoviMainFragment();
                 StartFragment.StartNewFragment(tmf,this);
 
