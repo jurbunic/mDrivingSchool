@@ -35,10 +35,11 @@ public class RetriveData extends AsyncTask <String, Void, String> {
         String query = params[0];
         String specify = params[1];
         if(query.equals("1")){
-            dataUrl += "?data_retrive=1";
+            dataUrl += "?data_retrive=1&osoba="+specify;
             try {
                 URL url = new URL(dataUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
                 httpURLConnection.setDoInput(true);
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
@@ -62,6 +63,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
             try {
                 URL url = new URL(dataUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
                 httpURLConnection.setDoInput(true);
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
@@ -86,6 +88,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
             try {
                 URL url = new URL(dataUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
                 httpURLConnection.setDoInput(true);
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
@@ -118,5 +121,6 @@ public class RetriveData extends AsyncTask <String, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         jsonString = s;
+        super.onPostExecute(jsonString);
     }
 }

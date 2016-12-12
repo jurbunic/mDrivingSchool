@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.bkl.air.foi.mdrivingschool.R;
 
@@ -31,5 +32,10 @@ public class MainEmployeeFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        String name = getActivity().getIntent().getStringExtra("EXTRA_USER_NAME");
+        String surname = getActivity().getIntent().getStringExtra("EXTRA_USER_SURNAME");
+
+        TextView textView =(TextView) getView().findViewById(R.id.employee_user_name);
+        textView.setText("name" +" "+ "surname");
     }
 }
