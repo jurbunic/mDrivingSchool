@@ -10,7 +10,7 @@
         android:id="@+id/layoutsHolder">
 
         <TextView
-            android:text="Dobrodošli"
+            android:text="Dobrodošli!"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView_wlcm"
@@ -22,11 +22,21 @@
             android:layout_marginTop="10dp" />
 
         <TextView
-            android:text="Ime i Prezime "
+            android:text="Uspješno ste prijavljeni kao:"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_mid"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+
+        <TextView
+            android:text='"Ime" "Prezime"'
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView_user"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="20sp"
+            android:paddingTop="5dp"
+            android:textStyle="normal|bold" />
     </LinearLayout>
 </LinearLayout>

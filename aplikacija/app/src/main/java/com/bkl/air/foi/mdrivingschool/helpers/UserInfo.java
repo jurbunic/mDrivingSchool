@@ -15,11 +15,11 @@ import java.util.concurrent.ExecutionException;
  */
 
 public class UserInfo {
-    static Context context;
+    private Context context;
     public UserInfo(Context context) {
         this.context = context;
     }
-    public static Korisnik getInfoById(String userId){
+    public Korisnik getInfoById(String userId){
         Korisnik korisnik = new Korisnik();
         try{
 

@@ -1,5 +1,6 @@
 package com.bkl.air.foi.mdrivingschool.helpers;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Application;
 import android.content.Context;
@@ -114,9 +115,12 @@ public class LoginData extends AsyncTask<String,Void,String> {
                 String fetchedData = data.execute("2",id).get();
                 intent.putExtra("USER",id);
                 context.startActivity(intent);
+                ((Activity)context).finish();
             }else {
                 Intent intent = new Intent(context, TraineeActivity.class);
+                intent.putExtra("USER_ID", id);
                 context.startActivity(intent);
+                ((Activity)context).finish();
             }
         } catch (JSONException e) {
             e.printStackTrace();

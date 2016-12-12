@@ -13,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
+import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
 
 public class TraineeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -22,6 +24,9 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
     private NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     private FragmentManager mFragmentManager;
+    private String currentUserId;
+    private Korisnik currentUser;
+    private UserInfo userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +55,16 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             }
         });
 
+        currentUserId = getIntent().getStringExtra("USER_ID");
+        userInfo = new UserInfo(getApplicationContext());
+        currentUser = userInfo.getInfoById(currentUserId);
+
         TraineeMSFragment tmsf = new TraineeMSFragment();
+        Bundle args=new Bundle();
+        args.putString("USER_ID", currentUserId);
+        args.putString("USER_NAME", currentUser.getIme());
+        args.putString("USER_SURNAME", currentUser.getPrezime());
+        tmsf.setArguments(args);
         StartFragment.StartNewFragment(tmsf, this);
     }
 
@@ -67,11 +81,16 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
 
         int id = item.getItemId();
         if (id == R.id.trainee_odjava_navigation) {
-            //trenutniKorisnik = null;
+            currentUser = null;
             this.finish();
         }
         else if (id == R.id.trainee_pocetna_navigation) {
             TraineeMSFragment tmsf = new TraineeMSFragment();
+            Bundle args=new Bundle();
+            args.putString("USER_ID", currentUserId);
+            args.putString("USER_NAME", currentUser.getIme());
+            args.putString("USER_SURNAME", currentUser.getPrezime());
+            tmsf.setArguments(args);
             StartFragment.StartNewFragment(tmsf, this);
         }
         else if (id == R.id.trainee_o_nama_navigation) {
