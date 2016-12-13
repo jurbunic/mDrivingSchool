@@ -31,6 +31,10 @@
                 android:id="@+id/employee_test_znanja_navigation"
                 android:icon="@drawable/ikona_testovi"
                 android:title="Testovi znanja"/>
+            <item
+                android:id="@+id/employee_add_new_trainee_navigation"
+                android:title="Dodaj polaznika"
+                />
     </group>
 
     <item android:title="Korisničke opcije">
