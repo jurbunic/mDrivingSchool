@@ -1,14 +1,20 @@
 package com.bkl.air.foi.mdrivingschool;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.view.accessibility.AccessibilityManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
+
+import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +27,7 @@ import butterknife.OnClick;
 public class AddNewTraineeFragment extends Fragment {
 
     String sName, sSurname, sBornDate, sBornPlace, sMobile, sPhone, sEmail,sAdress, sUsername, sPassword;
+    Context thisContext;
 
     @BindView(R.id.editText_name_p)
     EditText name;
@@ -56,6 +63,7 @@ public class AddNewTraineeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.fragment_add_new_trainee,container,false);
         ButterKnife.bind(this, view);
+        thisContext = container.getContext();
         return view;
     }
 
@@ -78,7 +86,18 @@ public class AddNewTraineeFragment extends Fragment {
         sUsername = username.getText().toString();
         sPassword = password.getText().toString();
 
-        RetriveData retriveData = new RetriveData(getActivity().getApplicationContext());
+        RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("4","1",sName,sSurname,sBornDate,sBornPlace,sMobile,sPhone,sEmail,sAdress,sUsername,sPassword);
+
+        name.setText("");
+        surname.setText("");
+        bornDate.setText("");
+        bornPlace.setText("");
+        mobile.setText("");
+        phone.setText("");
+        email.setText("");
+        adress.setText("");
+        username.setText("");
+        password.setText("");
     }
 }

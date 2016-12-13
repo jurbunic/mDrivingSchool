@@ -2,6 +2,7 @@ package com.bkl.air.foi.mdrivingschool.helpers;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -173,7 +174,12 @@ public class RetriveData extends AsyncTask <String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        jsonString = s;
-        super.onPostExecute(jsonString);
+            if(s.substring(s.length()-1).toString().equals("1")){
+                Toast.makeText(context,"Uspješno dodan polaznik",Toast.LENGTH_LONG).show();
+            }else if(s.substring(s.length()-1).toString().equals("0")){
+                Toast.makeText(context,"Unos nije uspio",Toast.LENGTH_LONG).show();
+            }
+            jsonString = s;
+            super.onPostExecute(jsonString);
     }
 }
