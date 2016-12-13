@@ -76,13 +76,13 @@
 
                 <TextView
                     android:text="Ime:"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_name_p"
                     android:textSize="18sp"
                     android:textColor="#000"
-                    android:layout_weight="0.5"
-                    android:textAlignment="viewStart" />
+                    android:layout_weight="0"
+                    android:textAlignment="viewStart"
+                    android:layout_width="75dp" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -102,7 +102,7 @@
 
                 <TextView
                     android:text="Prezime:"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_surname_p"
                     android:textSize="18sp"
@@ -127,12 +127,12 @@
 
                 <TextView
                     android:text="Adresa:"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_adress_p"
                     android:textSize="18sp"
                     android:textColor="#000"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0"
                     android:textAlignment="viewStart" />
 
                 <EditText
@@ -152,13 +152,13 @@
 
                 <TextView
                     android:text="Datum rođenja:"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_bornDate_p"
                     android:textSize="18sp"
                     android:textColor="#000"
                     android:layout_weight="0"
-                    android:textAlignment="viewStart" />
+                    android:textAlignment="viewStart"
+                    android:layout_width="130dp" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -177,13 +177,13 @@
 
                 <TextView
                     android:text="Mjesto rođenja:"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_bornPlace_p"
                     android:textSize="18sp"
                     android:textColor="#000"
                     android:layout_weight="0"
-                    android:textAlignment="viewStart" />
+                    android:textAlignment="viewStart"
+                    android:layout_width="130dp" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -202,12 +202,11 @@
 
                 <TextView
                     android:text="Mobitel:"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_mobile_p"
                     android:textSize="18sp"
                     android:textColor="#000"
-                    android:layout_weight="0.2"
                     android:textAlignment="viewStart" />
 
                 <EditText
@@ -227,12 +226,12 @@
 
                 <TextView
                     android:text="Telefon:"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_phone_p"
                     android:textSize="18sp"
                     android:textColor="#000"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0"
                     android:textAlignment="viewStart" />
 
                 <EditText
@@ -252,12 +251,12 @@
 
                 <TextView
                     android:text="E-mail:"
-                    android:layout_width="wrap_content"
+                    android:layout_width="75dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_email_p"
                     android:textSize="18sp"
                     android:textColor="#000"
-                    android:layout_weight="0.3"
+                    android:layout_weight="0"
                     android:textAlignment="viewStart" />
 
                 <EditText
@@ -290,13 +289,13 @@
 
                 <TextView
                     android:text="Username:"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_username_p"
                     android:textSize="18sp"
                     android:textColor="#000"
                     android:layout_weight="0"
-                    android:textAlignment="viewStart" />
+                    android:textAlignment="viewStart"
+                    android:layout_width="90dp" />
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -316,13 +315,13 @@
 
                 <TextView
                     android:text="Password:"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_password_p"
                     android:textSize="18sp"
                     android:textColor="#000"
                     android:layout_weight="0"
-                    android:textAlignment="viewStart" />
+                    android:textAlignment="viewStart"
+                    android:layout_width="90dp" />
 
                 <EditText
                     android:layout_width="wrap_content"

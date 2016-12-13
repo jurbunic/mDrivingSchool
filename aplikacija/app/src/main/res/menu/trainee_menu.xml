@@ -7,6 +7,18 @@
             android:id="@+id/trainee_pocetna_navigation"
             android:icon="@drawable/ikona_pocetna"
             android:title="Početna stranica"/>
+        <item
+            android:id="@+id/trainee_moji_ispiti__navigation"
+            android:icon="@drawable/ikona_ispiti"
+            android:title="Moji ispiti" />
+        <item
+            android:id="@+id/trainee_moje_obavijesti_navigation"
+            android:icon="@drawable/ikona_obavijesti"
+            android:title="Moje obavijesti" />
+        <item
+            android:id="@+id/trainee_moji_satovi_voznje_navigation"
+            android:icon="@drawable/ikona_auto"
+            android:title="Moji satovi vožnje" />
 
     </group>
 
@@ -35,18 +47,6 @@
 
     <item android:title="Korisničke opcije" android:id="@+id/trainee_group_3">
         <menu>
-            <item
-                android:id="@+id/trainee_moji_ispiti__navigation"
-                android:icon="@drawable/ikona_ispiti"
-                android:title="Moji ispiti" />
-            <item
-                android:id="@+id/trainee_moje_obavijesti_navigation"
-                android:icon="@drawable/ikona_obavijesti"
-                android:title="Moje obavijesti" />
-            <item
-                android:id="@+id/trainee_moji_satovi_voznje_navigation"
-                android:icon="@drawable/ikona_auto"
-                android:title="Moji satovi vožnje" />
             <item
                 android:id="@+id/trainee_odjava_navigation"
                 android:title="Odjava" />

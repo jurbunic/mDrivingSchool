@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
@@ -66,6 +67,8 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         args.putString("USER_SURNAME", currentUser.getPrezime());
         tmsf.setArguments(args);
         StartFragment.StartNewFragment(tmsf, this);
+
+        loadDrawerHeader();
     }
 
     private Toolbar SetToolbar() {
@@ -74,6 +77,15 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         toolbar.setTitle("Početna stranica");
         setSupportActionBar(toolbar);
         return toolbar;
+    }
+
+    private void loadDrawerHeader(){
+        View view = navigationView.getHeaderView(0);
+        TextView userNameAndSurname = (TextView)view.findViewById(R.id.korisnik_ime_navigation_header);
+        TextView userEmail = (TextView)view.findViewById(R.id.korisnik_email_navigation_header);
+
+        userNameAndSurname.setText(currentUser.getIme()+" "+currentUser.getPrezime());
+        userEmail.setText(currentUser.getEmail());
     }
 
     @Override
