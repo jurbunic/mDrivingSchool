@@ -13,7 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-
+import android.widget.TextView;
+import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MainEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
@@ -30,7 +31,13 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
     private NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     private FragmentManager mFragmentManager;
-    private String recivedData;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -69,6 +76,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
             }
         });
 
+        loadPicture();
 
 }
 
@@ -80,6 +88,17 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         return toolbar;
     }
 
+    private void loadPicture(){
+        View view = navigationView.getHeaderView(0);
+        TextView userNameAndSurname = (TextView)view.findViewById(R.id.korisnik_ime_navigation_header);
+        TextView userEmail = (TextView)view.findViewById(R.id.korisnik_email_navigation_header);
+
+        UserInfo info = new UserInfo(this);
+        Korisnik korisnik = info.getInfoById(getIntent().getStringExtra("USER"));
+
+        userNameAndSurname.setText(korisnik.getIme()+" "+korisnik.getPrezime());
+        userEmail.setText(korisnik.getEmail());
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -88,6 +107,10 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
             case R.id.employee_pocetna_navigation:
                 MainEmployeeFragment mef = new MainEmployeeFragment();
                 StartFragment.StartNewFragment(mef,this);
+                break;
+            case R.id.employee_dodaj_polaznika_navigation:
+                AddNewTraineeFragment antf = new AddNewTraineeFragment();
+                StartFragment.StartNewFragment(antf,this);
                 break;
             case R.id.employee_kontakt_navigation:
                 KontaktFragment kf = new KontaktFragment();

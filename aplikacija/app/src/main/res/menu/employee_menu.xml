@@ -7,6 +7,14 @@
             android:id="@+id/employee_pocetna_navigation"
             android:icon="@drawable/ikona_pocetna"
             android:title="Početna stranica"/>
+        <item
+            android:id="@+id/employee_dodaj_polaznika_navigation"
+            android:icon="@drawable/ikona_dodaj_polaznika"
+            android:title="Dodaj polaznika" />
+        <item
+            android:id="@+id/employee_informacije_o_polaznicima"
+            android:icon="@drawable/ikona_informacije_o_polaznicima"
+            android:title="Informacije o polaznicima"/>
 
 
     </group>
