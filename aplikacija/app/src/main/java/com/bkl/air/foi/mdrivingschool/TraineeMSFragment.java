@@ -7,13 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
+import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Dalibor on 7.12.2016..
@@ -22,6 +25,9 @@ import butterknife.ButterKnife;
 public class TraineeMSFragment extends Fragment {
     @BindView(R.id.textView_user)
     TextView textUser;
+
+    @BindView(R.id.imageButton_tzz)
+    ImageButton imageButton_tzz;
 
     private String currentUserId;
     private String currentUserName;
@@ -42,5 +48,11 @@ public class TraineeMSFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Početna stranica");
         textUser.setText(currentUserName + " " + currentUserSurname);
+    }
+
+    @OnClick(R.id.imageButton_tzz)
+    public void onImageButtonTzzClicked(){
+        TestoviMainFragment fk = new TestoviMainFragment();
+        StartFragment.StartNewFragment(fk,getActivity());
     }
 }

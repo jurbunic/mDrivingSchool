@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layoutScroller">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -9,34 +16,82 @@
         android:layout_height="match_parent"
         android:id="@+id/layoutsHolder">
 
-        <TextView
-            android:text="Dobrodošli!"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_wlcm"
-            android:textSize="30sp"
-            android:textAlignment="center"
+            android:layout_height="match_parent"
+            android:id="@+id/headerLayout"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="5dp"
+            android:paddingBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:text="Prijavljeni ste kao:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_prijav"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:textSize="12dp" />
+
+            <TextView
+                android:text='"Ime" "Prezime"'
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView_user"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textStyle="normal|bold"
+                android:textSize="18sp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/img_stanje_voznje_1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="15dp"
+            android:id="@+id/imageButton_sv"
+            style="@android:style/Widget.Material.ImageButton"
+            android:scaleType="fitXY"
+            android:cropToPadding="false"
+            android:adjustViewBounds="false" />
 
-        <TextView
-            android:text="Uspješno ste prijavljeni kao:"
+        <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_mid"
-            android:textAlignment="center"
-            android:textSize="18sp" />
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/img_stanje_ispita_1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/imageButton_si"
+            style="@android:style/Widget.Material.ImageButton"
+            android:scaleType="fitXY"
+            android:cropToPadding="false"
+            android:adjustViewBounds="false" />
 
-        <TextView
-            android:text='"Ime" "Prezime"'
+        <ImageButton
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView_user"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            android:paddingTop="5dp"
-            android:textStyle="normal|bold" />
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/img_testovi1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="15dp"
+            android:id="@+id/imageButton_tzz"
+            style="@android:style/Widget.Material.ImageButton"
+            android:scaleType="fitXY"
+            android:cropToPadding="false"
+            android:adjustViewBounds="false" />
+
+
+
     </LinearLayout>
 </LinearLayout>
+</ScrollView>
