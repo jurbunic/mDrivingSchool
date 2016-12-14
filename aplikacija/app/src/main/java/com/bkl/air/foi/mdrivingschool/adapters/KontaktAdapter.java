@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool.adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,9 @@ import com.bkl.air.foi.mdrivingschool.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -38,9 +42,12 @@ public class KontaktAdapter extends RecyclerView.Adapter<KontaktAdapter.KontaktV
             mKontaktPrezime = (TextView) itemView.findViewById(R.id.kontakt_prezime);
             mKontaktMobitel = (TextView) itemView.findViewById(R.id.kontakt_mobitel);
             mKontaktEmail = (TextView) itemView.findViewById(R.id.kontakt_email);
-           mKontaktSlika = (ImageView) itemView.findViewById(R.id.kontakt_slike);
+            mKontaktSlika = (ImageView) itemView.findViewById(R.id.kontakt_slike);
+
         }
     }
+
+
 
     public KontaktAdapter(List<Kontakt> listaKontakta, Context context) {
         this.context = context;
@@ -69,4 +76,5 @@ public class KontaktAdapter extends RecyclerView.Adapter<KontaktAdapter.KontaktV
     public int getItemCount() {
         return listaKontakt.size();
     }
+
 }

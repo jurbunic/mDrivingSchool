@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MainEmployeeFragment;
+import com.bkl.air.foi.mdrivingschool.employee_fragments.MyTraineesFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
@@ -111,6 +112,11 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
             case R.id.employee_dodaj_polaznika_navigation:
                 AddNewTraineeFragment antf = new AddNewTraineeFragment();
                 StartFragment.StartNewFragment(antf,this);
+                break;
+            case R.id.employee_informacije_o_polaznicima:
+                MyTraineesFragment mtf = new MyTraineesFragment();
+
+                StartFragment.StartNewFragment(mtf,this);
                 break;
             case R.id.employee_kontakt_navigation:
                 KontaktFragment kf = new KontaktFragment();
