@@ -1,6 +1,5 @@
 package com.bkl.air.foi.database;
 
-import java.util.Date;
 
 /**
  * Created by HP on 8.12.2016..

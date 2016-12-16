@@ -1,43 +1,275 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin">
+    android:id="@+id/layoutScroller">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:stretchColumns="1">
+        <TableRow>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ime: "
-        android:id="@+id/trainee_details_name"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Prezime: "
-        android:id="@+id/trainee_details_surname"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Adresa: "
-        android:id="@+id/trainee_details_address"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Datum rodenja: "
-        android:id="@+id/trainee_details_dob"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ime: "
+                android:gravity="left"
+                android:layout_weight="1"
+                android:id="@+id/detailes_name_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mobitel: "
-        android:id="@+id/trainee_details_mob"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Telefon: "
-        android:id="@+id/trainee_details_phone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ime: "
+                android:id="@+id/trainee_details_name"
+                android:textSize="17sp"
+                android:gravity="left"
+                android:paddingBottom="5dp"
+                />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prezime: "
+                android:gravity="left"
+                android:id="@+id/detailes_surname_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                />
+            <TextView
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prezime: "
+                android:id="@+id/trainee_details_surname"
+                android:textSize="17sp"
+
+                />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/thin_line"
+            android:layout_marginBottom="5dp">
+
+        </View>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datum rodenja: "
+                android:gravity="left"
+                android:id="@+id/detailes_dob_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datum rodenja: "
+                android:id="@+id/trainee_details_dob"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
 
 
-</LinearLayout>
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mjesto rodenja: "
+                android:gravity="left"
+                android:id="@+id/detailes_mob_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mjesto rodenja: "
+                android:id="@+id/trainee_details_pob"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobitel: "
+                android:gravity="left"
+                android:id="@+id/detailes_mobile_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_pob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mobitel: "
+                android:id="@+id/trainee_details_mob"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefon: "
+                android:gravity="left"
+                android:id="@+id/detailes_phone_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_mob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Telefon: "
+                android:id="@+id/trainee_details_phone"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:gravity="left"
+                android:id="@+id/detailes_email_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:id="@+id/trainee_details_email"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adresa: "
+                android:gravity="left"
+                android:id="@+id/detailes_adress_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adresa: "
+                android:id="@+id/trainee_details_address"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Polozio propise: "
+                android:gravity="left"
+                android:id="@+id/detailes_pp_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Polozio propise: "
+                android:id="@+id/trainee_details_pp"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Polozio prvu pomoć: "
+                android:gravity="left"
+                android:id="@+id/detailes_ppp_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_pp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Polozio prvu pomoc: "
+                android:id="@+id/trainee_details_ppp"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sati voznje: "
+                android:gravity="left"
+                android:id="@+id/detailes_sv_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+            <TextView
+                android:layout_below="@+id/trainee_details_ppp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sati voznje: "
+                android:id="@+id/trainee_details_sv"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+</ScrollView>

@@ -74,7 +74,7 @@ public class UserInfo {
                 korisnik.setEmail(JO.getString("email"));
                 korisnik.setTelefon(JO.getString("telefon"));
                 korisnik.setPrva_pomoc(JO.getString("prva_pomoc"));
-         //       korisnik.setPropisi(JO.getString("propisi"));
+                korisnik.setPropisi(JO.getString("propisi"));
                 korisnik.setSati_voznje(JO.getInt("sati_voznje"));
                 korisnik.setId(JO.getInt("id"));
         //        korisnik.setTip_id(JO.getInt("tip_id"));
