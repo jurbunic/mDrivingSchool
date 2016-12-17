@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -63,19 +64,24 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
 
 
 
-        MainEmployeeFragment mef = new MainEmployeeFragment();
-        StartFragment.StartNewFragment(mef,this);
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getFragmentManager().getBackStackEntryCount()==0){
+                if (getFragmentManager().getBackStackEntryCount()==1){
                     drawer.openDrawer(GravityCompat.START);
-                }else {
+                }else if(getFragmentManager().getBackStackEntryCount()==2){
+                    drawer.openDrawer(GravityCompat.START);
+                }
+                else {
                     onBackPressed();
                 }
             }
         });
+
+        MainEmployeeFragment mef = new MainEmployeeFragment();
+        StartFragment.StartNewFragment(mef,this,"1");
 
         loadPicture();
 
@@ -107,7 +113,11 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         switch (id){
             case R.id.employee_pocetna_navigation:
                 MainEmployeeFragment mef = new MainEmployeeFragment();
-                StartFragment.StartNewFragment(mef,this);
+                mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                mFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, mef)
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
                 break;
             case R.id.employee_dodaj_polaznika_navigation:
                 AddNewTraineeFragment antf = new AddNewTraineeFragment();
@@ -149,9 +159,31 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
     }
 
     @Override
+    public void onBackPressed() {
+        int a = mFragmentManager.getBackStackEntryCount();
+        if (a>2){
+            if(drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            else {
+                mFragmentManager.popBackStack();
+            }
+        } else {
+            if (drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }else {
+                super.onBackPressed();
+                if(mFragmentManager.getBackStackEntryCount()==0){
+                    super.onBackPressed();
+                }
+            }
+        }
+    }
+
+    @Override
     public void onBackStackChanged() {
-        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==0);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>0);
+        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==1 || mFragmentManager.getBackStackEntryCount()==2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>2);
         toggle.syncState();
     }
 }

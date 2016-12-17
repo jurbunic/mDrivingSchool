@@ -20,11 +20,20 @@ public class StartFragment {
         */
 
         FragmentManager fragmentManager = mActivity.getFragmentManager();
-        fragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
-        fragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .commit();
+        if(fragmentManager.getBackStackEntryCount()<=1){
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            ft.addToBackStack("2");
+            ft.replace(R.id.fragment_container,fragment);
+            ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            ft.commit();
+        }else {
+            fragmentManager.popBackStack("1", 0);
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .addToBackStack("2")
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
+        }
     }
     /**StartFragment
      * Metoda prima tri parametra. Dobiveni fragment pokreće i sprema ga na BackStack pod prosljeđenim

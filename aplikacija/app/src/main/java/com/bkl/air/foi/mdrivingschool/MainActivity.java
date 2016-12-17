@@ -4,6 +4,7 @@ package com.bkl.air.foi.mdrivingschool;
 
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -16,8 +17,6 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-
-
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
 import com.raizlabs.android.dbflow.config.FlowConfig;
@@ -56,36 +55,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getFragmentManager().getBackStackEntryCount()==0){
+                if (getFragmentManager().getBackStackEntryCount()==1){
                     drawer.openDrawer(GravityCompat.START);
-                }else {
+                }else if(getFragmentManager().getBackStackEntryCount()==2){
+                    drawer.openDrawer(GravityCompat.START);
+                }
+                else {
                     onBackPressed();
                 }
             }
         });
 
         MainScreenFragment msf = new MainScreenFragment();
-        StartFragment.StartNewFragment(msf, this);
+        StartFragment.StartNewFragment(msf, this,"1");
 
     }
 
-    @Override
-    public void onBackPressed() {
-        if (mFragmentManager.getBackStackEntryCount() !=0){
-            if(drawer.isDrawerOpen(GravityCompat.START)){
-                drawer.closeDrawer(GravityCompat.START);
-            }
-            else {
-                mFragmentManager.popBackStack();
-            }
-        }else {
-            if (drawer.isDrawerOpen(GravityCompat.START)){
-                drawer.closeDrawer(GravityCompat.START);
-            }else {
-                super.onBackPressed();
-            }
-        }
-    }
+
 
 
     /**
@@ -103,9 +89,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public void onBackPressed() {
+        int a = mFragmentManager.getBackStackEntryCount();
+        if (a>2){
+            if(drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            else {
+                mFragmentManager.popBackStack();
+            }
+        } else {
+            if (drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }else {
+                super.onBackPressed();
+                if(mFragmentManager.getBackStackEntryCount()==0){
+                    super.onBackPressed();
+                }
+            }
+        }
+    }
+
+    @Override
     public void onBackStackChanged() {
-        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==0);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>0);
+        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==1 || mFragmentManager.getBackStackEntryCount()==2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>2);
         toggle.syncState();
     }
 
@@ -135,7 +143,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         } else if (id == R.id.pocetna_navigation) {
             MainScreenFragment msf = new MainScreenFragment();
-            StartFragment.StartNewFragment(msf, this);
+            mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            mFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, msf)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
 
         } else if (id == R.id.map_navigation) {
             MapFragment mf = new MapFragment();

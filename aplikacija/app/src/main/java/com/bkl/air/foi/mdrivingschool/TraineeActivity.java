@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -19,7 +20,7 @@ import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
 
-public class TraineeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class TraineeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener{
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -48,9 +49,12 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (getFragmentManager().getBackStackEntryCount()==0){
+                if (getFragmentManager().getBackStackEntryCount()==1){
                     drawer.openDrawer(GravityCompat.START);
-                }else {
+                }else if(getFragmentManager().getBackStackEntryCount()==2){
+                    drawer.openDrawer(GravityCompat.START);
+                }
+                else {
                     onBackPressed();
                 }
             }
@@ -66,7 +70,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         args.putString("USER_NAME", currentUser.getIme());
         args.putString("USER_SURNAME", currentUser.getPrezime());
         tmsf.setArguments(args);
-        StartFragment.StartNewFragment(tmsf, this);
+        StartFragment.StartNewFragment(tmsf, this, "1");
 
         loadDrawerHeader();
     }
@@ -103,7 +107,11 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             args.putString("USER_NAME", currentUser.getIme());
             args.putString("USER_SURNAME", currentUser.getPrezime());
             tmsf.setArguments(args);
-            StartFragment.StartNewFragment(tmsf, this);
+            mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            mFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, tmsf)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .commit();
         }
         else if (id == R.id.trainee_o_nama_navigation) {
             OnamaFragment onf = new OnamaFragment();
@@ -130,5 +138,34 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
 
         drawer.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    @Override
+    public void onBackPressed() {
+        int a = mFragmentManager.getBackStackEntryCount();
+        if (a>2){
+            if(drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }
+            else {
+                mFragmentManager.popBackStack();
+            }
+        } else {
+            if (drawer.isDrawerOpen(GravityCompat.START)){
+                drawer.closeDrawer(GravityCompat.START);
+            }else {
+                super.onBackPressed();
+                if(mFragmentManager.getBackStackEntryCount()==0){
+                    super.onBackPressed();
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        toggle.setDrawerIndicatorEnabled(mFragmentManager.getBackStackEntryCount()==1 || mFragmentManager.getBackStackEntryCount()==2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(mFragmentManager.getBackStackEntryCount()>2);
+        toggle.syncState();
     }
 }
