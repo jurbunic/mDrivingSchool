@@ -115,6 +115,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                 MainEmployeeFragment mef = new MainEmployeeFragment();
                 mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
                 mFragmentManager.beginTransaction()
+                        .addToBackStack("1")
                         .replace(R.id.fragment_container, mef)
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();

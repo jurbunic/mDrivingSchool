@@ -109,6 +109,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             tmsf.setArguments(args);
             mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
             mFragmentManager.beginTransaction()
+                    .addToBackStack("1")
                     .replace(R.id.fragment_container, tmsf)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit();

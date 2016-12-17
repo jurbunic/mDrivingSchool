@@ -145,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             MainScreenFragment msf = new MainScreenFragment();
             mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
             mFragmentManager.beginTransaction()
+                    .addToBackStack("1")
                     .replace(R.id.fragment_container, msf)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .commit();
