@@ -29,6 +29,9 @@ public class MainEmployeeFragment extends Fragment {
     @BindView(R.id.employee_main_img_btn_polaznici)
     ImageButton myTrainees;
 
+    @BindView(R.id.imageButton_tzz_zap)
+    ImageButton imageButton_tzz_zap;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_employee_main, container, false);
@@ -57,6 +60,12 @@ public class MainEmployeeFragment extends Fragment {
     @OnClick(R.id.employee_main_img_btn_polaznici)
     public void onImageButtonTzzClicked(){
         MyTraineesFragment fk = new MyTraineesFragment();
+        StartFragment.StartNewFragment(fk,getActivity());
+    }
+
+    @OnClick(R.id.imageButton_tzz_zap)
+    public void onImageButtonTzzZapClicked(){
+        TestoviMainFragment fk = new TestoviMainFragment();
         StartFragment.StartNewFragment(fk,getActivity());
     }
 

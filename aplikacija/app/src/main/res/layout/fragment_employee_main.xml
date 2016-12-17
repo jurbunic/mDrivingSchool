@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layoutScroller">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
@@ -9,7 +14,7 @@
     android:layout_marginBottom="16dp">
 
     <TextView
-        android:text="Dobrodošli"
+        android:text="Dobrodošli!"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/employee_welcome"
@@ -26,8 +31,7 @@
         android:textAlignment="center"
         android:text="ime+prezime"
         android:layout_below="@+id/employee_welcome"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_centerHorizontal="true" />
     <View
         android:layout_below="@+id/employee_user_name"
         android:layout_width="match_parent"
@@ -44,7 +48,8 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/layoutsHolder">
+        android:id="@+id/layoutsHolder"
+        android:layout_marginBottom="16dp">
 
         <ImageButton
             android:layout_width="match_parent"
@@ -79,7 +84,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="15dp"
-            android:id="@+id/imageButton_tzz"
+            android:id="@+id/imageButton_tzz_zap"
             style="@android:style/Widget.Material.ImageButton"
             android:scaleType="fitXY"
             android:cropToPadding="false"
@@ -90,3 +95,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+</ScrollView>

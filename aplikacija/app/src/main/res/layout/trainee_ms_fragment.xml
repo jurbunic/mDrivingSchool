@@ -21,22 +21,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/headerLayout"
-            android:background="@color/colorPrimary"
-            android:layout_marginTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="5dp">
 
             <TextView
-                android:text="Prijavljeni ste kao:"
+                android:text="Dobrodošli!"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView_prijav"
+                android:id="@+id/textView_wlc_1"
+                android:textSize="30dp"
                 android:textAlignment="center"
-                android:textColor="#fff"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:textSize="12dp" />
+                android:layout_marginBottom="16dp"
+                android:fontFamily="sans-serif" />
 
             <TextView
                 android:text='"Ime" "Prezime"'
@@ -44,11 +40,18 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textView_user"
                 android:textAlignment="center"
-                android:textColor="#fff"
-                android:textStyle="normal|bold"
                 android:textSize="18sp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/thin_line"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:id="@+id/thin_line_1" />
         </LinearLayout>
 
         <ImageButton
@@ -57,7 +60,6 @@
             app:srcCompat="@drawable/img_stanje_voznje_1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginTop="15dp"
             android:id="@+id/imageButton_sv"
             style="@android:style/Widget.Material.ImageButton"
             android:scaleType="fitXY"
@@ -93,5 +95,6 @@
 
 
     </LinearLayout>
+
 </LinearLayout>
 </ScrollView>
