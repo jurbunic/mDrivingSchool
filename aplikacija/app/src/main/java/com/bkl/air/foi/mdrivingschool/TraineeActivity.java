@@ -30,6 +30,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
     private Korisnik currentUser;
     private UserInfo userInfo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +46,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         navigationView.setNavigationItemSelectedListener(this);
 
         mFragmentManager = getFragmentManager();
+        mFragmentManager.addOnBackStackChangedListener(this);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,7 +99,6 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
 
         int id = item.getItemId();
         if (id == R.id.trainee_odjava_navigation) {
-            currentUser = null;
             this.finish();
         }
         else if (id == R.id.trainee_pocetna_navigation) {
@@ -144,7 +145,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
     @Override
     public void onBackPressed() {
         int a = mFragmentManager.getBackStackEntryCount();
-        if (a>2){
+        if (a>=2){
             if(drawer.isDrawerOpen(GravityCompat.START)){
                 drawer.closeDrawer(GravityCompat.START);
             }
@@ -155,10 +156,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             if (drawer.isDrawerOpen(GravityCompat.START)){
                 drawer.closeDrawer(GravityCompat.START);
             }else {
-                super.onBackPressed();
-                if(mFragmentManager.getBackStackEntryCount()==0){
-                    super.onBackPressed();
-                }
+                this.finish();
             }
         }
     }

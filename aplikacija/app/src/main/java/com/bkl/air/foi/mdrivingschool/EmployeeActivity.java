@@ -162,7 +162,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
     @Override
     public void onBackPressed() {
         int a = mFragmentManager.getBackStackEntryCount();
-        if (a>2){
+        if (a>=2){
             if(drawer.isDrawerOpen(GravityCompat.START)){
                 drawer.closeDrawer(GravityCompat.START);
             }
@@ -173,10 +173,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
             if (drawer.isDrawerOpen(GravityCompat.START)){
                 drawer.closeDrawer(GravityCompat.START);
             }else {
-                super.onBackPressed();
-                if(mFragmentManager.getBackStackEntryCount()==0){
-                    super.onBackPressed();
-                }
+                this.finish();
             }
         }
     }
