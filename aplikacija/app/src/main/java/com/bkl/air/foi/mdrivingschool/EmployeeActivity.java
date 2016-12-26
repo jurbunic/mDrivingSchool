@@ -124,6 +124,10 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                 AddNewTraineeFragment antf = new AddNewTraineeFragment();
                 StartFragment.StartNewFragment(antf,this);
                 break;
+            case R.id.employee_dodjeli_polaznika_instruktoru_navigation:
+                AssignTraineeToEmployeeFragment attef = new AssignTraineeToEmployeeFragment();
+                StartFragment.StartNewFragment(attef,this);
+                break;
             case R.id.employee_informacije_o_polaznicima:
                 MyTraineesFragment mtf = new MyTraineesFragment();
 

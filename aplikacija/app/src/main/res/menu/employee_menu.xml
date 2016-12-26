@@ -12,6 +12,10 @@
             android:icon="@drawable/ikona_dodaj_polaznika"
             android:title="Dodaj polaznika" />
         <item
+            android:id="@+id/employee_dodjeli_polaznika_instruktoru_navigation"
+            android:icon="@drawable/ikona_dodaj_polaznika"
+            android:title="Dodjeli polaznika instruktoru" />
+        <item
             android:id="@+id/employee_informacije_o_polaznicima"
             android:icon="@drawable/ikona_informacije_o_polaznicima"
             android:title="Informacije o polaznicima"/>
