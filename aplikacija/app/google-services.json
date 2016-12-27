@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "338855024914",
+    "firebase_url": "https://mdrivingschool-755e1.firebaseio.com",
+    "project_id": "mdrivingschool-755e1",
+    "storage_bucket": "mdrivingschool-755e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:338855024914:android:696326d3fb6b3d29",
+        "android_client_info": {
+          "package_name": "com.bkl.air.foi.mdrivingschool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "338855024914-8delrrd59culpp9t3tnok4cstts1up1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bkl.air.foi.mdrivingschool",
+            "certificate_hash": "6EC89452EFBFED7D4D8DD130BFEDB3B049B1AF2A"
+          }
+        },
+        {
+          "client_id": "338855024914-pqi12im0sgv4g043ge73036sbgj000pc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjd2f-WHX38qrqrulwsTDuabktIkSmyjM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "338855024914-pqi12im0sgv4g043ge73036sbgj000pc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
