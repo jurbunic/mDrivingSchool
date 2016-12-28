@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import com.bkl.air.foi.database.Korisnik;
+import com.bkl.air.foi.mdrivingschool.employee_fragments.AddNewTraineeFragment;
+import com.bkl.air.foi.mdrivingschool.employee_fragments.AssignTraineeToEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MainEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MyTraineesFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;

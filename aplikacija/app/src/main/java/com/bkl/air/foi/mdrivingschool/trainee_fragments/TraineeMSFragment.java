@@ -1,8 +1,7 @@
-package com.bkl.air.foi.mdrivingschool;
+package com.bkl.air.foi.mdrivingschool.trainee_fragments;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.StringDef;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.bkl.air.foi.database.Korisnik;
+import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.TestoviMainFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
-import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

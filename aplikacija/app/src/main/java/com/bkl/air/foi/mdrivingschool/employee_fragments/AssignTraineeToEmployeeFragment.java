@@ -1,4 +1,4 @@
-package com.bkl.air.foi.mdrivingschool;
+package com.bkl.air.foi.mdrivingschool.employee_fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
+import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.bkl.air.foi.mdrivingschool;
+package com.bkl.air.foi.mdrivingschool.employee_fragments;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 
 import java.util.concurrent.ExecutionException;

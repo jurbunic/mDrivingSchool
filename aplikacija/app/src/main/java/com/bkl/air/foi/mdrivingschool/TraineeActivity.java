@@ -19,6 +19,7 @@ import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
+import com.bkl.air.foi.mdrivingschool.trainee_fragments.TraineeMSFragment;
 
 public class TraineeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener{
     private DrawerLayout drawer;
