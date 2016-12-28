@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.bkl.air.foi.database.Kontakt;
 import com.bkl.air.foi.mdrivingschool.adapters.KontaktAdapter;
 import com.bkl.air.foi.mdrivingschool.helpers.KontaktData;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +41,13 @@ public class KontaktFragment extends Fragment  {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Kontakti");
         KontaktData.loadKontaktData(listKontakt);
         recyclerView = (RecyclerView) getView().findViewById(R.id.kontakt_recycler);
+
+        if(SQLite.select().from(Kontakt.class).queryList().isEmpty()){
+            KontaktData.loadKontaktData(listKontakt);
+        }
+        else{
+            listKontakt = Kontakt.getAll();
+        }
 
         mAdapter = new KontaktAdapter(listKontakt, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());

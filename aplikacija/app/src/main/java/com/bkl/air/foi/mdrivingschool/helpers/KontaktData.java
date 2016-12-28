@@ -18,6 +18,7 @@ public class KontaktData {
         kontakt1.setMobitel("098 673 072");
         kontakt1.setSlikaUrl("http://autoskola-premuz.hr/wp-content/uploads/2012/01/josippremuz.png");
         lista.add(kontakt1);
+        kontakt1.save();
 
         Kontakt kontakt2 = new Kontakt();
         kontakt2.setId(2);
@@ -26,6 +27,7 @@ public class KontaktData {
         kontakt2.setMobitel("091 353 0752");
         kontakt2.setSlikaUrl("http://autoskola-premuz.hr/wp-content/uploads/2012/01/ivicahosni.png");
         lista.add(kontakt2);
+        kontakt2.save();
 
         Kontakt kontakt3 = new Kontakt();
         kontakt3.setId(3);
@@ -34,21 +36,24 @@ public class KontaktData {
         kontakt3.setMobitel("091 733 4272");
         kontakt3.setSlikaUrl("http://autoskola-premuz.hr/wp-content/uploads/2012/01/mariorudolf.png");
         lista.add(kontakt3);
+        kontakt3.save();
 
         Kontakt kontakt4 = new Kontakt();
         kontakt4.setId(4);
         kontakt4.setIme("Denis");
         kontakt4.setPrezime("Pernarić");
         kontakt4.setMobitel("098 9264 421");
-        kontakt4.setSlikaUrl("nema");
+        kontakt4.setSlikaUrl("http://autoskola-premuz.hr/wp-content/uploads/2016/11/instruktor.jpg");
         lista.add(kontakt4);
+        kontakt4.save();
 
         Kontakt kontakt5 = new Kontakt();
         kontakt5.setId(5);
         kontakt5.setIme("Miljenko");
         kontakt5.setPrezime("Šarec");
         kontakt5.setMobitel("095 4284 699");
-        kontakt5.setSlikaUrl("nema");
+        kontakt5.setSlikaUrl("http://autoskola-premuz.hr/wp-content/uploads/2016/11/instruktor.jpg");
         lista.add(kontakt5);
+        kontakt5.save();
     }
 }
