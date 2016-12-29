@@ -35,21 +35,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/middleLayout"
-                android:paddingTop="30dp"
+                android:paddingTop="15dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp">
 
                 <TextView
-                    android:text="Dodjela polaznika"
+                    android:text="Dodavanje instruktora:"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textView_dp"
+                    android:id="@+id/textView_di"
                     android:textColor="#000"
-                    android:textSize="30sp"
-                    android:textAlignment="center" />
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textStyle="normal|bold" />
 
                 <TextView
-                    android:text="Molimo odaberite polaznika kojem dodjeljujete instruktora:"
+                    android:text="Molimo odaberite polaznika kojem dodajete instruktora:"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView"
@@ -66,14 +67,13 @@
                 android:id="@+id/dataLayout"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:id="@+id/currentEmployeeLayout"
-                    android:layout_marginBottom="15dp"
                     android:layout_marginTop="10dp">
 
                     <TextView
@@ -102,7 +102,7 @@
                     android:layout_height="match_parent"
                     android:id="@+id/traineePickLayout"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="25dp">
+                    android:layout_marginBottom="15dp">
 
                     <TextView
                         android:text="Ime polaznika:"
@@ -124,16 +124,125 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/bottomLayout"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-                    android:paddingTop="15dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:id="@+id/assignButtonLayout">
 
                     <Button
-                        android:text="Dodjeli polaznika"
+                        android:text="Dodjeli"
                         android:layout_height="wrap_content"
                         android:id="@+id/button_assign_trainee"
+                        android:background="@android:drawable/alert_light_frame"
+                        android:textAlignment="center"
+                        android:layout_width="200dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/middleLayout2"
+                android:paddingTop="15dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:text="Oduzimanje instruktora:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_oi"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="Molimo odaberite polaznika kojem oduzimate instruktora:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:textAlignment="center"
+                    android:paddingTop="10dp"
+                    android:textColor="#000" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/dataLayout2"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/currentEmployeeLayout2"
+                    android:layout_marginTop="10dp">
+
+                    <TextView
+                        android:text="Ime instruktora:"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView22"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textColor="#000"
+                        android:textAlignment="center"
+                        android:layout_width="125dp" />
+
+                    <TextView
+                        android:text="Ime Prezime"
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_dp_employee_name2"
+                        android:layout_weight="1"
+                        android:textSize="18sp"
+                        android:textColor="#000" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/traineePickLayout2"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:text="Ime polaznika:"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_ip2"
+                        android:layout_weight="1"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_width="125dp" />
+
+                    <Spinner
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinner_ip_second"
+                        android:layout_weight="1" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:gravity="center"
+                    android:id="@+id/unassignButtonLayout">
+
+                    <Button
+                        android:text="Oduzmi"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_unassign_trainee"
                         android:background="@android:drawable/alert_light_frame"
                         android:textAlignment="center"
                         android:layout_width="200dp" />
