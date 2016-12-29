@@ -67,7 +67,7 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         ArrayList<Korisnik> allTrainees = new ArrayList<>();
 
         //Dohvaćaju se podaci o svim polaznicima
-        allTrainees = info.getTrainees(getActivity().getIntent().getStringExtra("USER"));
+        allTrainees = info.getFreeTrainees(getActivity().getIntent().getStringExtra("USER"));
 
         //Spremaju se id-jevi, imena i prezimena u privremenu listu koju vidi korisnik na spinneru
         for (Korisnik trainee : allTrainees){

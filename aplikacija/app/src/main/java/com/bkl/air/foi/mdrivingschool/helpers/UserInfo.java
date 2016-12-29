@@ -54,6 +54,44 @@ public class UserInfo {
         ArrayList<Korisnik> trainess = new ArrayList<>();
         try{
             RetriveData data = new RetriveData(context);
+            String fetchedData = data.execute("3",userId).get();
+
+            Korisnik korisnik;
+
+            JSONObject jsonObject = new JSONObject(fetchedData);
+            JSONArray jsonArray = jsonObject.getJSONArray("polaznik");
+            for (int i=0; i<jsonArray.length();i++){
+                JSONObject JO = jsonArray.getJSONObject(i);
+
+                korisnik = new Korisnik();
+
+                korisnik.setIme(JO.getString("ime"));
+                korisnik.setPrezime(JO.getString("prezime"));
+                korisnik.setAdresa(JO.getString("adresa"));
+                korisnik.setMobitel(JO.getString("mobitel"));
+                korisnik.setDatum_rodenja(JO.getString("datum_rodenja"));
+                korisnik.setMjesto_rodenja(JO.getString("mjesto_rodenja"));
+                korisnik.setEmail(JO.getString("email"));
+                korisnik.setTelefon(JO.getString("telefon"));
+                korisnik.setPrva_pomoc(JO.getString("prva_pomoc"));
+                korisnik.setPropisi(JO.getString("propisi"));
+                korisnik.setSati_voznje(JO.getInt("sati_voznje"));
+                korisnik.setId(JO.getInt("id"));
+        //        korisnik.setTip_id(JO.getInt("tip_id"));
+
+                trainess.add(korisnik);
+
+            }
+        }catch (Exception e){
+
+        }
+        return trainess;
+    }
+
+    public ArrayList<Korisnik> getFreeTrainees (String userId){
+        ArrayList<Korisnik> trainess = new ArrayList<>();
+        try{
+            RetriveData data = new RetriveData(context);
             String fetchedData = data.execute("5",userId).get();
 
             Korisnik korisnik;
@@ -77,7 +115,7 @@ public class UserInfo {
                 korisnik.setPropisi(JO.getString("propisi"));
                 korisnik.setSati_voznje(JO.getInt("sati_voznje"));
                 korisnik.setId(JO.getInt("id"));
-        //        korisnik.setTip_id(JO.getInt("tip_id"));
+                //        korisnik.setTip_id(JO.getInt("tip_id"));
 
                 trainess.add(korisnik);
 
