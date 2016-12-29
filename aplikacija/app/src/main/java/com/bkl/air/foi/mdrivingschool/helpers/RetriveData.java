@@ -187,6 +187,42 @@ public class RetriveData extends AsyncTask <String, Void, String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else if(query.equals("6")){
+            dataUrl += "?data_retrive=6&osoba="+specify;
+            String instruktor= params[2];
+            String polaznik = params[3];
+            try {
+                URL url = new URL(dataUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String data = URLEncoder.encode("instruktor","UTF-8")+"="+URLEncoder.encode(instruktor,"UTF-8")+"&"+URLEncoder.encode("polaznik","UTF-8")+"="+URLEncoder.encode(polaznik,"UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String responese = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null){
+                    responese += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+
+                httpURLConnection.disconnect();
+                return  responese;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return null;

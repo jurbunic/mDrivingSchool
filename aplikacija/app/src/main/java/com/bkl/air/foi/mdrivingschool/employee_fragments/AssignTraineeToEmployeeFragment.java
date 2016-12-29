@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
+import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 import java.util.ArrayList;
@@ -92,6 +94,11 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         String chosenTraineeId = "";
         if(chosenTrainee.contains(" ")){
             chosenTraineeId= chosenTrainee.substring(0, chosenTrainee.indexOf(" "));
+            UserInfo info = new UserInfo(getActivity().getApplicationContext());
+            Korisnik korisnik = info.getInfoById(getActivity().getIntent().getStringExtra("USER"));
+            String instruktor = Integer.toString(korisnik.getId());
+            RetriveData retriveData = new RetriveData(thisContext);
+            retriveData.execute("6","1",instruktor.toString(),chosenTraineeId);
         }
 
     }
