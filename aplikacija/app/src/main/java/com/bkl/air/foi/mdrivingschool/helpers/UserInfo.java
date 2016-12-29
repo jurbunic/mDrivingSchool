@@ -54,12 +54,12 @@ public class UserInfo {
         ArrayList<Korisnik> trainess = new ArrayList<>();
         try{
             RetriveData data = new RetriveData(context);
-            String fetchedData = data.execute("3",userId).get();
+            String fetchedData = data.execute("5",userId).get();
 
             Korisnik korisnik;
 
             JSONObject jsonObject = new JSONObject(fetchedData);
-            JSONArray jsonArray = jsonObject.getJSONArray("polaznik");
+            JSONArray jsonArray = jsonObject.getJSONArray("add");
             for (int i=0; i<jsonArray.length();i++){
                 JSONObject JO = jsonArray.getJSONObject(i);
 

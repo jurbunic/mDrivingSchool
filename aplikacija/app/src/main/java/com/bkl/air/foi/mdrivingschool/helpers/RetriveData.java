@@ -162,6 +162,31 @@ public class RetriveData extends AsyncTask <String, Void, String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else if (query.equals("5")){
+            dataUrl += "?data_retrive=5&osoba="+specify;
+            try {
+                URL url = new URL(dataUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("GET");
+                httpURLConnection.setDoInput(true);
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String responese = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null){
+                    responese += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+
+                httpURLConnection.disconnect();
+                return  responese;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         return null;
