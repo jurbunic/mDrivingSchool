@@ -82,10 +82,21 @@ public class Vozilo extends BaseModel{
         this.detalji = detalji;
     }
 
+    /**
+     * Metoda dohvaca podatake o svim vozilima iz lokalne baze i spremanje u danu listu
+     *
+     * @return Lista sa svim podacima vozila
+     */
     public static List<Vozilo> getAll(){
         return SQLite.select().from(Vozilo.class).queryList();
     }
 
+    /**
+     * Metoda dohvaca podatake o vozilu odredenog id-a
+     *
+     * @param id Id vozila
+     * @return Jedan objekt trazenog vozila
+     */
     public static Vozilo getSpecific(int id) {
         return SQLite.select().from(Vozilo.class).where(Vozilo_Table.id.eq(id)).querySingle();
     }

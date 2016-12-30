@@ -180,7 +180,11 @@ public class TestoviPitanjeFragment extends Fragment {
         }
     }
 
-    //metoda priprema graficko sucelje za novo nadolazece pitanje, parametar tp označava broj trenutnog pitanja
+    /**
+     * Metoda priprema graficko sucelje za novo nadolazece pitanje
+     *
+     * @param tp Broj trenutnog pitanja
+     */
     private void pripremiPitanja(int tp){
         odg1.setChecked(false); odg2.setChecked(false); odg3.setChecked(false);
         pitanje.setText(listaPitanja.get(poljeZadataka.get(tp)).getPitanje());
@@ -212,7 +216,9 @@ public class TestoviPitanjeFragment extends Fragment {
         }
     }
 
-    //metoda provjerava tocnost odgovora koje je korisnik dao, tj. usporeduje checkbox sa predefiniranom tocnosti odgovora
+    /**
+     * Metoda provjerava tocnost odgovora koje je korisnik dao, tj. usporeduje checkbox sa predefiniranom tocnosti odgovora
+     */
     private void provjeraTocnosti() {
         int stanjeTocnosti = 0;
         if((odg1.isChecked() == true && listaPitanja.get(poljeZadataka.get(trenutnoPitanje-1)).isTocan1() == true)

@@ -9,11 +9,12 @@ import android.widget.Toast;
  */
 
 public class EmailSender{
-    /**posaljiMail metoda je zadužena za slanje e-maila autoškoli sa naslovom i porukom koje joj se proslijede
+    /**
+     * Metoda je zaduzena za slanje e-maila autoskoli sa naslovom i porukom koje joj se proslijede
      *
-     * @param poruka - prosljedena poruka
-     * @param naslov - prosljedjen naslov
-     * @param mActivity - prosljeden activity kako bi se znao context (zbog startActivity-a i Toasta)
+     * @param poruka Prosljedena poruka
+     * @param naslov Prosljedjen naslov
+     * @param mActivity Prosljeden activity kako bi se znao context (zbog startActivity-a i Toasta)
      */
     public void posaljiMail(String poruka, String naslov, Activity mActivity){
         Intent i = new Intent(Intent.ACTION_SEND);

@@ -126,12 +126,27 @@ public class Pitanje extends BaseModel {
         this.imgUrl = imgUrl;
     }
 
+    /**
+     * Metoda dohvaca sva pitanja iz lokalne baze u danu listu
+     *
+     * @return Lista sa svim pitanjima
+     */
     public static List<Pitanje> getAll(){ return SQLite.select().from(Pitanje.class).queryList(); }
 
+    /**
+     * Metoda dohvaca sva pitanja propisa iz lokalne baze u danu listu
+     *
+     * @return Lista sa pitanjima propisa
+     */
     public static List<Pitanje> getOnlyPropisi(){
         return SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(1)).queryList();
     }
 
+    /**
+     * Metoda dohvaca sva pitanja prve pomoci iz lokalne baze u danu listu
+     *
+     * @return Lista sa pitanjima prve pomoci
+     */
     public static List<Pitanje> getOnlyPrvaPomoc(){
         return SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(2)).queryList();
     }

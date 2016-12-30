@@ -78,6 +78,11 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         loadDrawerHeader();
     }
 
+    /**
+     * Metoda priprema personalizirani toolbar početnog zaslona
+     *
+     * @return Vraca toolbar
+     */
     private Toolbar SetToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.white));
@@ -86,6 +91,9 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         return toolbar;
     }
 
+    /**
+     * Metoda priprema personalizirani header polaznika za navigation drawer
+     */
     private void loadDrawerHeader(){
         View view = navigationView.getHeaderView(0);
         TextView userNameAndSurname = (TextView)view.findViewById(R.id.korisnik_ime_navigation_header);

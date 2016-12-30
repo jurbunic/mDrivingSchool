@@ -14,6 +14,11 @@ import java.util.List;
  */
 
 public class PitanjaData {
+    /**
+     * Metoda puni listu tipova pitanja sa svim dostupnim tipovima pitanja
+     *
+     * @param listaTipovaPitanja Lista tipova pitanja koja se vraca puna nakon sto se metoda izvrsi
+     */
     public static void nabaviTipovePitanja(List<TipPitanja> listaTipovaPitanja){
         TipPitanja tipPitanja = new TipPitanja(1, "Propisi");
         listaTipovaPitanja.add(tipPitanja);
@@ -21,6 +26,12 @@ public class PitanjaData {
         tipPitanja = new TipPitanja(2, "Prva pomoc");
         listaTipovaPitanja.add(tipPitanja);
     }
+
+    /**
+     * Metoda puni listu listaPitanja sa svim trenutno dostupnim pitanjima iz prve pomoci i sprema ih u bazu
+     *
+     * @param listaPitanja Lista pitanja koja se vraca puna nakon sto metoda zavrsi
+     */
     public static void nabaviPitanjaPrvaPomoc(List<Pitanje> listaPitanja){
         Pitanje pitanje = new Pitanje( 8, 2, "Sigurni znakovi smrti su:", "Mačje oko", "Mrtvačke pjege" ,"Prestanak disanja" , true, true, false, "img_prva_pomoc_def");
         listaPitanja.add(pitanje);
@@ -59,6 +70,12 @@ public class PitanjaData {
         listaPitanja.add(pitanje);
         pitanje.save();
     }
+
+    /**
+     * Metoda puni listu listaPitanja sa svim trenutno dostupnim pitanjima iz propisa i sprema ih u bazu
+     *
+     * @param listaPitanja Lista pitanja koja se vraca puna nakon sto metoda zavrsi
+     */
     public static void nabaviPitanjaPropisi(List<Pitanje> listaPitanja) {
         Pitanje pitanje = new Pitanje(1, 1, "Kako reagiraju djeca u prometu ?", "razborito i staloženo", "nepredvidljivo",
                 "u skladu sa prometnim pravilima i propisima", false, true, false, "img_propisi_id1");
@@ -161,7 +178,13 @@ public class PitanjaData {
         pitanje.save();
     }
 
-    //metoda nabavlja podatke samo onih pitanja čiji su mu brojevi prosljedeni u listiOdredenih pitanja prema tipu
+    /**
+     * Metoda nabavlja podatke samo onih pitanja ciji su mu brojevi (id) prosljedeni u listiOdredenih pitanja prema tipu
+     *
+     * @param listaPitanja Lista koju metoda napuni sa pitanjima danih id-jeva
+     * @param listaOdredenih Lista u kojoj se nalaze id-jevi odredenih pitanja
+     * @param tipPitanja Tip pitanja koji se trazi (1 - propisi ili 2 - prva pomoc)
+     */
     public static void nabaviPodatkeOdredenihPitanja(List<Pitanje> listaPitanja, List<Integer> listaOdredenih, int tipPitanja){
         List<Pitanje> privremenaLista;
         if (tipPitanja == 1){

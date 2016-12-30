@@ -10,6 +10,11 @@ import java.util.List;
 
 public class VozilaData {
 
+    /**
+     * Metoda puni listu listaVozila sa svim trenutno dostupnim podacima o vozilima i sprema ih u bazu
+     *
+     * @param listaVozila Lista vozila koja se vraca puna nakon sto metoda zavrsi
+     */
     public static void nabaviPodatkeVozila(List<Vozilo> listaVozila) {
         Vozilo vozilo = new Vozilo(1, "Škoda Fabia", "http://autoskola-premuz.hr/wp-content/uploads/2014/12/fabia-silver1.jpg",
                 "B kategorija", "Dizelski motor", "75ks, 55kw, 1600ccm");

@@ -67,7 +67,13 @@ public class TestoviMainFragment extends Fragment {
         StartFragment.StartNewFragment(tpf,getActivity(),"prvapomoc");
     }
 
-    //metoda generira polje od n elemenata. Ti elementi su random brojevi (int) koji se ne ponavljaju
+    /**
+     * Metoda generira polje od n elemenata. Ti elementi su random brojevi (int) koji se ne ponavljaju
+     *
+     * @param n Broj elemenata koje zelimo dobiti u polju
+     * @param opseg Opseg generiranih brojeva
+     * @param polje Polje u koje se generirani brojevi salju
+     */
     private void generiranjeRandomBrojeva(int n,int opseg,  ArrayList<Integer> polje){
         Random rand = new Random();
         while(polje.size() < n){

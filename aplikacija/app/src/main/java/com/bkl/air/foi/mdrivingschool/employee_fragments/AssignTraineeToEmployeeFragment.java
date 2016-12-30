@@ -84,16 +84,14 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         List<String> allTraineesNamesForUnassagning = new ArrayList<String>();
         ArrayList<Korisnik> allTraineesForUnassagning = new ArrayList<>();
 
-        //Dohvaćaju se podaci o svim polaznicima
+        //Dohvaćaju se podaci o polaznicima
         allTrainees = info.getFreeTrainees(getActivity().getIntent().getStringExtra("USER"));
-
         allTraineesForUnassagning = info.getTrainees(getActivity().getIntent().getStringExtra("USER"));
 
         //Spremaju se id-jevi, imena i prezimena u privremenu listu koju vidi korisnik na spinneru
         for (Korisnik trainee : allTrainees){
             allTraineesNames.add(trainee.getId() + " - " + trainee.getIme() + " " + trainee.getPrezime());
         }
-
         for (Korisnik trainee : allTraineesForUnassagning){
             allTraineesNamesForUnassagning.add(trainee.getId() + " - " + trainee.getIme() + " " + trainee.getPrezime());
         }
@@ -127,12 +125,7 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
 
     @OnClick(R.id.button_assign_trainee)
     public void onAssignButtonPressed(){
-
-        //Dobivanje id-a iz cijelog stringa, sada chosenTraineeId sadrži id odabranog polaznika
-        String chosenTraineeId = "";
-        if(chosenTraineeForAssigning.contains(" ")){
-            chosenTraineeId= chosenTraineeForAssigning.substring(0, chosenTraineeForAssigning.indexOf(" "));
-        }
+        String chosenTraineeId = getOnlyId(chosenTraineeForAssigning);
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("6","1",currentUserId,chosenTraineeId);
         refresh();
@@ -140,10 +133,7 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
     }
     @OnClick(R.id.button_unassign_trainee)
     public void onUnassignButtonPressed(){
-        String chosenTraineeId = "";
-        if(chosenTraineeForUnassigning.contains(" ")){
-            chosenTraineeId= chosenTraineeForUnassigning.substring(0, chosenTraineeForUnassigning.indexOf(" "));
-        }
+        String chosenTraineeId = getOnlyId(chosenTraineeForUnassigning);
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("7","1",currentUserId,chosenTraineeId);
         refresh();
@@ -152,5 +142,19 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
     public void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
+    }
+
+    /**
+     * Metoda koja pretvara String sa id-jem, imenom i prezimenom u String samo sa id-jem
+     *
+     * @param fullString Cijeli String sa id-jem, imenom i prezimenom
+     * @return Vraca String samo s id-jem
+     */
+    private String getOnlyId(String fullString){
+        String id = "";
+        if(fullString.contains(" ")){
+            id = fullString.substring(0, fullString.indexOf(" "));
+        }
+        return id;
     }
 }

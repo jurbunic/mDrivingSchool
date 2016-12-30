@@ -58,8 +58,9 @@ public class OnlinePrijavaFragment extends Fragment {
 
 
     /**
-     * nabaviKategoriju metoda čita vrijednosti iz RadioGroup-a, tj. vraća kategoriju koju je korisnik odabrao
-     * @return
+     * Metoda cita vrijednosti iz RadioGroup-a, tj. vraca kategoriju koju je korisnik odabrao
+     *
+     * @return Odabrana kategorija
      */
     private String nabaviKategoriju(){
         String kategorija = "";
@@ -80,9 +81,9 @@ public class OnlinePrijavaFragment extends Fragment {
     }
 
     /**
-     * kreiranjePoruke metoda uzima vrijednosti koje je korisnik upisao preko screen-a i vraća jedan string finalne poruke
+     * Metoda uzima vrijednosti koje je korisnik upisao preko screen-a i vraca jedan string finalne poruke
      *
-     * @return
+     * @return String finalne poruke
      */
     private String kreiranjePoruke(){
         String finalnaPoruka = "";
