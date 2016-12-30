@@ -275,6 +275,10 @@ public class RetriveData extends AsyncTask <String, Void, String> {
                 Toast.makeText(context,"Uspješno dodan polaznik",Toast.LENGTH_LONG).show();
             }else if(s.substring(s.length()-1).toString().equals("0")){
                 Toast.makeText(context,"Unos nije uspio",Toast.LENGTH_LONG).show();
+            }else if(s.substring(s.length()-1).toString().equals("2")){
+                Toast.makeText(context,"Uspješno izbrisan polaznik",Toast.LENGTH_LONG).show();
+            }else if (s.substring(s.length()-1).toString().equals("3")){
+                Toast.makeText(context,"Brisanje nije uspjelo",Toast.LENGTH_LONG).show();
             }
             jsonString = s;
             super.onPostExecute(jsonString);
