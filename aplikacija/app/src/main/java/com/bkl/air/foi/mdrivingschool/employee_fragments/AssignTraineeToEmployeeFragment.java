@@ -142,6 +142,7 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         if(chosenTraineeForUnassigning.contains(" ")){
             chosenTraineeId= chosenTraineeForUnassigning.substring(0, chosenTraineeForUnassigning.indexOf(" "));
         }
-        Toast.makeText(thisContext,"Instruktor id: "+currentUserId+", polaznik id: "+chosenTraineeId,Toast.LENGTH_SHORT).show();
+        RetriveData retriveData = new RetriveData(thisContext);
+        retriveData.execute("7","1",currentUserId,chosenTraineeId);
     }
 }
