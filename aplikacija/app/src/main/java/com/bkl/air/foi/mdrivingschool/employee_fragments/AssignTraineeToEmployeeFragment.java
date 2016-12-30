@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool.employee_fragments;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -134,6 +135,7 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         }
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("6","1",currentUserId,chosenTraineeId);
+        refresh();
 
     }
     @OnClick(R.id.button_unassign_trainee)
@@ -144,5 +146,11 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         }
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("7","1",currentUserId,chosenTraineeId);
+        refresh();
+    }
+
+    public void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
     }
 }
