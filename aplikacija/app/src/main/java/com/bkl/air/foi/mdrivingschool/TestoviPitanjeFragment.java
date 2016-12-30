@@ -254,6 +254,15 @@ public class TestoviPitanjeFragment extends Fragment {
 
     ArrayList<Tocnost> listaTocnosti = new ArrayList<>();
 
+    /**
+     * spremiOdg
+     *
+     * Metoda služi za spremanje odgovora prilikom prelaska na sljedeće pitanje.
+     * Ako je korisnik već odgovorio na pitanje, prethodni odgovori se brišu iz liste,
+     * te se dodaju novi u listu listaTocnosti
+     *
+     * @param broj  --broj pitanja koje je trenutno prikazano na ekranu
+     */
     private void spremiOdg(int broj){
         Tocnost tocnost = new Tocnost();
         tocnost.brojPitanja = broj-1;

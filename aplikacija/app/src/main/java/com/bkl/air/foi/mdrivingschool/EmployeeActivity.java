@@ -85,7 +85,7 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         MainEmployeeFragment mef = new MainEmployeeFragment();
         StartFragment.StartNewFragment(mef,this,"1");
 
-        loadPicture();
+        loadNavigationHeader();
 
 }
 
@@ -97,7 +97,16 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
         return toolbar;
     }
 
-    private void loadPicture(){
+    /**
+     * loadNavigationHeader
+     *
+     * Metoda ispisuje ime, prezime i email trenutno prijavljenog korisnika
+     * na zaglavlje navigacije.
+     *
+     *
+     */
+
+    private void loadNavigationHeader(){
         View view = navigationView.getHeaderView(0);
         TextView userNameAndSurname = (TextView)view.findViewById(R.id.korisnik_ime_navigation_header);
         TextView userEmail = (TextView)view.findViewById(R.id.korisnik_email_navigation_header);

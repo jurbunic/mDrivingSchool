@@ -10,6 +10,14 @@ import java.util.List;
 
 public class KontaktData {
 
+    /**
+     * loadKontaktData
+     *
+     * Metoda puni listu kontakta sa mogućim kontaktima i sprema ih u lokalnu bazu
+     *
+     *
+     * @param lista --lista tipa Kontakt u koju će se spremati kontakti
+     */
     public static void loadKontaktData(List<Kontakt> lista){
         Kontakt kontakt1 = new Kontakt();
         kontakt1.setId(1);

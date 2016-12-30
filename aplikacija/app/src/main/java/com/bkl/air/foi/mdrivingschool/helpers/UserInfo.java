@@ -21,6 +21,16 @@ public class UserInfo {
     public UserInfo(Context context) {
         this.context = context;
     }
+
+    /**
+     * getInfoById
+     *
+     * Metoda dohvaća sa servera podatke o korisniku sa određenim ID-om
+     * Metoda vraća vrijednost tipa Korisnik
+     *
+     * @param userId --ID korisnika za kojeg se dohvaćaju podaci
+     * @return
+     */
     public Korisnik getInfoById(String userId){
         Korisnik korisnik = new Korisnik();
         try{
@@ -50,6 +60,16 @@ public class UserInfo {
         return korisnik;
     }
 
+    /**
+     * getTrainees
+     *
+     * Metoda dohvaća informacije o polaznicima koji su dodjeljeni zaposleniku
+     * sa određenim ID-om.
+     * Metoda vraća listu tipa Korisnik.
+     *
+     * @param userId --(tip String) ID zaposlenika za kojeg želimo dohvatiti dodjeljene polaznike
+     * @return
+     */
     public ArrayList<Korisnik> getTrainees (String userId){
         ArrayList<Korisnik> trainess = new ArrayList<>();
         try{

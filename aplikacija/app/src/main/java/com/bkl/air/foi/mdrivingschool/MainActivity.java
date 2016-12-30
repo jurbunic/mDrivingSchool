@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     /**
      * SetToolbar
+     *
      * Metoda služi za postavljanje toolbara, boje i naslova toolbara;
      *
      * @return
