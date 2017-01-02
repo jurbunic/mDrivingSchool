@@ -13,12 +13,15 @@ import com.bkl.air.foi.mdrivingschool.R;
  */
 
 public class StartFragment {
+    /**
+     * Metoda koja poziva novi fragment. Ako je samo jedan fragment na backstacku tada se stvara novi fragment,
+     * a ako na backstacku postoji vise fragmenta tada se prethodni fragment briše i poziva se novi
+     *
+     * @param fragment fragment kojeg pozivamo
+     * @param mActivity aktivnost iz koje pozivamo fragment
+     */
 
     public static void StartNewFragment (Fragment fragment, Activity mActivity){
-        /*
-
-        */
-
         FragmentManager fragmentManager = mActivity.getFragmentManager();
         if(fragmentManager.getBackStackEntryCount()<=1){
             FragmentTransaction ft = fragmentManager.beginTransaction();
@@ -35,13 +38,13 @@ public class StartFragment {
                     .commit();
         }
     }
-    /**StartFragment
+    /**
      * Metoda prima tri parametra. Dobiveni fragment pokreće i sprema ga na BackStack pod prosljeđenim
-     * tagom
+     * tagom. Ova metoda ne briše prethodni framgent sa backstacka.
      *
-     * @param fragment tip Fragment
-     * @param mActivity tip Activity
-     * @param tag   tip String
+     * @param fragment fragment kojeg pozivamo
+     * @param mActivity aktivnost iz koje pozivamo fragment
+     * @param tag   oznaka pod kojom spremamo fragment na backstack
      */
     public static void StartNewFragment(Fragment fragment, Activity mActivity, String tag){
         FragmentTransaction fm = mActivity.getFragmentManager().beginTransaction();

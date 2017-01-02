@@ -6,11 +6,7 @@ import com.bkl.air.foi.database.Korisnik;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Jurica Bunić on 12.12.2016..
@@ -23,13 +19,11 @@ public class UserInfo {
     }
 
     /**
-     * getInfoById
-     *
      * Metoda dohvaća sa servera podatke o korisniku sa određenim ID-om
      * Metoda vraća vrijednost tipa Korisnik
      *
-     * @param userId --ID korisnika za kojeg se dohvaćaju podaci
-     * @return
+     * @param userId ID korisnika za kojeg se dohvaćaju podaci
+     * @return objekt Korisnik sa pripadajućim podacima
      */
     public Korisnik getInfoById(String userId){
         Korisnik korisnik = new Korisnik();
@@ -61,14 +55,12 @@ public class UserInfo {
     }
 
     /**
-     * getTrainees
-     *
      * Metoda dohvaća informacije o polaznicima koji su dodjeljeni zaposleniku
      * sa određenim ID-om.
      * Metoda vraća listu tipa Korisnik.
      *
-     * @param userId --(tip String) ID zaposlenika za kojeg želimo dohvatiti dodjeljene polaznike
-     * @return
+     * @param userId (tip String) ID zaposlenika za kojeg želimo dohvatiti dodjeljene polaznike
+     * @return lista polaznika koji pripadaju trenutnom zaposleniku
      */
     public ArrayList<Korisnik> getTrainees (String userId){
         ArrayList<Korisnik> trainess = new ArrayList<>();

@@ -11,8 +11,6 @@ import java.util.List;
 public class KontaktData {
 
     /**
-     * loadKontaktData
-     *
      * Metoda puni listu kontakta sa mogućim kontaktima i sprema ih u lokalnu bazu
      *
      *

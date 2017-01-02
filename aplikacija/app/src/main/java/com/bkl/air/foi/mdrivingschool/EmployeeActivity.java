@@ -98,12 +98,8 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
     }
 
     /**
-     * loadNavigationHeader
-     *
      * Metoda ispisuje ime, prezime i email trenutno prijavljenog korisnika
      * na zaglavlje navigacije.
-     *
-     *
      */
 
     private void loadNavigationHeader(){

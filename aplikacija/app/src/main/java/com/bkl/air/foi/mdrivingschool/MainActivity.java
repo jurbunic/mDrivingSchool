@@ -6,8 +6,6 @@ package com.bkl.air.foi.mdrivingschool;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -81,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
      *
      * Metoda služi za postavljanje toolbara, boje i naslova toolbara;
      *
-     * @return
+     * @return toolbar sa naslovom bijele boje
      */
     private Toolbar SetToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);

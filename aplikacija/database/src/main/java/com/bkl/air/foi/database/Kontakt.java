@@ -78,12 +78,10 @@ public class Kontakt extends BaseModel {
     //.................Metode.....................
 
     /**
-     * getAll
-     *
      * Metoda služi za dohvaćanje svih "kontakta" u lokalnoj bazi.
      * Metoda nema parametre a vraća vrijednost List<Kontakt>
      *
-     * @return
+     * @return lista svih korisnika
      */
     public static List<Kontakt> getAll(){
         return SQLite.select().from(Kontakt.class).queryList();
