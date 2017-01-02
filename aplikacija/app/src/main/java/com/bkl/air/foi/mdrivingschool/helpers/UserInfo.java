@@ -108,6 +108,11 @@ public class UserInfo {
         return trainess;
     }
 
+    /**
+     * Metoda koja sprema korisnike koji nisu dodijeljeni niti jednom instruktoru
+     * @param userId
+     * @return Vraća listu tipa korisnik
+     */
     public ArrayList<Korisnik> getFreeTrainees (String userId){
         ArrayList<Korisnik> trainess = new ArrayList<>();
         try{

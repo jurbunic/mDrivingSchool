@@ -50,6 +50,11 @@ public class LoginData extends AsyncTask<String,Void,String> {
         alertDialog.setTitle("Login Info");
     }
 
+    /**
+     * Metoda za komunikaciju sa serverom
+     * @param params parametri koje šalje metoda execute
+     * @return Vraća odgovor servera metodi onPostExecute
+     */
     @Override
     protected String doInBackground(String... params) {
         String login_url = "http://barka.foi.hr/WebDiP/2015/zadaca_02/matlazar/servis/login.php";
@@ -100,6 +105,10 @@ public class LoginData extends AsyncTask<String,Void,String> {
         super.onProgressUpdate(values);
     }
 
+    /**
+     * Metoda koja obrađuje odogvor metode doInBackground i priprema je za export
+     * @param s
+     */
     @Override
     protected void onPostExecute(String s) {
         try {

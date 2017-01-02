@@ -139,6 +139,9 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         refresh();
     }
 
+    /**
+     * Metoda za osvježavanje fragmenta, koristi se nakon dodavanja ili brisanja polaznika
+     */
     public void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();

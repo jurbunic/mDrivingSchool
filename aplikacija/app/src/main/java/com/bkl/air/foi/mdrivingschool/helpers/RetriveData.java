@@ -31,11 +31,19 @@ public class RetriveData extends AsyncTask <String, Void, String> {
         this.context = context;
     }
 
+    /**
+     * Metoda koja inicijalizira url sa php skriptom
+     */
     @Override
     protected void onPreExecute() {
         dataUrl = "http://barka.foi.hr/WebDiP/2015/zadaca_02/matlazar/servis/json_query.php";
     }
 
+    /**
+     *
+     * @param params Paramtri koje se prosljeđuju preko execute metode()
+     * @return Vraca string koji je odgovor sa servera
+     */
     @Override
     protected String doInBackground(String... params) {
         String query = params[0];
@@ -269,6 +277,10 @@ public class RetriveData extends AsyncTask <String, Void, String> {
         super.onProgressUpdate(values);
     }
 
+    /**
+     * Metoda koja vraća rezultat servera i vraća ga metodi execute
+     * @param s rezultat metode doInBackground tipa string
+     */
     @Override
     protected void onPostExecute(String s) {
             if(s.substring(s.length()-1).toString().equals("1")){
