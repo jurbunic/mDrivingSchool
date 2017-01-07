@@ -128,7 +128,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             OnamaFragment onf = new OnamaFragment();
             StartFragment.StartNewFragment(onf, this);
         }
-        else if(id==R.id.trainee_status_mojih_ispita){
+
             /*
             TraineeExamStatusFragment tesf = new TraineeExamStatusFragment();
 
@@ -138,7 +138,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
 
             StartFragment.StartNewFragment(tesf,this);
             */
-        }
+
         else if (id == R.id.trainee_vozila_navigation) {
             VozilaFragment fv = new VozilaFragment();
             StartFragment.StartNewFragment(fv, this);

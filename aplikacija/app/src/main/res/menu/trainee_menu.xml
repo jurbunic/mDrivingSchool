@@ -19,11 +19,6 @@
             android:id="@+id/trainee_moji_satovi_voznje_navigation"
             android:icon="@drawable/ikona_auto"
             android:title="Moji satovi vožnje" />
-        <item
-            android:id="@+id/trainee_status_mojih_ispita"
-            android:icon="@drawable/ikona_status_ispita"
-            android:title="Status mojih ispita"
-            />
 
     </group>
 
