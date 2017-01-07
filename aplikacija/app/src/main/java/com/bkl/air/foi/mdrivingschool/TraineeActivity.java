@@ -19,7 +19,6 @@ import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
-import com.bkl.air.foi.mdrivingschool.trainee_fragments.TraineeExamStatusFragment;
 import com.bkl.air.foi.mdrivingschool.trainee_fragments.TraineeMSFragment;
 
 public class TraineeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, FragmentManager.OnBackStackChangedListener{
@@ -130,6 +129,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             StartFragment.StartNewFragment(onf, this);
         }
         else if(id==R.id.trainee_status_mojih_ispita){
+            /*
             TraineeExamStatusFragment tesf = new TraineeExamStatusFragment();
 
             Bundle args=new Bundle();
@@ -137,6 +137,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             tesf.setArguments(args);
 
             StartFragment.StartNewFragment(tesf,this);
+            */
         }
         else if (id == R.id.trainee_vozila_navigation) {
             VozilaFragment fv = new VozilaFragment();

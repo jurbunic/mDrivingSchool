@@ -12,6 +12,7 @@
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:layout_gravity="center">
                 <TextView
+                    android:text="Status ispita iz propisa:"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -21,12 +22,14 @@
 
                     />
                 <TextView
+                    android:text="Položeno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/trainee_test_status_propis"
                     android:textStyle="bold"
                     android:textColor="@color/common_google_signin_btn_text_light_default"
+                    android:textSize="35sp"
                     />
                 <ImageView
                     android:layout_gravity="center"
@@ -35,6 +38,7 @@
                     android:src="@drawable/thin_line"
                     android:layout_marginBottom="50dp"/>
                 <TextView
+                    android:text="Status ispita iz prve pomoći:"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -44,12 +48,14 @@
 
                     />
                 <TextView
+                    android:text="Položeno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/trainee_test_status_first_aid"
                     android:textStyle="bold"
                     android:textColor="@color/common_google_signin_btn_text_light_default"
+                    android:textSize="35sp"
                     />
                 <ImageView
                     android:layout_gravity="center"
@@ -58,6 +64,7 @@
                     android:src="@drawable/thin_line"
                     android:layout_marginBottom="50dp"/>
                 <TextView
+                    android:text="Status vožnje:"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -67,12 +74,14 @@
 
                     />
                 <TextView
+                    android:text="Položeno"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:id="@+id/trainee_test_status_driving"
                     android:textStyle="bold"
                     android:textColor="@color/common_google_signin_btn_text_light_default"
+                    android:textSize="35sp"
                     />
                 <ImageView
                     android:layout_gravity="center"
