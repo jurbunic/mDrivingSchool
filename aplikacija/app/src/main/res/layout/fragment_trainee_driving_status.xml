@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layoutsHolder">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainLayout"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:text="Broj završenih sati vožnje:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+
+                android:id="@+id/textView_dh" />
+            <TextView
+                android:text="#number"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/textView_driving_hours"
+                android:textStyle="bold"
+                android:textColor="@color/common_google_signin_btn_text_light_default"
+                android:textSize="35sp"
+                android:layout_width="match_parent" />
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="2dp"
+                android:src="@drawable/thin_line"
+                android:layout_marginBottom="50dp"/>
+            <TextView
+                android:text="Sljedeća vožnja:"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="25sp"
+
+                android:id="@+id/textView_dm" />
+            <TextView
+                android:text="#date/time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:id="@+id/textView_driving_session"
+                android:textStyle="bold"
+                android:textColor="@color/common_google_signin_btn_text_light_default"
+                android:textSize="35sp"
+                />
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="200dp"
+                android:layout_height="2dp"
+                android:src="@drawable/thin_line"
+                android:layout_marginBottom="50dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

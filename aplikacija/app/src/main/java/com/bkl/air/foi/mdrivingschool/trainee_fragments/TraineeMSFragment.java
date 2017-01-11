@@ -54,4 +54,20 @@ public class TraineeMSFragment extends Fragment {
         TestoviMainFragment fk = new TestoviMainFragment();
         StartFragment.StartNewFragment(fk,getActivity());
     }
+    @OnClick(R.id.imageButton_sv)
+    public void onImageButtonSvClicked(){
+        TraineeDrivingStatusFragment tdsf = new TraineeDrivingStatusFragment();
+        Bundle args=new Bundle();
+        args.putString("USER_ID", currentUserId);
+        tdsf.setArguments(args);
+        StartFragment.StartNewFragment(tdsf, getActivity());
+    }
+    @OnClick(R.id.imageButton_si)
+    public void onImageButtonSiClicked(){
+        TraineeExamStatusFragment tesf = new TraineeExamStatusFragment();
+        Bundle args=new Bundle();
+        args.putString("USER_ID", currentUserId);
+        tesf.setArguments(args);
+        StartFragment.StartNewFragment(tesf,getActivity());
+    }
 }

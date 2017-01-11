@@ -19,6 +19,7 @@ import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
+import com.bkl.air.foi.mdrivingschool.trainee_fragments.TraineeDrivingStatusFragment;
 import com.bkl.air.foi.mdrivingschool.trainee_fragments.TraineeExamStatusFragment;
 import com.bkl.air.foi.mdrivingschool.trainee_fragments.TraineeMSFragment;
 
@@ -137,6 +138,14 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             tesf.setArguments(args);
 
             StartFragment.StartNewFragment(tesf,this);
+        }
+
+        else if (id == R.id.trainee_moji_satovi_voznje_navigation) {
+            TraineeDrivingStatusFragment tdsf = new TraineeDrivingStatusFragment();
+            Bundle args=new Bundle();
+            args.putString("USER_ID", currentUserId);
+            tdsf.setArguments(args);
+            StartFragment.StartNewFragment(tdsf, this);
         }
 
         else if (id == R.id.trainee_vozila_navigation) {
