@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/layoutScroller">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/layoutsHolder">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/topLayout"
+                android:background="#01668A">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    app:srcCompat="@drawable/logo_cijeli"
+                    android:id="@+id/imageView_logo_cijeli"
+                    android:layout_height="55dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/middleLayout"
+                android:paddingTop="15dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:text="Odabir polaznika:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_op"
+                    android:textColor="#000"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="Molimo odaberite polaznika kojem ažurirate stanje ispita:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_op_dod"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:paddingTop="10dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/traineePickLayout"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:text="Ime polaznika:"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_ip"
+                        android:layout_weight="1"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_width="125dp" />
+
+                    <Spinner
+                        android:layout_width="125dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinner_ip_update_exam"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/dataLayout"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="5dp">
+
+                <TextView
+                    android:text="Ažuriranje ispita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_ai"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textColor="#000"
+                    android:textStyle="normal|bold" />
+
+                <TextView
+                    android:text="Molimo odaberite stanje svakog ispita polaznika kako biste ih ažurirali:"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_mo"
+                    android:textAlignment="center"
+                    android:textColor="#000"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp" />
+
+                <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/propisiPickLayout"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:text="Stanje ispita propisa:"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView_sp"
+                    android:layout_weight="1"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:layout_width="175dp" />
+
+                    <Spinner
+                        android:layout_height="wrap_content"
+                    android:id="@+id/spinner_update_propisi"
+                    android:layout_weight="1"
+                        android:layout_width="100dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/propisiInfoLayout"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:text="Trenutno stanje propisa:"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_tsp"
+                        android:layout_weight="1"
+                        android:layout_width="100dp" />
+
+                    <TextView
+                        android:text="Učitavanje..."
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_ts_propisi"
+                        android:layout_weight="1"
+                        android:layout_width="50dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/prvaPomocPickLayout"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:text="Stanje ispita prve pomoći: "
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_pp"
+                        android:layout_weight="1"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_width="175dp" />
+
+                    <Spinner
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinner_update_prvaPomoc"
+                        android:layout_weight="1"
+                        android:layout_width="100dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/prvaPomocInfoLayout"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:text="Trenutno stanje prve pomoći:"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_tspp"
+                        android:layout_weight="1"
+                        android:layout_width="100dp" />
+
+                    <TextView
+                        android:text="Učitanjave..."
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_ts_prvaPomoc"
+                        android:layout_weight="1"
+                        android:layout_width="50dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/voznjaPickLayout"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:text="Stanje ispita vožnje:"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_sv"
+                        android:layout_weight="1"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        android:textAlignment="center"
+                        android:layout_width="175dp" />
+
+                    <Spinner
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spinner_update_voznja"
+                        android:layout_weight="1"
+                        android:layout_width="100dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/voznjaInfoLayout"
+                    android:layout_marginBottom="10dp">
+
+                    <TextView
+                        android:text="Trenutno stanje vožnje:"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_tsv"
+                        android:layout_weight="1"
+                        android:layout_width="100dp" />
+
+                    <TextView
+                        android:text="Učitavanje..."
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView_ts_voznja"
+                        android:layout_weight="1"
+                        android:layout_width="50dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:gravity="center"
+                    android:id="@+id/updateButtonLayout"
+                    android:paddingTop="10dp">
+
+                    <Button
+                        android:text="Ažuriraj stanje"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_update_exams"
+                        android:background="@android:drawable/alert_light_frame"
+                        android:textAlignment="center"
+                        android:layout_width="200dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
