@@ -12,18 +12,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bkl.air.foi.database.Pitanje;
-import com.bkl.air.foi.database.Vozilo;
 import com.bkl.air.foi.mdrivingschool.adapters.RezultatiTestaAdapter;
-import com.bkl.air.foi.mdrivingschool.adapters.VozilaAdapter;
 import com.bkl.air.foi.mdrivingschool.helpers.PitanjaData;
-import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 /**
  * Created by Dalibor on 26.11.2016..
@@ -42,9 +41,11 @@ public class TestoviRezultatiFragment extends Fragment {
 
     private String tipPitanja;
 
+    private InterstitialAd mInterstitial;
 
     @BindView(R.id.textView_tocnost)
     TextView tocnostTesta;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         tocnost=getArguments().getInt("Tocnost");
@@ -53,6 +54,19 @@ public class TestoviRezultatiFragment extends Fragment {
         tipPitanja = getArguments().getString("tipPitanja");
         View View = inflater.inflate(R.layout.fragment_testovi_rezultati, container, false);
         ButterKnife.bind(this, View);
+
+        //poziv reklame "interstitial ad"
+        mInterstitial = new InterstitialAd(this.getActivity());
+        mInterstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitial.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mInterstitial.show();
+            }
+        });
+        mInterstitial.loadAd(new AdRequest.Builder().build());
+
         return View;
     }
 

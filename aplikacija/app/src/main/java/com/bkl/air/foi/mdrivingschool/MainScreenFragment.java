@@ -1,7 +1,7 @@
 package com.bkl.air.foi.mdrivingschool;
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +15,12 @@ import android.widget.ViewFlipper;
 
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by Dalibor on 9.11.2016..
@@ -41,6 +42,9 @@ public class MainScreenFragment extends Fragment {
     @BindView(R.id.imageButton3)
     ImageButton imageButton3;
 
+    @BindView(R.id.adView)
+    AdView adView;
+
     NavigationView navigationView;
 
     @Override
@@ -55,11 +59,14 @@ public class MainScreenFragment extends Fragment {
         viewFlipper.setInAnimation(Fade_in);
         viewFlipper.setOutAnimation(Fade_out);
 
+
         navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
 
         viewFlipper.setAutoStart(true);
         viewFlipper.setFlipInterval(4000);
         viewFlipper.startFlipping();
+
+        initializeAds();
         return View;
     }
 
@@ -67,6 +74,15 @@ public class MainScreenFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
     }
+
+    /**
+     * Metoda sluzi za inicijaciju banner ad reklame
+     */
+    private void initializeAds(){
+        AdRequest.Builder adBuilder = new AdRequest.Builder();
+        adView.loadAd(adBuilder.build());
+    }
+
 
     @OnClick(R.id.imageButton)
     public void onButtonImageClick1(){

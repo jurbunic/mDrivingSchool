@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:background="@color/colorWhite"
+    android:descendantFocusability="blocksDescendants"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -86,5 +87,9 @@
         android:cropToPadding="false"
         android:scaleType="fitXY"
         android:adjustViewBounds="false" />
+    <include
+        layout="@layout/ads_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
 </ScrollView>
