@@ -57,7 +57,7 @@ public class LoginData extends AsyncTask<String,Void,String> {
      */
     @Override
     protected String doInBackground(String... params) {
-        String login_url = "http://barka.foi.hr/WebDiP/2015/zadaca_02/matlazar/servis/login.php";
+        String login_url = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x045/servis/login.php";
         String login_name = params[1];
         String login_pass = params[2];
         String method = "login";

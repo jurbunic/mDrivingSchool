@@ -36,7 +36,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
      */
     @Override
     protected void onPreExecute() {
-        dataUrl = "http://barka.foi.hr/WebDiP/2015/zadaca_02/matlazar/servis/json_query.php";
+        dataUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x045/servis/json_query.php";
     }
 
     /**
