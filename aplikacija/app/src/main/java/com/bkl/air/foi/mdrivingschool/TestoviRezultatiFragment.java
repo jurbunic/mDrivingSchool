@@ -55,17 +55,7 @@ public class TestoviRezultatiFragment extends Fragment {
         View View = inflater.inflate(R.layout.fragment_testovi_rezultati, container, false);
         ButterKnife.bind(this, View);
 
-        //poziv reklame "interstitial ad"
-        mInterstitial = new InterstitialAd(this.getActivity());
-        mInterstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
-        mInterstitial.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                super.onAdLoaded();
-                mInterstitial.show();
-            }
-        });
-        mInterstitial.loadAd(new AdRequest.Builder().build());
+        initializeIntAd();
 
         return View;
     }
@@ -91,5 +81,21 @@ public class TestoviRezultatiFragment extends Fragment {
         recyclerView.setAdapter(mAdapter);
 
         mAdapter.notifyDataSetChanged();
+    }
+
+    /**
+     * Metoda sluzi za inicijaciju interstitial ad reklame
+     */
+    public void initializeIntAd(){
+        mInterstitial = new InterstitialAd(this.getActivity());
+        mInterstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitial.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                super.onAdLoaded();
+                mInterstitial.show();
+            }
+        });
+        mInterstitial.loadAd(new AdRequest.Builder().build());
     }
 }
