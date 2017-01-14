@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bkl.air.foi.core.DataLoader;
+import com.bkl.air.foi.core.PitanjeDataLoadedListener;
 import com.bkl.air.foi.database.Pitanje;
 import com.bkl.air.foi.database.Pitanje_Table;
 import com.bkl.air.foi.database.TipPitanja;
@@ -22,6 +24,8 @@ import com.bkl.air.foi.database.Vozilo;
 import com.bkl.air.foi.mdrivingschool.helpers.PitanjaData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
+import com.bkl.air.foi.mdrivingschool.loaders.AppDataLoader;
+import com.bkl.air.foi.mdrivingschool.loaders.DbDataLoader;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.squareup.picasso.Picasso;
 
@@ -38,7 +42,7 @@ import butterknife.Unbinder;
  * Created by Dalibor on 23.11.2016..
  */
 
-public class TestoviPitanjeFragment extends Fragment {
+public class TestoviPitanjeFragment extends Fragment implements PitanjeDataLoadedListener{
     private ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
     private String tipPitanja;
     private List<Pitanje> listaPitanja = new ArrayList<>();
@@ -46,6 +50,7 @@ public class TestoviPitanjeFragment extends Fragment {
     private int tocniOdgovori = 0;
     private int lastOpenedQuestion = 1;
     private int imgId = 0;
+    private DataLoader dataLoader;
 
 
 
@@ -78,22 +83,8 @@ public class TestoviPitanjeFragment extends Fragment {
         poljeZadataka=getArguments().getIntegerArrayList("randomZadaci");
         View View = inflater.inflate(R.layout.fragment_testovi_pitanje, container, false);
         ButterKnife.bind(this, View);
-        if (tipPitanja == "propisi"){
-            if(SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(1)).queryList().isEmpty()){
-                PitanjaData.nabaviPitanjaPropisi(listaPitanja);
-            }
-            else{
-                listaPitanja = Pitanje.getOnlyPropisi();
-            }
-        }
-        else{
-            if(SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(2)).queryList().isEmpty()){
-                PitanjaData.nabaviPitanjaPrvaPomoc(listaPitanja);
-            }
-            else{
-                listaPitanja = Pitanje.getOnlyPrvaPomoc();
-            }
-        }
+
+        requestData();
 
         return View;
     }
@@ -244,6 +235,11 @@ public class TestoviPitanjeFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onDataLoaded(ArrayList<Pitanje> listPitanje) {
+        this.listaPitanja = listPitanje;
+    }
+
     private static class Tocnost{
         protected int brojPitanja;
         protected boolean odgovor1=false;
@@ -289,5 +285,29 @@ public class TestoviPitanjeFragment extends Fragment {
             listaTocnosti.add(tocnost);
         }
 
+    }
+
+    /**
+     * Metoda trazi/pribavlja podatke o svim pitanjima ovisno o tipu pitanja (propisi, prva pomoc)
+     */
+    public void requestData(){
+        if (tipPitanja == "propisi"){
+            if(SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(1)).queryList().isEmpty()){
+                dataLoader = new AppDataLoader();
+            }
+            else{
+                dataLoader = new DbDataLoader();
+            }
+            dataLoader.loadPitanjeData(this, 1);
+        }
+        else{
+            if(SQLite.select().from(Pitanje.class).where(Pitanje_Table.id_tipa_id.eq(2)).queryList().isEmpty()){
+                dataLoader = new AppDataLoader();
+            }
+            else{
+                dataLoader = new DbDataLoader();
+            }
+            dataLoader.loadPitanjeData(this, 2);
+        }
     }
 }

@@ -10,19 +10,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bkl.air.foi.core.DataLoader;
+import com.bkl.air.foi.core.VoziloDataLoadedListener;
 import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
 import com.bkl.air.foi.mdrivingschool.adapters.VozilaAdapter;
 import com.bkl.air.foi.database.Vozilo;
+import com.bkl.air.foi.mdrivingschool.loaders.AppDataLoader;
+import com.bkl.air.foi.mdrivingschool.loaders.DbDataLoader;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VozilaFragment extends Fragment{
+public class VozilaFragment extends Fragment implements VoziloDataLoadedListener{
 
     private List<Vozilo> listaVozila = new ArrayList<>();
     private RecyclerView recyclerView;
     private VozilaAdapter mAdapter;
+    private DataLoader dataLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,12 +40,7 @@ public class VozilaFragment extends Fragment{
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Vozila");
         recyclerView = (RecyclerView) getView().findViewById(R.id.main_recycler);
 
-        if(SQLite.select().from(Vozilo.class).queryList().isEmpty()){
-            VozilaData.nabaviPodatkeVozila(listaVozila);
-        }
-        else{
-            listaVozila = Vozilo.getAll();
-        }
+        requestData();
 
         mAdapter = new VozilaAdapter(listaVozila, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -50,4 +50,21 @@ public class VozilaFragment extends Fragment{
         mAdapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void onDataLoaded(ArrayList<Vozilo> listVozilo) {
+        this.listaVozila = listVozilo;
+    }
+
+    /**
+     * Metoda trazi/pribavlja podatke o svim vozilima
+     */
+    public void requestData(){
+        if(SQLite.select().from(Vozilo.class).queryList().isEmpty()){
+            dataLoader = new AppDataLoader();
+        }
+        else{
+            dataLoader = new DbDataLoader();
+        }
+        dataLoader.loadVoziloData(this);
+    }
 }

@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bkl.air.foi.core.DataLoader;
+import com.bkl.air.foi.core.KontaktDataLoadedListener;
 import com.bkl.air.foi.database.Kontakt;
 import com.bkl.air.foi.mdrivingschool.adapters.KontaktAdapter;
 import com.bkl.air.foi.mdrivingschool.helpers.KontaktData;
+import com.bkl.air.foi.mdrivingschool.loaders.AppDataLoader;
+import com.bkl.air.foi.mdrivingschool.loaders.DbDataLoader;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.ArrayList;
@@ -22,11 +26,12 @@ import java.util.List;
  * Created by Bunic on 1.11.2016..
  */
 
-public class KontaktFragment extends Fragment  {
+public class KontaktFragment extends Fragment implements KontaktDataLoadedListener {
 
     private List<Kontakt> listKontakt = new ArrayList<>();
     private RecyclerView recyclerView;
     private KontaktAdapter mAdapter;
+    private DataLoader dataLoader;
 
 
     @Override
@@ -39,15 +44,10 @@ public class KontaktFragment extends Fragment  {
         super.onStart();
 
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Kontakti");
-        KontaktData.loadKontaktData(listKontakt);
+
         recyclerView = (RecyclerView) getView().findViewById(R.id.kontakt_recycler);
 
-        if(SQLite.select().from(Kontakt.class).queryList().isEmpty()){
-            KontaktData.loadKontaktData(listKontakt);
-        }
-        else{
-            listKontakt = Kontakt.getAll();
-        }
+        requestData();
 
         mAdapter = new KontaktAdapter(listKontakt, getActivity());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
@@ -56,5 +56,23 @@ public class KontaktFragment extends Fragment  {
         recyclerView.setAdapter(mAdapter);
 
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onDataLoaded(ArrayList<Kontakt> listKontakt) {
+        this.listKontakt = listKontakt;
+    }
+
+    /**
+     * Metoda trazi/pribavlja podatke o svim kontaktima
+     */
+    public void requestData(){
+        if(SQLite.select().from(Kontakt.class).queryList().isEmpty()){
+            this.dataLoader = new AppDataLoader();
+        }
+        else{
+            this.dataLoader = new DbDataLoader();
+        }
+        dataLoader.loadKontaktData(this);
     }
 }

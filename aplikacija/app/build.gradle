@@ -32,6 +32,7 @@ dependencies {
 
     //.............Unutarnje zavisnosti...............
     compile project(":database")
+    compile project(":core")
 
     //.............Vanjske zavisnosti...............
 
