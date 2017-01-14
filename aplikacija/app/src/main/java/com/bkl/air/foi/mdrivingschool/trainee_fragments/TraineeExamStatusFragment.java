@@ -49,21 +49,28 @@ public class TraineeExamStatusFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Početna stranica");
 
-        if(korisnik.getPropisi().equals("polozio")) {
+        if(korisnik.getPropisi().equals("polozeno")) {
             examPropisi.setText("Položio");
             examPropisi.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         }else {
             examPropisi.setText("Nije položio");
             examPropisi.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
         }
-        if(korisnik.getPrva_pomoc().equals("polozio")){
+        if(korisnik.getPrva_pomoc().equals("polozeno")){
             examFirstAid.setText("Položio");
             examFirstAid.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
         }else {
             examFirstAid.setText("Nije položio");
             examFirstAid.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
         }
-        examDrivig.setText("Nije definirano");
+        if(korisnik.getIspit_voznje().equals("polozeno")){
+            examDrivig.setText("Položio");
+            examDrivig.setTextColor(getResources().getColor(android.R.color.holo_green_dark));
+        }else{
+            examDrivig.setText("Nije položio");
+            examDrivig.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+        }
+
 
     }
 

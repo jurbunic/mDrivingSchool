@@ -246,6 +246,30 @@
         </TableRow>
 
         <TableRow>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Polozio vožnju: "
+                android:gravity="left"
+                android:id="@+id/detailes_vp_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+
+            <TextView
+                android:layout_below="@id/trainee_details_ppp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Polozio vožnju: "
+                android:id="@+id/trainee_details_vp"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
             <TextView
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
@@ -257,12 +281,37 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="17sp"
                 android:paddingBottom="5dp"/>
+
             <TextView
-                android:layout_below="@+id/trainee_details_ppp"
+                android:layout_below="@id/trainee_details_vp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sati voznje: "
                 android:id="@+id/trainee_details_sv"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sljedeća vožnja: "
+                android:gravity="left"
+                android:id="@+id/detailes_slv_label"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
+                android:paddingBottom="5dp"/>
+
+            <TextView
+                android:layout_below="@id/trainee_details_sv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sljedeća vožnja: "
+                android:id="@+id/trainee_details_slv"
                 android:textSize="17sp"
                 android:paddingBottom="5dp"/>
         </TableRow>

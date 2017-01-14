@@ -1,6 +1,9 @@
 package com.bkl.air.foi.database;
 
 
+import java.sql.Time;
+import java.util.Date;
+
 /**
  * Created by HP on 8.12.2016..
  */
@@ -18,6 +21,8 @@ public class Korisnik {
     private String propisi;
     private String  prva_pomoc;
     private String ispit_voznje;
+    private String datum_voznje;
+    private String vrijeme_voznje;
     private int sati_voznje;
     private String user_name;
     private String user_pass;
@@ -28,7 +33,7 @@ public class Korisnik {
 
 
 
-    public Korisnik(int id, int tip_id, String ime, String prezime, String datum_rodenja, String mjesto_rodenja, String mobitel, String telefon, String email, String adresa, String propisi, String prva_pomoc, String ispit_voznje, int sati_voznje, String user_name, String user_pass) {
+    public Korisnik(int id, int tip_id, String ime, String prezime, String datum_rodenja, String mjesto_rodenja, String mobitel, String telefon, String email, String adresa, String propisi, String prva_pomoc, String ispit_voznje,String datum_voznje, String vrijeme_voznje, int sati_voznje, String user_name, String user_pass) {
         this.id = id;
         this.tip_id = tip_id;
         this.ime = ime;
@@ -42,6 +47,8 @@ public class Korisnik {
         this.propisi = propisi;
         this.prva_pomoc = prva_pomoc;
         this.ispit_voznje = ispit_voznje;
+        this.datum_voznje = datum_voznje;
+        this.vrijeme_voznje = vrijeme_voznje;
         this.sati_voznje = sati_voznje;
         this.user_name = user_name;
         this.user_pass = user_pass;
@@ -173,5 +180,21 @@ public class Korisnik {
 
     public void setIspit_voznje(String ispit_voznje) {
         this.ispit_voznje = ispit_voznje;
+    }
+
+    public String getDatum_voznje() {
+        return this.datum_voznje;
+    }
+
+    public void setDatum_voznje(String datum_voznje) {
+        this.datum_voznje = datum_voznje;
+    }
+
+    public String getVrijeme_voznje() {
+        return this.vrijeme_voznje;
+    }
+
+    public void setVrijeme_voznje(String vrijeme_voznje) {
+        this.vrijeme_voznje = vrijeme_voznje;
     }
 }

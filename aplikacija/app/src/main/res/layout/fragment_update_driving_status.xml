@@ -122,7 +122,7 @@
                     android:id="@+id/drivingHoursLayout">
 
                     <TextView
-                        android:text="Novo stanje:"
+                        android:text="Dodaj broj sati:"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView14"
                         android:textSize="20sp"
@@ -139,7 +139,7 @@
                         android:textStyle="normal|bold"
                         android:textColor="?android:attr/textColorTertiary"
                         android:textSize="25sp"
-                        android:hint="#broj"
+                        android:hint="0"
                         android:layout_width="150dp"
                         android:textAlignment="textStart"
                         android:layout_weight="0" />
@@ -239,7 +239,7 @@
                         android:inputType="date"
                         android:ems="10"
                         android:id="@+id/editText_date"
-                        android:hint="npr. 22.1.2017."
+                        android:hint="npr. 2017-01-25"
                         android:layout_weight="1"
                         android:textSize="20sp"
                         android:layout_width="150dp" />

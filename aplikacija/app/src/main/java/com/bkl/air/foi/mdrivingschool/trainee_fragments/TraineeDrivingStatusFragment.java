@@ -46,6 +46,8 @@ public class TraineeDrivingStatusFragment extends Fragment {
         Korisnik currentUser = info.getInfoById(currentUserId);
 
         currentDrivingHours.setText(String.valueOf(currentUser.getSati_voznje()));
-        nextDrivingSession.setText(String.valueOf(currentUser.getSati_voznje())); //potrebno zamjeniti sa terminom
+
+        String nextDrive = String.valueOf(currentUser.getDatum_voznje() + " u " + currentUser.getVrijeme_voznje());
+        nextDrivingSession.setText(nextDrive);
     }
 }
