@@ -88,6 +88,8 @@ public class UserInfo {
                 korisnik.setPrva_pomoc(JO.getString("prva_pomoc"));
                 korisnik.setPropisi(JO.getString("propisi"));
                 korisnik.setIspit_voznje(JO.getString("ispit_voznje"));
+                korisnik.getDatum_voznje(JO.getString("datum_voznje"));
+                korisnik.getVrijeme_voznje(JO.getString("vrijeme_voznje"));
                 korisnik.setSati_voznje(JO.getInt("sati_voznje"));
                 korisnik.setId(JO.getInt("id"));
         //        korisnik.setTip_id(JO.getInt("tip_id"));

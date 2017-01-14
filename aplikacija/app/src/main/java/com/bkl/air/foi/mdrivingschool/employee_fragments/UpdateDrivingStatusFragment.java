@@ -41,10 +41,18 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     @BindView(R.id.editText_driving_hours)
     EditText drivingHaurs;
 
+    @BindView(R.id.editText_date)
+    EditText dateSession;
+
+    @BindView(R.id.editText_time)
+    EditText timeSession;
+
     Context thisContext;
     String currentUserId;
     String chosenTraineeID;
     String dodajSat;
+    String date;
+    String time;
 
     ArrayList<Korisnik> allTrainees = new ArrayList<>();
 
@@ -102,6 +110,15 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         dodajSat = drivingHaurs.getText().toString();
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("9","1",chosenTraineeID,dodajSat);
+        refresh();
+    }
+
+    @OnClick(R.id.button_update_session)
+    public void onButtonUpdateSessionClick(){
+        date = dateSession.getText().toString();
+        time = timeSession.getText().toString();
+        RetriveData retriveData = new RetriveData(thisContext);
+        retriveData.execute("10","1",chosenTraineeID,date,time);
         refresh();
     }
 
