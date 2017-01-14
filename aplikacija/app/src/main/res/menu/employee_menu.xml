@@ -23,6 +23,12 @@
             android:id="@+id/employee_azuriraj_stanje_ispita"
             android:icon="@drawable/ikona_informacije_o_polaznicima"
             android:title="Ažuriraj stanje ispita polaznika"/>
+        <item
+            android:id="@+id/employee_raspored"
+            android:title="Raspored vožnje"
+            android:icon="@drawable/ikona_raspored"
+
+            />
 
 
     </group>

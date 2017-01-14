@@ -20,6 +20,7 @@ import com.bkl.air.foi.mdrivingschool.employee_fragments.AddNewTraineeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.AssignTraineeToEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MainEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MyTraineesFragment;
+import com.bkl.air.foi.mdrivingschool.employee_fragments.ScheduleFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.UpdateExamStatusFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
@@ -144,6 +145,10 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
             case R.id.employee_azuriraj_stanje_ispita:
                 UpdateExamStatusFragment uesf = new UpdateExamStatusFragment();
                 StartFragment.StartNewFragment(uesf,this);
+                break;
+            case R.id.employee_raspored:
+                ScheduleFragment sf = new ScheduleFragment();
+                StartFragment.StartNewFragment(sf,this);
                 break;
             case R.id.employee_kontakt_navigation:
                 KontaktFragment kf = new KontaktFragment();
