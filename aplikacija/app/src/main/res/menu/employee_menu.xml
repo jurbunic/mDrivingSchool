@@ -30,11 +30,11 @@
             android:icon="@drawable/ikona_raspored"
 
             />
-
+        <item
             android:id="@+id/employee_azuriraj_stanje_voznje"
             android:icon="@drawable/ikona_informacije_o_polaznicima"
             android:title="Ažuriraj satove vožnje"/>
-
+        
 
 
     </group>
