@@ -32,6 +32,8 @@ public class TraineeDetails extends Fragment {
     TextView traineeDrivingRules;
     TextView traineeFirstAid;
     TextView traineeHoursOfDriving;
+    TextView traineeDrivingExam;
+    TextView traineeNextDrive;
 
     @Nullable
     @Override
@@ -55,6 +57,8 @@ public class TraineeDetails extends Fragment {
         traineeDrivingRules = (TextView) getActivity().findViewById(R.id.trainee_details_pp);
         traineeFirstAid = (TextView) getActivity().findViewById(R.id.trainee_details_ppp);
         traineeHoursOfDriving = (TextView) getActivity().findViewById(R.id.trainee_details_sv);
+        traineeDrivingExam = (TextView) getActivity().findViewById(R.id.trainee_details_vp);
+        traineeNextDrive = (TextView) getActivity().findViewById(R.id.trainee_details_slv);
 
         traineeId = getArguments().getString("id");
 
@@ -73,6 +77,8 @@ public class TraineeDetails extends Fragment {
         traineeDrivingRules.setText(korisnik.getPropisi());
         traineeFirstAid.setText(korisnik.getPrva_pomoc());
         traineeHoursOfDriving.setText(Integer.toString(korisnik.getSati_voznje()));
+        traineeDrivingExam.setText(korisnik.getIspit_voznje());
+        traineeNextDrive.setText(korisnik.getDatum_voznje() + " u " + korisnik.getVrijeme_voznje());
 
     }
 }

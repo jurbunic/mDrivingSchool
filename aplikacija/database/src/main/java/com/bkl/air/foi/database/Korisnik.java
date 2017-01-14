@@ -182,7 +182,7 @@ public class Korisnik {
         this.ispit_voznje = ispit_voznje;
     }
 
-    public String getDatum_voznje(String datum_voznje) {
+    public String getDatum_voznje() {
         return this.datum_voznje;
     }
 
@@ -190,7 +190,7 @@ public class Korisnik {
         this.datum_voznje = datum_voznje;
     }
 
-    public String getVrijeme_voznje(String vrijeme_voznje) {
+    public String getVrijeme_voznje() {
         return this.vrijeme_voznje;
     }
 
