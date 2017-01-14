@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool.employee_fragments;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 import java.util.ArrayList;
@@ -127,7 +129,7 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
                     if(chosenTraineeId.equals(String.valueOf(trainee.getId()))){
                         currentStatusPropisi.setText(String.valueOf(trainee.getPropisi()));
                         currentStatusPrvaPomoc.setText(String.valueOf(trainee.getPrva_pomoc()));
-                        currentStatusVoznja.setText(String.valueOf(trainee.getSati_voznje())); //potrebna promjena za novi atribut
+                        currentStatusVoznja.setText(String.valueOf(trainee.getIspit_voznje())); //potrebna promjena za novi atribut
                     }
                 }
                 break;
@@ -158,6 +160,15 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
 
     @OnClick(R.id.button_update_exams)
     public void onButtonUpdateExamsPressed(){
-        Toast.makeText(thisContext, chosenTraineeId + chosenStatusPropisi + chosenStatusPrvaPomoc + chosenStatusVoznja, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(thisContext, chosenTraineeId + chosenStatusPropisi + chosenStatusPrvaPomoc + chosenStatusVoznja, Toast.LENGTH_SHORT).show();
+        RetriveData retriveData = new RetriveData(thisContext);
+        retriveData.execute("8","1",chosenTraineeId,chosenStatusPropisi,chosenStatusPrvaPomoc,chosenStatusVoznja);
+        refresh();
     }
+
+    public void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
+    }
+
 }
