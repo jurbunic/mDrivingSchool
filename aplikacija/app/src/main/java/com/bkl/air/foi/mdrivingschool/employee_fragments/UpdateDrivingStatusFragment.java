@@ -1,6 +1,7 @@
 package com.bkl.air.foi.mdrivingschool.employee_fragments;
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,11 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by HP on 14.1.2017..
@@ -34,9 +38,13 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     @BindView(R.id.textView_current_hours)
     TextView currentStatusHours;
 
+    @BindView(R.id.editText_driving_hours)
+    EditText drivingHaurs;
+
     Context thisContext;
     String currentUserId;
     String chosenTraineeID;
+    String dodajSat;
 
     ArrayList<Korisnik> allTrainees = new ArrayList<>();
 
@@ -89,11 +97,24 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
     }
 
+    @OnClick(R.id.button_update_hours)
+    public void onButtonUpdateHoursClick(){
+        dodajSat = drivingHaurs.getText().toString();
+        RetriveData retriveData = new RetriveData(thisContext);
+        retriveData.execute("9","1",chosenTraineeID,dodajSat);
+        refresh();
+    }
+
     private String getOnlyId(String fullString){
         String id = "";
         if(fullString.contains(" ")){
             id = fullString.substring(0, fullString.indexOf(" "));
         }
         return id;
+    }
+
+    public void refresh(){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.detach(this).attach(this).commit();
     }
 }
