@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bkl.air.foi.database.Appointment;
+import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
 
 import java.util.List;
@@ -17,26 +17,27 @@ import java.util.List;
  */
 
 public class SchedulaAdapter extends RecyclerView.Adapter<SchedulaAdapter.ScheduelViewHolder>{
-    private List<Appointment> appointmentList;
+    private List<Korisnik> korisnikList;
     Context context;
+    int helper;
 
     public  static class ScheduelViewHolder extends RecyclerView.ViewHolder{
         public TextView mAppointmentDate;
         public TextView mAppointmentTrainee;
         public TextView mAppointmentStartTime;
-        public TextView mAppointmentEndTime;
+
 
         public ScheduelViewHolder(View itemView) {
             super(itemView);
             mAppointmentDate = (TextView) itemView.findViewById(R.id.schedule_date);
             mAppointmentTrainee = (TextView) itemView.findViewById(R.id.schedule_trainee);
             mAppointmentStartTime = (TextView) itemView.findViewById(R.id.schedule_hour_start);
-            mAppointmentEndTime = (TextView) itemView.findViewById(R.id.schedule_hour_finish);
+
         }
     }
 
-    public SchedulaAdapter(List<Appointment> appointmentList, Context context) {
-        this.appointmentList = appointmentList;
+    public SchedulaAdapter(List<Korisnik> korisnikList, Context context) {
+        this.korisnikList = korisnikList;
         this.context = context;
     }
 
@@ -49,15 +50,23 @@ public class SchedulaAdapter extends RecyclerView.Adapter<SchedulaAdapter.Schedu
 
     @Override
     public void onBindViewHolder(ScheduelViewHolder holder, int position) {
+        /*
         Appointment appointment = appointmentList.get(position);
         holder.mAppointmentDate.setText(appointment.getStartDate().toString());
         holder.mAppointmentTrainee.setText("Ivo");
         holder.mAppointmentStartTime.setText(appointment.getStartTime());
         holder.mAppointmentEndTime.setText(appointment.getEndTime());
+        */
+        Korisnik korisnik = korisnikList.get(position);
+        holder.mAppointmentDate.setText(korisnik.getDatum_voznje());
+        holder.mAppointmentTrainee.setText(korisnik.getIme()+" "+korisnik.getPrezime());
+        holder.mAppointmentStartTime.setText(korisnik.getVrijeme_voznje());
+
+
     }
 
     @Override
     public int getItemCount() {
-        return appointmentList.size();
+        return korisnikList.size();
     }
 }

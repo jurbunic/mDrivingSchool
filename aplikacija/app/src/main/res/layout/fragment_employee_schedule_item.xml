@@ -42,6 +42,7 @@
             android:layout_marginStart="0dp"
             android:textIsSelectable="false"
             tools:text="Polaznik"
+            android:textSize="16dp"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Info"
             android:textStyle="normal|bold" />
 
@@ -50,16 +51,13 @@
             android:layout_height="wrap_content"
             android:id="@+id/schedule_hour_start"
             tools:text="Od"
+            android:textSize="16dp"
             android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Info"
-            android:textStyle="normal|italic" />
+            android:textStyle="bold|italic" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/schedule_hour_finish"
-            tools:text="Do"
-            android:textAppearance="@style/TextAppearance.StatusBar.EventContent.Info"
-            android:textStyle="normal|italic" />
+
+
+
 
     </LinearLayout>
 

@@ -152,11 +152,11 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
             case R.id.employee_raspored:
                 ScheduleFragment sf = new ScheduleFragment();
                 StartFragment.StartNewFragment(sf,this);
+                break;
 
             case R.id.employee_azuriraj_stanje_voznje:
                 UpdateDrivingStatusFragment udsf = new UpdateDrivingStatusFragment();
                 StartFragment.StartNewFragment(udsf,this);
-
                 break;
             case R.id.employee_kontakt_navigation:
                 KontaktFragment kf = new KontaktFragment();
