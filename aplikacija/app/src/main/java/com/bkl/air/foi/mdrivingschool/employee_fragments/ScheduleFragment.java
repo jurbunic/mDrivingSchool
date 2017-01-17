@@ -11,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.adapters.SchedulaAdapter;
+import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
@@ -59,6 +61,15 @@ public class ScheduleFragment extends Fragment {
             }
         });
 
+        ImageButton button1 = (ImageButton) getActivity().findViewById(R.id.test_not);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RetriveData retriveData = new RetriveData(getActivity().getApplicationContext());
+                retriveData.execute("11","20");
+
+            }
+        });
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
         Date drivingDate;

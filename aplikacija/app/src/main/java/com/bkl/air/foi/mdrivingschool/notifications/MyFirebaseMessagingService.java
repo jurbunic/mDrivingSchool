@@ -34,10 +34,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
-        sendNotification(remoteMessage.toString());
+        openNotification(remoteMessage.toString());
     }
 
-    private void sendNotification(String messageBody){
+    private void openNotification(String messageBody){
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("body",messageBody);
@@ -55,6 +55,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0,notificationBuilder.build());
+    }
+
+    public static void sendNotification(String messageBody, String TAG){
+
     }
 
 }

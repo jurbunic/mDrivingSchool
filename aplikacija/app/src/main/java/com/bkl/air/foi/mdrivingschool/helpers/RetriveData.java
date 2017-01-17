@@ -25,6 +25,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
 
     Context context;
     String dataUrl = "";
+    String notificationUrl = "";
     String jsonString = "";
 
     public RetriveData(Context context){
@@ -37,6 +38,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
     @Override
     protected void onPreExecute() {
         dataUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x045/servis/json_query.php";
+        notificationUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x045/servis/notifikacije.php";
     }
 
     /**
@@ -380,6 +382,41 @@ public class RetriveData extends AsyncTask <String, Void, String> {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }else if(query.equals("11")){
+            String token= "fijXJtzioyI:APA91bEH9vESMpokubQroHyK4NTZTt3cJOVA7eqfEDFjMzO-xS329fl0LX2ABZPHgUFQuwwm6sFMIG6i_IkYxd5QwcHIRL9lAtAEEJufza5DxC4aKTqzxRlTbiDFrbP6ut2ao192Dulq\n";
+            String messageBody = "Server";
+            try {
+                URL url = new URL(notificationUrl);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.setDoInput(true);
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream,"UTF-8"));
+                String data = URLEncoder.encode("token","UTF-8")+"="+URLEncoder.encode(token,"UTF-8")+"&"+URLEncoder.encode("body","UTF-8")+"="+URLEncoder.encode(messageBody,"UTF-8");
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
+                String responese = "";
+                String line = "";
+                while ((line = bufferedReader.readLine()) != null){
+                    responese += line;
+                }
+
+                bufferedReader.close();
+                inputStream.close();
+
+                httpURLConnection.disconnect();
+                return  responese;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -413,8 +450,8 @@ public class RetriveData extends AsyncTask <String, Void, String> {
                 Toast.makeText(context,"Neuspješno dodavanje sati",Toast.LENGTH_LONG).show();
             }else if (s.equals("8")){
                 Toast.makeText(context,"Dodan termin vožnje",Toast.LENGTH_LONG).show();
-            }else if (s.equals("9")){
-                Toast.makeText(context,"Nije dodan termin",Toast.LENGTH_LONG).show();
+            }else if (s.equals("9")) {
+                Toast.makeText(context, "Nije dodan termin", Toast.LENGTH_LONG).show();
             }
             jsonString = s;
             super.onPostExecute(jsonString);

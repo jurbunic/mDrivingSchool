@@ -64,6 +64,9 @@ dependencies {
     //ads
     compile 'com.google.android.gms:play-services-ads:9.2.0'
 
+    compile 'com.squareup.okhttp:okhttp:2.7.0'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

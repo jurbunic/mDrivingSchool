@@ -1,7 +1,9 @@
 package com.bkl.air.foi.mdrivingschool.trainee_fragments;
 
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.TestoviMainFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
+import com.bkl.air.foi.mdrivingschool.notifications.RegistrationSender;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +34,8 @@ public class TraineeMSFragment extends Fragment {
     private String currentUserId;
     private String currentUserName;
     private String currentUserSurname;
+    private String token;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -47,12 +52,16 @@ public class TraineeMSFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Početna stranica");
         textUser.setText(currentUserName + " " + currentUserSurname);
+        token = getToken();
+        RegistrationSender registrationSender = new RegistrationSender(getActivity().getApplicationContext(),currentUserId,token);
+        registrationSender.execute();
     }
 
     @OnClick(R.id.imageButton_tzz)
     public void onImageButtonTzzClicked(){
         TestoviMainFragment fk = new TestoviMainFragment();
         StartFragment.StartNewFragment(fk,getActivity());
+
     }
     @OnClick(R.id.imageButton_sv)
     public void onImageButtonSvClicked(){
@@ -69,5 +78,12 @@ public class TraineeMSFragment extends Fragment {
         args.putString("USER_ID", currentUserId);
         tesf.setArguments(args);
         StartFragment.StartNewFragment(tesf,getActivity());
+    }
+
+
+    public String getToken() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        token = sharedPreferences.getString("FCM_TOKEN",null);
+        return token;
     }
 }
