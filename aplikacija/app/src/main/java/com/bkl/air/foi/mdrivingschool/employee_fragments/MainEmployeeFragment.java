@@ -63,11 +63,16 @@ public class MainEmployeeFragment extends Fragment {
         StartFragment.StartNewFragment(fk,getActivity());
     }
 
+    @OnClick(R.id.employee_main_img_btn_raspored)
+    public void onImageButtonRasporedClicked(){
+        ScheduleFragment sf = new ScheduleFragment();
+        StartFragment.StartNewFragment(sf,getActivity());
+    }
+
     @OnClick(R.id.imageButton_tzz_zap)
     public void onImageButtonTzzZapClicked(){
         TestoviMainFragment fk = new TestoviMainFragment();
         StartFragment.StartNewFragment(fk,getActivity());
     }
-
 
 }

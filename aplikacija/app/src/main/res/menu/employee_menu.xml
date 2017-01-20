@@ -8,34 +8,29 @@
             android:icon="@drawable/ikona_pocetna"
             android:title="Početna stranica"/>
         <item
-            android:id="@+id/employee_dodaj_polaznika_navigation"
-            android:icon="@drawable/ikona_dodaj_polaznika"
-            android:title="Dodaj polaznika" />
-        <item
-            android:id="@+id/employee_dodjeli_polaznika_instruktoru_navigation"
-            android:icon="@drawable/ikona_dodaj_polaznika"
-            android:title="Dodjeli polaznika instruktoru" />
-        <item
             android:id="@+id/employee_informacije_o_polaznicima"
             android:icon="@drawable/ikona_informacije_o_polaznicima"
             android:title="Informacije o polaznicima"/>
         <item
-            android:id="@+id/employee_azuriraj_stanje_ispita"
-            android:icon="@drawable/ikona_informacije_o_polaznicima"
-            android:title="Ažuriraj stanje ispita polaznika"/>
-        <item
-
             android:id="@+id/employee_raspored"
             android:title="Raspored vožnje"
-            android:icon="@drawable/ikona_raspored"
-
-            />
+            android:icon="@drawable/ikona_raspored"/>
+        <item
+            android:id="@+id/employee_dodaj_polaznika_navigation"
+            android:icon="@drawable/ikona_dodaj_pol"
+            android:title="Dodaj polaznika" />
+        <item
+            android:id="@+id/employee_dodjeli_polaznika_instruktoru_navigation"
+            android:icon="@drawable/ikona_dodaj_pol_ins"
+            android:title="Dodjeli polaznika instruktoru" />
+        <item
+            android:id="@+id/employee_azuriraj_stanje_ispita"
+            android:icon="@drawable/ikona_azuriranje_ispita"
+            android:title="Ažuriraj stanje ispita polaznika"/>
         <item
             android:id="@+id/employee_azuriraj_stanje_voznje"
-            android:icon="@drawable/ikona_informacije_o_polaznicima"
+            android:icon="@drawable/ikona_vozila"
             android:title="Ažuriraj satove vožnje"/>
-
-
 
     </group>
     <group android:checkableBehavior="single" android:id="@+id/employee_group2">
