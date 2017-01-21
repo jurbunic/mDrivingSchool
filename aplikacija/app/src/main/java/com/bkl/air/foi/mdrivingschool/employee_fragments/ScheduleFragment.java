@@ -11,12 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.adapters.SchedulaAdapter;
-import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
@@ -32,7 +30,7 @@ import java.util.List;
  * Created by Jurica Bunić on 14.1.2017..
  */
 
-public class ScheduleFragment extends Fragment {
+public class ScheduleFragment extends Fragment{
 
     private List<Korisnik> korisnikList;
     private RecyclerView recyclerView;
@@ -40,6 +38,7 @@ public class ScheduleFragment extends Fragment {
     private SchedulaAdapter mAdapter1;
     private SchedulaAdapter mAdapter2;
 
+    private String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -65,8 +64,10 @@ public class ScheduleFragment extends Fragment {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 RetriveData retriveData = new RetriveData(getActivity().getApplicationContext());
                 retriveData.execute("11","20");
+                */
 
             }
         });
@@ -142,4 +143,6 @@ public class ScheduleFragment extends Fragment {
 
 
     }
+
+
 }

@@ -3,8 +3,9 @@ package com.bkl.air.foi.mdrivingschool.employee_fragments;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,9 @@ import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
+import com.bkl.air.foi.mdrivingschool.notifications.Notification;
+import com.bkl.air.foi.mdrivingschool.notifications.NotificationSender;
+import com.bkl.air.foi.mdrivingschool.notifications.TokenFetcher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +35,7 @@ import butterknife.OnClick;
  * Created by HP on 14.1.2017..
  */
 
-public class UpdateDrivingStatusFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class UpdateDrivingStatusFragment extends Fragment implements AdapterView.OnItemSelectedListener, Notification {
     @BindView(R.id.spinner_ip_update_driving)
     Spinner traineeSpinner;
 
@@ -120,6 +124,17 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("10","1",chosenTraineeID,date,time);
         refresh();
+        TokenFetcher fetcher = new TokenFetcher(chosenTraineeID);
+        String token;
+        try{
+            token= fetcher.execute().get().toString();
+            sendNotification(date, token);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
     }
 
     private String getOnlyId(String fullString){
@@ -134,4 +149,11 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
     }
+
+    @Override
+    public void sendNotification(String message, String tokens) {
+        NotificationSender notification = new NotificationSender(tokens, message);
+        notification.execute();
+    }
+
 }
