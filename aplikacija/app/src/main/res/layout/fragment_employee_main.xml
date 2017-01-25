@@ -81,11 +81,11 @@
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:srcCompat="@drawable/img_testovi1"
+            app:srcCompat="@drawable/img_administracija"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
             android:layout_marginTop="15dp"
-            android:id="@+id/imageButton_tzz_zap"
+            android:id="@+id/employee_main_img_btn_administracija"
             style="@android:style/Widget.Material.ImageButton"
             android:scaleType="fitXY"
             android:cropToPadding="false"

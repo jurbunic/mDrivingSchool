@@ -123,6 +123,8 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             args.putString("USER_ID", currentUserId);
             args.putString("USER_NAME", currentUser.getIme());
             args.putString("USER_SURNAME", currentUser.getPrezime());
+            args.putString("INSTRUCTOR_NAME", usersInstructor.getIme());
+            args.putString("INSTRUCTOR_SURNAME", usersInstructor.getPrezime());
             tmsf.setArguments(args);
             mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
             mFragmentManager.beginTransaction()
