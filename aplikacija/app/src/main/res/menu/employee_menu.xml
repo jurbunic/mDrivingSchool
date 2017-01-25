@@ -16,21 +16,9 @@
             android:title="Raspored vožnje"
             android:icon="@drawable/ikona_raspored"/>
         <item
-            android:id="@+id/employee_dodaj_polaznika_navigation"
-            android:icon="@drawable/ikona_dodaj_pol"
-            android:title="Dodaj polaznika" />
-        <item
-            android:id="@+id/employee_dodjeli_polaznika_instruktoru_navigation"
-            android:icon="@drawable/ikona_dodaj_pol_ins"
-            android:title="Dodjeli polaznika instruktoru" />
-        <item
-            android:id="@+id/employee_azuriraj_stanje_ispita"
+            android:id="@+id/employee_administracija"
             android:icon="@drawable/ikona_azuriranje_ispita"
-            android:title="Ažuriraj stanje ispita polaznika"/>
-        <item
-            android:id="@+id/employee_azuriraj_stanje_voznje"
-            android:icon="@drawable/ikona_vozila"
-            android:title="Ažuriraj satove vožnje"/>
+            android:title="Administracija"/>
 
     </group>
     <group android:checkableBehavior="single" android:id="@+id/employee_group2">

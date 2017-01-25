@@ -147,18 +147,21 @@
                     android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:text="Trenutno stanje propisa:"
+                        android:text="Trenutno stanje propisa: "
                         android:layout_height="wrap_content"
                         android:id="@+id/textView_tsp"
                         android:layout_weight="1"
-                        android:layout_width="100dp" />
+                        android:layout_width="100dp"
+                        android:textAlignment="textEnd" />
 
                     <TextView
                         android:text="Učitavanje..."
                         android:layout_height="wrap_content"
                         android:id="@+id/textView_ts_propisi"
                         android:layout_weight="1"
-                        android:layout_width="50dp" />
+                        android:layout_width="50dp"
+                        android:textAlignment="center"
+                        android:textStyle="normal|bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -194,18 +197,21 @@
                     android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:text="Trenutno stanje prve pomoći:"
+                        android:text="Trenutno stanje prve pomoći: "
                         android:layout_height="wrap_content"
                         android:id="@+id/textView_tspp"
                         android:layout_weight="1"
-                        android:layout_width="100dp" />
+                        android:layout_width="100dp"
+                        android:textAlignment="textEnd" />
 
                     <TextView
                         android:text="Učitanjave..."
                         android:layout_height="wrap_content"
                         android:id="@+id/textView_ts_prvaPomoc"
                         android:layout_weight="1"
-                        android:layout_width="50dp" />
+                        android:layout_width="50dp"
+                        android:textAlignment="center"
+                        android:textStyle="normal|bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -241,18 +247,21 @@
                     android:layout_marginBottom="10dp">
 
                     <TextView
-                        android:text="Trenutno stanje vožnje:"
+                        android:text="Trenutno stanje vožnje: "
                         android:layout_height="wrap_content"
                         android:id="@+id/textView_tsv"
                         android:layout_weight="1"
-                        android:layout_width="100dp" />
+                        android:layout_width="100dp"
+                        android:textAlignment="textEnd" />
 
                     <TextView
                         android:text="Učitavanje..."
                         android:layout_height="wrap_content"
                         android:id="@+id/textView_ts_voznja"
                         android:layout_weight="1"
-                        android:layout_width="50dp" />
+                        android:layout_width="50dp"
+                        android:textAlignment="center"
+                        android:textStyle="normal|bold" />
 
                 </LinearLayout>
 

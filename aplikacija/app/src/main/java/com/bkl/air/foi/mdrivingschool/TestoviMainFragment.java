@@ -30,9 +30,9 @@ public class TestoviMainFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View View = inflater.inflate(R.layout.fragment_testovi_main, container, false);
-        ButterKnife.bind(this, View);
-        return View;
+        View view = inflater.inflate(R.layout.fragment_testovi_main, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override

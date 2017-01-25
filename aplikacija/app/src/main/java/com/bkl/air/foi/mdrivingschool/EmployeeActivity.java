@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.TextView;
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.AddNewTraineeFragment;
+import com.bkl.air.foi.mdrivingschool.employee_fragments.AdministrationFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.AssignTraineeToEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MainEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MyTraineesFragment;
@@ -133,30 +134,17 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();
                 break;
-            case R.id.employee_dodaj_polaznika_navigation:
-                AddNewTraineeFragment antf = new AddNewTraineeFragment();
-                StartFragment.StartNewFragment(antf,this);
-                break;
-            case R.id.employee_dodjeli_polaznika_instruktoru_navigation:
-                AssignTraineeToEmployeeFragment attef = new AssignTraineeToEmployeeFragment();
-                StartFragment.StartNewFragment(attef,this);
-                break;
             case R.id.employee_informacije_o_polaznicima:
                 MyTraineesFragment mtf = new MyTraineesFragment();
                 StartFragment.StartNewFragment(mtf,this);
-                break;
-            case R.id.employee_azuriraj_stanje_ispita:
-                UpdateExamStatusFragment uesf = new UpdateExamStatusFragment();
-                StartFragment.StartNewFragment(uesf,this);
                 break;
             case R.id.employee_raspored:
                 ScheduleFragment sf = new ScheduleFragment();
                 StartFragment.StartNewFragment(sf,this);
                 break;
-
-            case R.id.employee_azuriraj_stanje_voznje:
-                UpdateDrivingStatusFragment udsf = new UpdateDrivingStatusFragment();
-                StartFragment.StartNewFragment(udsf,this);
+            case R.id.employee_administracija:
+                AdministrationFragment adf = new AdministrationFragment();
+                StartFragment.StartNewFragment(adf,this);
                 break;
             case R.id.employee_kontakt_navigation:
                 KontaktFragment kf = new KontaktFragment();

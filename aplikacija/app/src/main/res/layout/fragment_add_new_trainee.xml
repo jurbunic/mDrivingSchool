@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/middleLayout"
-            android:paddingTop="30dp"
+            android:paddingTop="10dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp">
 
@@ -344,7 +344,8 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="15dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:paddingBottom="10dp">
 
             <Button
                 android:text="Dodaj polaznika"

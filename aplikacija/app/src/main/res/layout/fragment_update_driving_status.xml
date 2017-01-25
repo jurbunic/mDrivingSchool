@@ -106,7 +106,7 @@
                     android:textStyle="normal|bold" />
 
                 <TextView
-                    android:text="Molimo upišite novi broj satova vožnje polaznika:"
+                    android:text="Molimo upišite broj satova vožnje koje dodajete polazniku:"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView_mo"
@@ -152,13 +152,13 @@
                     android:id="@+id/recentDHLayout">
 
                     <TextView
-                        android:text="Trenutno stanje:"
+                        android:text="Trenutno stanje: "
                         android:layout_height="wrap_content"
                         android:id="@+id/textView12"
                         android:textSize="15sp"
                         android:textColor="?android:attr/textColorTertiary"
-                        android:layout_width="150dp"
-                        android:textAlignment="textEnd" />
+                        android:textAlignment="textEnd"
+                        android:layout_width="175dp" />
 
                     <TextView
                         android:text="#broj"
