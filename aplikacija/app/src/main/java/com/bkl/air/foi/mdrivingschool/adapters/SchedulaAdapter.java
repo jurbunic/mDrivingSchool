@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.StringDateParser;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class SchedulaAdapter extends RecyclerView.Adapter<SchedulaAdapter.Schedu
     private List<Korisnik> korisnikList;
     Context context;
     int helper;
+    StringDateParser dateParser = new StringDateParser();
 
     public  static class ScheduelViewHolder extends RecyclerView.ViewHolder{
         public TextView mAppointmentDate;
@@ -50,15 +52,9 @@ public class SchedulaAdapter extends RecyclerView.Adapter<SchedulaAdapter.Schedu
 
     @Override
     public void onBindViewHolder(ScheduelViewHolder holder, int position) {
-        /*
-        Appointment appointment = appointmentList.get(position);
-        holder.mAppointmentDate.setText(appointment.getStartDate().toString());
-        holder.mAppointmentTrainee.setText("Ivo");
-        holder.mAppointmentStartTime.setText(appointment.getStartTime());
-        holder.mAppointmentEndTime.setText(appointment.getEndTime());
-        */
+
         Korisnik korisnik = korisnikList.get(position);
-        holder.mAppointmentDate.setText(korisnik.getDatum_voznje());
+        holder.mAppointmentDate.setText(dateParser.toUserForm(korisnik.getDatum_voznje()));
         holder.mAppointmentTrainee.setText(korisnik.getIme()+" "+korisnik.getPrezime());
         holder.mAppointmentStartTime.setText(korisnik.getVrijeme_voznje());
 

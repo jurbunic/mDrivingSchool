@@ -19,11 +19,6 @@
 
             android:layout_marginRight="16dp"
             android:background="@color/colorPrimary"/>
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/test_not"
-                    android:src="@drawable/ikona_dodaj_raspored"/>
         </LinearLayout>
 
 </android.support.v7.widget.Toolbar>

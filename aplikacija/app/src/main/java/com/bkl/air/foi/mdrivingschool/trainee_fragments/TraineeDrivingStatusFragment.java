@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.StringDateParser;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 import butterknife.BindView;
@@ -47,7 +48,9 @@ public class TraineeDrivingStatusFragment extends Fragment {
 
         currentDrivingHours.setText(String.valueOf(currentUser.getSati_voznje()));
 
-        String nextDrive = String.valueOf(currentUser.getDatum_voznje() + " u " + currentUser.getVrijeme_voznje());
+        StringDateParser dateParser = new StringDateParser();
+
+        String nextDrive = String.valueOf(dateParser.toUserForm(currentUser.getDatum_voznje()) + " u " + currentUser.getVrijeme_voznje());
         nextDrivingSession.setText(nextDrive);
     }
 }

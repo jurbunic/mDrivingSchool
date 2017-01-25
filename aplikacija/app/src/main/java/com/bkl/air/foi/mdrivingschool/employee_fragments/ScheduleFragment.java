@@ -60,17 +60,6 @@ public class ScheduleFragment extends Fragment{
             }
         });
 
-        ImageButton button1 = (ImageButton) getActivity().findViewById(R.id.test_not);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*
-                RetriveData retriveData = new RetriveData(getActivity().getApplicationContext());
-                retriveData.execute("11","20");
-                */
-
-            }
-        });
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
         Date drivingDate;
@@ -84,6 +73,8 @@ public class ScheduleFragment extends Fragment{
         List<Korisnik> futureAppointment = new ArrayList<>();
 
         Korisnik korisnik;
+
+
         for(int i=0; i<korisnikList.size();i++){
             korisnik = korisnikList.get(i);
             drivingDate = convertStringToDate(korisnik.getDatum_voznje());

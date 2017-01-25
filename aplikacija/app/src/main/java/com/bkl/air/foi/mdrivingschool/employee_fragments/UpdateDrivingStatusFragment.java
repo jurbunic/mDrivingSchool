@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
+import com.bkl.air.foi.mdrivingschool.helpers.StringDateParser;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.notifications.NotificationBuilder;
 import com.bkl.air.foi.mdrivingschool.notifications.NotificationDataChangedListener;
@@ -130,8 +131,15 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         date = dateSession.getText().toString();
         time = timeSession.getText().toString();
 
+        StringDateParser dateParser = new StringDateParser();
+
+        date = dateParser.toDatabase(date);
+
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("10","1",chosenTraineeID,date,time);
+
+
+        date = dateParser.toUserForm(date);
 
         //Slanje notifikacije pomocu notificationManagera
         notificationMessage = date;
