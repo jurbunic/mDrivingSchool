@@ -55,11 +55,10 @@ public class TokenFetcher extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
         try {
             userToken = fetchToken();
-
         }catch (Exception e){
 
         }
-        return null;
+        return userToken;
     }
 
 

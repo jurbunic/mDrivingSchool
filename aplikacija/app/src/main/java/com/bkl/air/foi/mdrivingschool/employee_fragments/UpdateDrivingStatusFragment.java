@@ -3,9 +3,7 @@ package com.bkl.air.foi.mdrivingschool.employee_fragments;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +18,8 @@ import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
-import com.bkl.air.foi.mdrivingschool.notifications.Notification;
+import com.bkl.air.foi.mdrivingschool.notifications.NotificationBuilder;
+import com.bkl.air.foi.mdrivingschool.notifications.NotificationDataChangedListener;
 import com.bkl.air.foi.mdrivingschool.notifications.NotificationSender;
 import com.bkl.air.foi.mdrivingschool.notifications.TokenFetcher;
 
@@ -35,7 +34,7 @@ import butterknife.OnClick;
  * Created by HP on 14.1.2017..
  */
 
-public class UpdateDrivingStatusFragment extends Fragment implements AdapterView.OnItemSelectedListener, Notification {
+public class UpdateDrivingStatusFragment extends Fragment implements AdapterView.OnItemSelectedListener, NotificationDataChangedListener {
     @BindView(R.id.spinner_ip_update_driving)
     Spinner traineeSpinner;
 
@@ -58,7 +57,10 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     String date;
     String time;
 
+    String notificationMessage = "";
+
     ArrayList<Korisnik> allTrainees = new ArrayList<>();
+    NotificationBuilder notificationBuilder = new NotificationBuilder();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -112,8 +114,14 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     @OnClick(R.id.button_update_hours)
     public void onButtonUpdateHoursClick(){
         dodajSat = drivingHaurs.getText().toString();
+
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("9","1",chosenTraineeID,dodajSat);
+
+        //Slanje notifikacije pomocu notificationManagera
+        notificationMessage = "Dodano_vam_je_" + dodajSat + "_sati_vožnje";
+        notificationBuilder.sendNotification(this);
+
         refresh();
     }
 
@@ -121,20 +129,15 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     public void onButtonUpdateSessionClick(){
         date = dateSession.getText().toString();
         time = timeSession.getText().toString();
+
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("10","1",chosenTraineeID,date,time);
+
+        //Slanje notifikacije pomocu notificationManagera
+        notificationMessage = date;
+        notificationBuilder.sendNotification(this);
+
         refresh();
-        TokenFetcher fetcher = new TokenFetcher(chosenTraineeID);
-        String token;
-        try{
-            token= fetcher.execute().get().toString();
-            sendNotification(date, token);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-
     }
 
     private String getOnlyId(String fullString){
@@ -148,12 +151,19 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     public void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
+        dateSession.setText("");
+        timeSession.setText("");
+        drivingHaurs.setText("");
+
     }
 
     @Override
-    public void sendNotification(String message, String tokens) {
-        NotificationSender notification = new NotificationSender(tokens, message);
-        notification.execute();
+    public String getNotificationMessage() {
+        return notificationMessage;
     }
 
+    @Override
+    public String getUserId() {
+        return chosenTraineeID;
+    }
 }

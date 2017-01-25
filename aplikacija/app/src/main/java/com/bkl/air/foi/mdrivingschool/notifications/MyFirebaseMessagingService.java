@@ -15,6 +15,8 @@ import com.bkl.air.foi.mdrivingschool.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import org.json.JSONObject;
+
 /**
  * Created by Jurica Bunić on 27.12.2016..
  */
@@ -31,13 +33,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
         if (remoteMessage.getNotification() != null){
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            Log.d(TAG, "Message NotificationDataChangedListener Body: " + remoteMessage.getNotification().getBody());
         }
 
-        openNotification(remoteMessage.toString());
+        openNotification(remoteMessage.getData().toString());
     }
 
     private void openNotification(String messageBody){
+        String body = "";
+        try {
+            JSONObject jobject = new JSONObject(messageBody);
+            body = jobject.getString("message");
+        }catch(Exception e){
+        }
+        String full=body.replace('_',' ');
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("body",messageBody);
@@ -46,8 +55,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Uri defaultSounduri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.logo_icon)
-                .setContentTitle("Notification")
-                .setContentText(messageBody)
+                .setContentTitle("Autoškola Premuž")
+                .setContentText(full)
                 .setAutoCancel(true)
                 .setSound(defaultSounduri)
                 .setContentIntent(pendingIntent);

@@ -15,7 +15,6 @@ import java.io.IOException;
  */
 
 public class NotificationSender extends AsyncTask<String, Void, Void> {
-    Notification notification;
     String tok;
     String mes;
 
