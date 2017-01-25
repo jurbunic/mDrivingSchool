@@ -6,6 +6,8 @@ package com.bkl.air.foi.mdrivingschool;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     private FragmentManager mFragmentManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        preferences.edit().putBoolean("NOTIFICATION",true).apply();
 
         MainScreenFragment msf = new MainScreenFragment();
         StartFragment.StartNewFragment(msf, this,"1");
