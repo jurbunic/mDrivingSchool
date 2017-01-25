@@ -28,12 +28,17 @@ public class TraineeMSFragment extends Fragment {
     @BindView(R.id.textView_user)
     TextView textUser;
 
+    @BindView(R.id.textView_instruktor)
+    TextView textInstructor;
+
     @BindView(R.id.imageButton_tzz)
     ImageButton imageButton_tzz;
 
     private String currentUserId;
     private String currentUserName;
     private String currentUserSurname;
+    private String instructorName;
+    private String instructorSurname;
     private String token;
 
 
@@ -43,6 +48,8 @@ public class TraineeMSFragment extends Fragment {
         currentUserId = getArguments().getString("USER_ID");
         currentUserName = getArguments().getString("USER_NAME");
         currentUserSurname = getArguments().getString("USER_SURNAME");
+        instructorName = getArguments().getString("INSTRUCTOR_NAME");
+        instructorSurname = getArguments().getString("INSTRUCTOR_SURNAME");
         ButterKnife.bind(this, view);
         return view;
     }
@@ -52,6 +59,11 @@ public class TraineeMSFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Početna stranica");
         textUser.setText(currentUserName + " " + currentUserSurname);
+        if(instructorName == null){
+            textInstructor.setText("-");
+        }else{
+            textInstructor.setText(instructorName + " " + instructorSurname);
+        }
         token = getToken();
         RegistrationSender registrationSender = new RegistrationSender(getActivity().getApplicationContext(),currentUserId,token);
         registrationSender.execute();

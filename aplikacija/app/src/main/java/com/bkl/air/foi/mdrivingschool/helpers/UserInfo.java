@@ -149,4 +149,38 @@ public class UserInfo {
         }
         return trainess;
     }
+
+    public Korisnik getInstructor(String userId){
+        Korisnik korisnik = new Korisnik();
+        try{
+
+            RetriveData data = new RetriveData(context);
+            String fetchedData = data.execute("1",userId).get();
+
+            JSONObject jsonObject = new JSONObject(fetchedData);
+            JSONArray jsonArray = jsonObject.getJSONArray("instruktor");
+            JSONObject JO = jsonArray.getJSONObject(0);
+            korisnik.setIme(JO.getString("ime"));
+            korisnik.setPrezime(JO.getString("prezime"));
+            korisnik.setAdresa(JO.getString("adresa"));
+            korisnik.setMobitel(JO.getString("mobitel"));
+            korisnik.setDatum_rodenja(JO.getString("datum_rodenja"));
+            korisnik.setMjesto_rodenja(JO.getString("mjesto_rodenja"));
+            korisnik.setEmail(JO.getString("email"));
+            korisnik.setTelefon(JO.getString("telefon"));
+            korisnik.setPrva_pomoc(JO.getString("prva_pomoc"));
+            korisnik.setPropisi(JO.getString("propisi"));
+            korisnik.setIspit_voznje(JO.getString("ispit_voznje"));
+            korisnik.setDatum_voznje(JO.getString("datum_voznje"));
+            korisnik.setVrijeme_voznje(JO.getString("vrijeme_voznje"));
+            korisnik.setSati_voznje(JO.getInt("sati_voznje"));
+            korisnik.setId(JO.getInt("id"));
+            korisnik.setTip_id(JO.getInt("tip_id"));
+        }catch (Exception e){
+
+        }
+        return korisnik;
+    }
+
+
 }

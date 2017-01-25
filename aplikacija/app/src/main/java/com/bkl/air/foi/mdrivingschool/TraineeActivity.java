@@ -31,6 +31,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
     private FragmentManager mFragmentManager;
     private String currentUserId;
     private Korisnik currentUser;
+    private Korisnik usersInstructor;
     private UserInfo userInfo;
 
 
@@ -68,12 +69,16 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         currentUserId = getIntent().getStringExtra("USER_ID");
         userInfo = new UserInfo(getApplicationContext());
         currentUser = userInfo.getInfoById(currentUserId);
+        usersInstructor = userInfo.getInstructor(currentUserId);
+
 
         TraineeMSFragment tmsf = new TraineeMSFragment();
         Bundle args=new Bundle();
         args.putString("USER_ID", currentUserId);
         args.putString("USER_NAME", currentUser.getIme());
         args.putString("USER_SURNAME", currentUser.getPrezime());
+        args.putString("INSTRUCTOR_NAME", usersInstructor.getIme());
+        args.putString("INSTRUCTOR_SURNAME", usersInstructor.getPrezime());
         tmsf.setArguments(args);
         StartFragment.StartNewFragment(tmsf, this, "1");
 
