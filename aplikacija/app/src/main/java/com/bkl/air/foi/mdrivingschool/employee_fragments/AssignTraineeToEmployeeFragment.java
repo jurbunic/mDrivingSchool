@@ -20,6 +20,8 @@ import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
+import com.bkl.air.foi.mdrivingschool.notifications.NotificationBuilder;
+import com.bkl.air.foi.mdrivingschool.notifications.NotificationDataChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +34,7 @@ import butterknife.OnClick;
  * Created by Dalibor on 26.12.2016..
  */
 
-public class AssignTraineeToEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class AssignTraineeToEmployeeFragment extends Fragment implements AdapterView.OnItemSelectedListener, NotificationDataChangedListener {
 
     Context thisContext;
 
@@ -52,6 +54,10 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
 
     String chosenTraineeForAssigning = "";
     String chosenTraineeForUnassigning = "";
+    String notificationMessage = "";
+    String notificationUserId = "";
+
+    NotificationBuilder notificationBuilder = new NotificationBuilder();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -128,6 +134,11 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         String chosenTraineeId = getOnlyId(chosenTraineeForAssigning);
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("6","1",currentUserId,chosenTraineeId);
+
+        notificationMessage = "Vaš_instruktor_je_ažuriran";
+        notificationUserId = chosenTraineeId;
+        notificationBuilder.sendNotification(this);
+
         refresh();
 
     }
@@ -159,5 +170,15 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
             id = fullString.substring(0, fullString.indexOf(" "));
         }
         return id;
+    }
+
+    @Override
+    public String getNotificationMessage() {
+        return notificationMessage;
+    }
+
+    @Override
+    public String getUserId() {
+        return notificationUserId;
     }
 }

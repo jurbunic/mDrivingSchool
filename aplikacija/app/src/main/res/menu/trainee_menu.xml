@@ -12,10 +12,6 @@
             android:icon="@drawable/ikona_ispiti"
             android:title="Moji ispiti" />
         <item
-            android:id="@+id/trainee_moje_obavijesti_navigation"
-            android:icon="@drawable/ikona_obavijesti"
-            android:title="Moje obavijesti" />
-        <item
             android:id="@+id/trainee_moji_satovi_voznje_navigation"
             android:icon="@drawable/ikona_auto"
             android:title="Moji satovi vožnje" />

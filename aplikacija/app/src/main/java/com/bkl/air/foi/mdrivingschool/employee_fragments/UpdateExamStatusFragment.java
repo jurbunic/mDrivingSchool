@@ -18,6 +18,8 @@ import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
+import com.bkl.air.foi.mdrivingschool.notifications.NotificationBuilder;
+import com.bkl.air.foi.mdrivingschool.notifications.NotificationDataChangedListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +32,7 @@ import butterknife.OnClick;
  * Created by Dalibor on 11.1.2017..
  */
 
-public class UpdateExamStatusFragment extends Fragment implements AdapterView.OnItemSelectedListener{
+public class UpdateExamStatusFragment extends Fragment implements AdapterView.OnItemSelectedListener, NotificationDataChangedListener{
 
     @BindView(R.id.textView_ts_propisi)
     TextView currentStatusPropisi;
@@ -65,7 +67,11 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
 
     String chosenStatusVoznja = "";
 
+    String notificationMessage = "";
+
     ArrayList<Korisnik> allTrainees = new ArrayList<>();
+
+    NotificationBuilder notificationBuilder = new NotificationBuilder();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
@@ -163,6 +169,10 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         //Toast.makeText(thisContext, chosenTraineeId + chosenStatusPropisi + chosenStatusPrvaPomoc + chosenStatusVoznja, Toast.LENGTH_SHORT).show();
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("8","1",chosenTraineeId,chosenStatusPropisi,chosenStatusPrvaPomoc,chosenStatusVoznja);
+
+        notificationMessage = "Ažuriran_status_ispita";
+        notificationBuilder.sendNotification(this);
+
         refresh();
     }
 
@@ -171,4 +181,13 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         ft.detach(this).attach(this).commit();
     }
 
+    @Override
+    public String getNotificationMessage() {
+        return notificationMessage;
+    }
+
+    @Override
+    public String getUserId() {
+        return chosenTraineeId;
+    }
 }
