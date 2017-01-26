@@ -16,12 +16,10 @@ import android.widget.TextView;
 
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.TestoviMainFragment;
-import com.bkl.air.foi.mdrivingschool.TraineeActivity;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.notifications.RegistrationSender;
 import com.bkl.air.foi.mdrivingschool.notifications.TokenFetcher;
 
-import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,49 +73,7 @@ public class TraineeMSFragment extends Fragment {
         }else{
             textInstructor.setText(instructorName + " " + instructorSurname);
         }
-        token = getToken();
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-        boolean startNotifications = preferences.getBoolean("NOTIFICATION",false);
-        if(startNotifications){
-            TokenFetcher fetcher = new TokenFetcher(currentUserId);
-            String databaseToken = "";
-            try{
-                databaseToken= fetcher.execute().get().toString();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            if(!(databaseToken.equals(token))){
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(),R.style.AppTheme));
-
-                alertDialog
-                        .setTitle("Notifikacije")
-                        .setMessage("Želite li primati obavijeti na ovom uređaju?")
-                        .setCancelable(false)
-                        .setPositiveButton("Da", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                RegistrationSender registrationSender = new RegistrationSender(getActivity().getApplicationContext(),currentUserId,token);
-                                registrationSender.execute();
-                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-                                preferences.edit().putBoolean("NOTIFICATION",false).apply();
-
-                            }
-                        })
-                        .setNegativeButton("Ne", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
-                                preferences.edit().putBoolean("NOTIFICATION",false).apply();
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog dialog = alertDialog.create();
-                dialog.show();
-
-            }
-        }
-
-
+        testToken();
     }
 
     @OnClick(R.id.imageButton_tzz)
@@ -148,6 +104,50 @@ public class TraineeMSFragment extends Fragment {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         token = sharedPreferences.getString("FCM_TOKEN",null);
         return token;
+    }
+
+    public void testToken(){
+        token = getToken();
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        boolean startNotifications = preferences.getBoolean("NOTIFICATION",false);
+        if(startNotifications){
+            TokenFetcher fetcher = new TokenFetcher(currentUserId);
+            String databaseToken = "";
+            try{
+                databaseToken= fetcher.execute().get().toString();
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+            if(!(databaseToken.equals(token))){
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(new ContextThemeWrapper(getActivity(),R.style.AppTheme));
+
+                alertDialog
+                        .setTitle("Notifikacije")
+                        .setMessage("Želite li primati obavjeti na ovom uređaju?")
+                        .setCancelable(false)
+                        .setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                RegistrationSender registrationSender = new RegistrationSender(getActivity().getApplicationContext(),currentUserId,token);
+                                registrationSender.execute();
+                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+                                preferences.edit().putBoolean("NOTIFICATION",false).apply();
+
+                            }
+                        })
+                        .setNegativeButton("Ne", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+                                preferences.edit().putBoolean("NOTIFICATION",false).apply();
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog dialog = alertDialog.create();
+                dialog.show();
+
+            }
+        }
     }
 
 

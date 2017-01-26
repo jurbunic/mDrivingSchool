@@ -2,7 +2,6 @@ package com.bkl.air.foi.mdrivingschool.notifications;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
