@@ -43,6 +43,8 @@ public class TestoviRezultatiFragment extends Fragment {
 
     private InterstitialAd mInterstitial;
 
+    private String userStatus;
+
     @BindView(R.id.textView_tocnost)
     TextView tocnostTesta;
 
@@ -55,7 +57,11 @@ public class TestoviRezultatiFragment extends Fragment {
         View View = inflater.inflate(R.layout.fragment_testovi_rezultati, container, false);
         ButterKnife.bind(this, View);
 
-        initializeIntAd();
+        //Provjera da li je korisnik prijavljen, ako jest reklama se nece prikazati
+        userStatus = getActivity().getIntent().getStringExtra("USER");
+        if(userStatus == null) {
+            initializeIntAd();
+        }
 
         return View;
     }

@@ -135,7 +135,8 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
                     if(chosenTraineeId.equals(String.valueOf(trainee.getId()))){
                         currentStatusPropisi.setText(String.valueOf(trainee.getPropisi()));
                         currentStatusPrvaPomoc.setText(String.valueOf(trainee.getPrva_pomoc()));
-                        currentStatusVoznja.setText(String.valueOf(trainee.getIspit_voznje())); //potrebna promjena za novi atribut
+                        currentStatusVoznja.setText(String.valueOf(trainee.getIspit_voznje()));
+                        setSpinnerStartValue(trainee.getPropisi(), trainee.getPrva_pomoc(), trainee.getIspit_voznje());
                     }
                 }
                 break;
@@ -179,6 +180,34 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
     public void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();
+    }
+
+    /**
+     * Metoda provjerava trenutni status pojedinog ispita polaznika i postavlja pocetne vrijednosti spinnera
+     * @param propisiStatus Status ispita propisa
+     * @param prvaPomocStatus Status ispita prve pomoci
+     * @param voznjaStatus Status ispita voznje
+     */
+    public void setSpinnerStartValue(String propisiStatus, String prvaPomocStatus, String voznjaStatus){
+        String negativeStatus = "nepolozeno";
+        if(propisiStatus.equals(negativeStatus)){
+            propisiSpinner.setSelection(1);
+        }
+        else{
+            propisiSpinner.setSelection(0);
+        }
+        if(prvaPomocStatus.equals(negativeStatus)){
+            prvaPomocSpinner.setSelection(1);
+        }
+        else{
+            prvaPomocSpinner.setSelection(0);
+        }
+        if(voznjaStatus.equals(negativeStatus)){
+            voznjaSpinner.setSelection(1);
+        }
+        else{
+            voznjaSpinner.setSelection(0);
+        }
     }
 
     @Override

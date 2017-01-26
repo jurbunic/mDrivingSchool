@@ -127,7 +127,7 @@ public class LoginData extends AsyncTask<String,Void,String> {
                 ((Activity)context).finish();
             }else {
                 Intent intent = new Intent(context, TraineeActivity.class);
-                intent.putExtra("USER_ID", id);
+                intent.putExtra("USER", id);
                 context.startActivity(intent);
                 ((Activity)context).finish();
             }

@@ -66,7 +66,7 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             }
         });
 
-        currentUserId = getIntent().getStringExtra("USER_ID");
+        currentUserId = getIntent().getStringExtra("USER");
         userInfo = new UserInfo(getApplicationContext());
         currentUser = userInfo.getInfoById(currentUserId);
         usersInstructor = userInfo.getInstructor(currentUserId);
