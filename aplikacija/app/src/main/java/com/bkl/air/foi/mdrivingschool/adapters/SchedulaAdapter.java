@@ -20,7 +20,6 @@ import java.util.List;
 public class SchedulaAdapter extends RecyclerView.Adapter<SchedulaAdapter.ScheduelViewHolder>{
     private List<Korisnik> korisnikList;
     Context context;
-    int helper;
     StringDateParser dateParser = new StringDateParser();
 
     public  static class ScheduelViewHolder extends RecyclerView.ViewHolder{

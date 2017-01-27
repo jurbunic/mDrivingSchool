@@ -13,9 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.DateAndTimeCheck;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.StringDateParser;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
@@ -133,19 +135,25 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
         StringDateParser dateParser = new StringDateParser();
 
-        date = dateParser.toDatabase(date);
 
-        RetriveData retriveData = new RetriveData(thisContext);
-        retriveData.execute("10","1",chosenTraineeID,date,time);
+        if(!((DateAndTimeCheck.isDateValid(date)) && (DateAndTimeCheck.isTimeValid(time)))){
+            Toast.makeText(getActivity().getApplicationContext(),"Neispravan unos vremena ili datuma!",Toast.LENGTH_SHORT).show();
+        }else {
+            date = dateParser.toDatabase(date);
+
+            RetriveData retriveData = new RetriveData(thisContext);
+            retriveData.execute("10","1",chosenTraineeID,date,time);
 
 
-        date = dateParser.toUserForm(date);
+            date = dateParser.toUserForm(date);
+            //Slanje notifikacije pomocu notificationManagera
+            notificationMessage = date;
+            notificationBuilder.sendNotification(this);
 
-        //Slanje notifikacije pomocu notificationManagera
-        notificationMessage = date;
-        notificationBuilder.sendNotification(this);
+            refresh();
+        }
 
-        refresh();
+
     }
 
     private String getOnlyId(String fullString){

@@ -10,11 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bkl.air.foi.database.Pitanje;
-import com.bkl.air.foi.database.Vozilo;
 import com.bkl.air.foi.mdrivingschool.R;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -90,4 +86,6 @@ public class RezultatiTestaAdapter extends RecyclerView.Adapter<RezultatiTestaAd
     public int getItemCount() {
         return listaPitanja.size();
     }
+
+
 }

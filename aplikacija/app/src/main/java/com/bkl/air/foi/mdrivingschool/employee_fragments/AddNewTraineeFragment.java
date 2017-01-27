@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.DateAndTimeCheck;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
 
 import java.util.concurrent.ExecutionException;
@@ -87,18 +88,24 @@ public class AddNewTraineeFragment extends Fragment {
         sUsername = username.getText().toString();
         sPassword = password.getText().toString();
 
-        RetriveData retriveData = new RetriveData(thisContext);
-        retriveData.execute("4","1",sName,sSurname,sBornDate,sBornPlace,sMobile,sPhone,sEmail,sAdress,sUsername,sPassword);
+        if(!(DateAndTimeCheck.isDateValid(sBornDate))){
+            Toast.makeText(getActivity().getApplicationContext(),"Pogrešan datum",Toast.LENGTH_SHORT).show();
+        }
+        else{
+            RetriveData retriveData = new RetriveData(thisContext);
+            retriveData.execute("4","1",sName,sSurname,sBornDate,sBornPlace,sMobile,sPhone,sEmail,sAdress,sUsername,sPassword);
 
-        name.setText("");
-        surname.setText("");
-        bornDate.setText("");
-        bornPlace.setText("");
-        mobile.setText("");
-        phone.setText("");
-        email.setText("");
-        adress.setText("");
-        username.setText("");
-        password.setText("");
+            name.setText("");
+            surname.setText("");
+            bornDate.setText("");
+            bornPlace.setText("");
+            mobile.setText("");
+            phone.setText("");
+            email.setText("");
+            adress.setText("");
+            username.setText("");
+            password.setText("");
+        }
+
     }
 }
