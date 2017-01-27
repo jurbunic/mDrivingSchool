@@ -76,12 +76,19 @@ public class TraineeMSFragment extends Fragment {
         testToken();
     }
 
+    /**
+     * Metoda na klik gumba otvara fragment sa testovima znanja
+     */
     @OnClick(R.id.imageButton_tzz)
     public void onImageButtonTzzClicked(){
         TestoviMainFragment fk = new TestoviMainFragment();
         StartFragment.StartNewFragment(fk,getActivity());
 
     }
+
+    /**
+     * Metoda na klik gumba otvara fragment za prikaz satova voznje i vremena/datuma sljedece voznje polaznika
+     */
     @OnClick(R.id.imageButton_sv)
     public void onImageButtonSvClicked(){
         TraineeDrivingStatusFragment tdsf = new TraineeDrivingStatusFragment();
@@ -90,6 +97,10 @@ public class TraineeMSFragment extends Fragment {
         tdsf.setArguments(args);
         StartFragment.StartNewFragment(tdsf, getActivity());
     }
+
+    /**
+     * Metoda na klik gumba otvara fragment za prikaz status ispita polaznika
+     */
     @OnClick(R.id.imageButton_si)
     public void onImageButtonSiClicked(){
         TraineeExamStatusFragment tesf = new TraineeExamStatusFragment();

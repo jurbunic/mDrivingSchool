@@ -53,6 +53,12 @@ public class VozilaAdapter extends RecyclerView.Adapter<VozilaAdapter.MyViewHold
         return new MyViewHolder(itemView);
     }
 
+    /**
+     * Metoda postavlja podatke o vozilima i slike vozila na card-view
+     *
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Vozilo vozilo = listaVozila.get(position);

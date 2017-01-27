@@ -32,6 +32,9 @@ public class AboutAppFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("O aplikaciji");
     }
 
+    /**
+     * Metoda na klik gumba otvara email client preko kojeg se salje poruka razvojnom timu aplikacije
+     */
     @OnClick(R.id.imageButton_feedback)
     public void onButtonFeedbackClicked(){
         mEmailSender.posaljiMail("", "Aplikacija - feedback", getActivity());

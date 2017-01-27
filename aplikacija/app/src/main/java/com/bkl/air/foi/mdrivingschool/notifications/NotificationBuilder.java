@@ -11,6 +11,9 @@ public class NotificationBuilder {
 
     private NotificationDataChangedListener mNotificationDataChangedListener;
 
+    /**
+     * Metoda pomocu TokerFetchera dobavlja token preko danog user id-a
+     */
     private void getUserToken(){
 
         TokenFetcher fetcher = new TokenFetcher(userId);
@@ -21,6 +24,11 @@ public class NotificationBuilder {
         }
     }
 
+    /**
+     * Metoda pomoc NotificationSendera salje obavijest sa prosljedenom porukom prema uredjaju sa dobivenim tokenom
+     *
+     * @param notificationDataChangedListener poseban listener koji prati stanje poruke i userId-a za slanje obavijesti i prosljeduje ih NotificationBuilderu
+     */
     public void sendNotification(NotificationDataChangedListener notificationDataChangedListener) {
         this.mNotificationDataChangedListener = notificationDataChangedListener;
 

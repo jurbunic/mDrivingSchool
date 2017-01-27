@@ -74,37 +74,56 @@ public class AddNewTraineeFragment extends Fragment {
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Dodavanje novog polaznika");
     }
+    /**
+     * Metoda provjerava ako je korisnik popunio sva potrebna polja za dodavanje polaznika
+     *
+     * @return Vraca true ako su sva polja popunjena, false ako nisu
+     */
+    private boolean checkGivenData(){
+        if(name.getText().length() == 0 || surname.getText().length() == 0 || bornDate.getText().length() == 0
+                || bornPlace.getText().length() == 0 || mobile.getText().length() == 0 || phone.getText().length() == 0
+                || email.getText().length() == 0 || adress.getText().length() == 0 || username.getText().length() == 0
+                || password.getText().length() == 0){
+            Toast.makeText(thisContext, "Molimo ispunite sva polja! ('0' ako je podatak nepoznat)", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
 
+    /**
+     * Metoda na klik gumba cita podatke iz forme koje je korisnik unio i salje ih na web server
+     */
     @OnClick(R.id.button_add_trainee)
     public void onButtonAddTraineeClick(){
-        sName = name.getText().toString();
-        sSurname = surname.getText().toString();
-        sBornDate = bornDate.getText().toString();
-        sBornPlace = bornPlace.getText().toString();
-        sMobile = mobile.getText().toString();
-        sPhone = phone.getText().toString();
-        sEmail = email.getText().toString();
-        sAdress = adress.getText().toString();
-        sUsername = username.getText().toString();
-        sPassword = password.getText().toString();
+        if(checkGivenData()) {
+            sName = name.getText().toString();
+            sSurname = surname.getText().toString();
+            sBornDate = bornDate.getText().toString();
+            sBornPlace = bornPlace.getText().toString();
+            sMobile = mobile.getText().toString();
+            sPhone = phone.getText().toString();
+            sEmail = email.getText().toString();
+            sAdress = adress.getText().toString();
+            sUsername = username.getText().toString();
+            sPassword = password.getText().toString();
 
-        if(!(DateAndTimeCheck.isDateValid(sBornDate))){
-            Toast.makeText(getActivity().getApplicationContext(),"Pogrešan datum",Toast.LENGTH_SHORT).show();
-        }
-        else{
-            RetriveData retriveData = new RetriveData(thisContext);
-            retriveData.execute("4","1",sName,sSurname,sBornDate,sBornPlace,sMobile,sPhone,sEmail,sAdress,sUsername,sPassword);
+            if (!(DateAndTimeCheck.isDateValid(sBornDate))) {
+                Toast.makeText(getActivity().getApplicationContext(), "Pogrešan datum", Toast.LENGTH_SHORT).show();
+            } else {
+                RetriveData retriveData = new RetriveData(thisContext);
+                retriveData.execute("4", "1", sName, sSurname, sBornDate, sBornPlace, sMobile, sPhone, sEmail, sAdress, sUsername, sPassword);
 
-            name.setText("");
-            surname.setText("");
-            bornDate.setText("");
-            bornPlace.setText("");
-            mobile.setText("");
-            phone.setText("");
-            email.setText("");
-            adress.setText("");
-            username.setText("");
-            password.setText("");
+                name.setText("");
+                surname.setText("");
+                bornDate.setText("");
+                bornPlace.setText("");
+                mobile.setText("");
+                phone.setText("");
+                email.setText("");
+                adress.setText("");
+                username.setText("");
+                password.setText("");
+            }
         }
 
     }

@@ -74,6 +74,7 @@ public class TestoviRezultatiFragment extends Fragment {
 
         recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_rezultati);
 
+        //Dobavljaju se podaci samo o onim pitanjima koje je korisnik dobio za rjesavanje, tip 1 = propisi, tip 2 = prva pomoc
         if (tipPitanja=="propisi") {
             PitanjaData.nabaviPodatkeOdredenihPitanja(listaPitanja, poljeZadataka, 1);
         }else {

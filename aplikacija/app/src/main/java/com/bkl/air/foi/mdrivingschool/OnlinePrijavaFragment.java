@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.bkl.air.foi.mdrivingschool.helpers.EmailSender;
 
@@ -97,8 +98,26 @@ public class OnlinePrijavaFragment extends Fragment {
         return finalnaPoruka;
     }
 
+    /**
+     * Metoda provjerava ako je korisnik popunio sva potrebna polja
+     * @return Vraca true ako su sva polja popunjena ili false ako nisu
+     */
+    private boolean checkGivenData(){
+        if(ime.getText().length() == 0 || prezime.getText().length() == 0 ||
+                email.getText().length() == 0 || telefon.getText().length() == 0){
+            Toast.makeText(getActivity().getApplicationContext(), "Molimo ispunite sva polja!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Metoda na klik gumba otvara email client sa vec gotovom porukom preko kojeg se salje poruka
+     */
     @OnClick(R.id.button_posalji)
     public void onButtonPosaljiClicked(){
-        mEmailSender.posaljiMail(kreiranjePoruke(), "Novi polaznik - online upis", getActivity());
+        if(checkGivenData()){
+            mEmailSender.posaljiMail(kreiranjePoruke(), "Novi polaznik - online upis", getActivity());
+        }
     }
 }

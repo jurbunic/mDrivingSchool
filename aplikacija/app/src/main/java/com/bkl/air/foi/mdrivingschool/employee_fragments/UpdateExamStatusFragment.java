@@ -108,6 +108,7 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         prvaPomocSpinner.setOnItemSelectedListener(this);
         voznjaSpinner.setOnItemSelectedListener(this);
 
+        //Postavljaju se adapteri za prikaz podataka
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(thisContext, android.R.layout.simple_spinner_item, allTraineesNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         traineesSpinner.setAdapter(dataAdapter);
@@ -124,6 +125,15 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         dataAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         voznjaSpinner.setAdapter(dataAdapter4);
     }
+
+    /**
+     * Metoda prati stanje spinnera i na temelju nega azurira odabrane polaznike/ispite
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()){
@@ -157,6 +167,13 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
     }
     public void onNothingSelected(AdapterView<?> arg0) {
     }
+
+    /**
+     * Metoda koja iz cijelog stringa uzetog sa spinnera uzima samo id polaznika
+     *
+     * @param fullString Cijeli string
+     * @return Vraca se id polaznika
+     */
     private String getOnlyId(String fullString){
         String id = "";
         if(fullString.contains(" ")){
@@ -165,9 +182,11 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         return id;
     }
 
+    /**
+     * Metoda na klik gumba azurira stanje ispita polaznika i salje notifikaciju polazniku
+     */
     @OnClick(R.id.button_update_exams)
     public void onButtonUpdateExamsPressed(){
-        //Toast.makeText(thisContext, chosenTraineeId + chosenStatusPropisi + chosenStatusPrvaPomoc + chosenStatusVoznja, Toast.LENGTH_SHORT).show();
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("8","1",chosenTraineeId,chosenStatusPropisi,chosenStatusPrvaPomoc,chosenStatusVoznja);
 
@@ -184,6 +203,7 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
 
     /**
      * Metoda provjerava trenutni status pojedinog ispita polaznika i postavlja pocetne vrijednosti spinnera
+     *
      * @param propisiStatus Status ispita propisa
      * @param prvaPomocStatus Status ispita prve pomoci
      * @param voznjaStatus Status ispita voznje
@@ -210,11 +230,21 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         }
     }
 
+    /**
+     * Predefinirana metoda koja prati trenutnu poruku za slanje u notifikaciji
+     *
+     * @return Vraca poruku notifikacije
+     */
     @Override
     public String getNotificationMessage() {
         return notificationMessage;
     }
 
+    /**
+     * Predefinirana metoda koja prati trenutnog polaznika kojem treba slati notifikaciju
+     *
+     * @return Vraca id polaznika kojem se salje notifikacija
+     */
     @Override
     public String getUserId() {
         return chosenTraineeId;

@@ -92,11 +92,20 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
         traineeSpinner.setOnItemSelectedListener(this);
 
+        //Postavlja se adapter za prikaz podataka
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(thisContext,android.R.layout.simple_spinner_item,allTraineesNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         traineeSpinner.setAdapter(dataAdapter);
     }
 
+    /**
+     * Metoda prati stanje spinnera i azurira trenutno odabranog polaznika i njegovo trenutno stanje sati voznje
+     *
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String item = parent.getItemAtPosition(position).toString();
@@ -114,6 +123,9 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
     }
 
+    /**
+     * Metoda na klik gumba azurira stanje satova voznje polaznika i salje notifikaciju
+     */
     @OnClick(R.id.button_update_hours)
     public void onButtonUpdateHoursClick(){
         dodajSat = drivingHaurs.getText().toString();
@@ -128,6 +140,9 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         refresh();
     }
 
+    /**
+     * Metoda na klik gumba azurira vrijeme i datum sljedece voznje polaznika i salje notifikaciju
+     */
     @OnClick(R.id.button_update_session)
     public void onButtonUpdateSessionClick(){
         date = dateSession.getText().toString();
@@ -156,6 +171,12 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
     }
 
+    /**
+     * Metoda koja iz cijelog stringa uzetog sa spinnera uzima samo id polaznika
+     *
+     * @param fullString Cijeli string
+     * @return Vraca se id polaznika
+     */
     private String getOnlyId(String fullString){
         String id = "";
         if(fullString.contains(" ")){
@@ -173,11 +194,21 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
     }
 
+    /**
+     * Predefinirana metoda koja prati trenutnu poruku za slanje u notifikaciji
+     *
+     * @return Vraca poruku notifikacije
+     */
     @Override
     public String getNotificationMessage() {
         return notificationMessage;
     }
 
+    /**
+     * Predefinirana metoda koja prati trenutnog polaznika kojem treba slati notifikaciju
+     *
+     * @return Vraca id polaznika kojem se salje notifikacija
+     */
     @Override
     public String getUserId() {
         return chosenTraineeID;

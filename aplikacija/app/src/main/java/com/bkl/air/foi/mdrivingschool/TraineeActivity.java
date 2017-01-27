@@ -110,6 +110,12 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         userEmail.setText(currentUser.getEmail());
     }
 
+    /**
+     * Metoda definira sto ce se izvrsiti prilikom pritiska na odreden item na draweru
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -182,6 +188,9 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
         return false;
     }
 
+    /**
+     * Metoda kontrolira dogadjaje koji se izvrse nakon sto se na pritisne 'BACK' gumb
+     */
     @Override
     public void onBackPressed() {
         int a = mFragmentManager.getBackStackEntryCount();

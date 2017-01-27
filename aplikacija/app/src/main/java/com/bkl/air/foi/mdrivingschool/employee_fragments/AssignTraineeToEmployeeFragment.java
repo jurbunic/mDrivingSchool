@@ -102,7 +102,7 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
             allTraineesNamesForUnassagning.add(trainee.getId() + " - " + trainee.getIme() + " " + trainee.getPrezime());
         }
 
-        //Postavlja se adapter za prikaz imena polaznika u spinneru
+        //Postavljaju se adapteri za prikaz imena polaznika u spinnerima
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(thisContext, android.R.layout.simple_spinner_item, allTraineesNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         traineesSpinner.setAdapter(dataAdapter);
@@ -111,6 +111,14 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         dataAdapterSecond.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         traineesSpinnerSecond.setAdapter(dataAdapterSecond);
     }
+
+    /**
+     * Metoda prati stanje itema na spinneru i na temelju toga azurira trenutno odabranog polaznika
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch (parent.getId()){
@@ -129,12 +137,16 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
     public void onNothingSelected(AdapterView<?> arg0) {
     }
 
+    /**
+     * Metoda na klik gumba dodjeljuje polaznika instruktoru, salje notifikaciju polazniku i osvjezuje formu
+     */
     @OnClick(R.id.button_assign_trainee)
     public void onAssignButtonPressed(){
         String chosenTraineeId = getOnlyId(chosenTraineeForAssigning);
         RetriveData retriveData = new RetriveData(thisContext);
         retriveData.execute("6","1",currentUserId,chosenTraineeId);
 
+        //Azuriraju se poruka koja se mora slati i id polaznika kojemu se mora slati te se poziva builder da posalje notifikaciju
         notificationMessage = "Vaš_instruktor_je_ažuriran";
         notificationUserId = chosenTraineeId;
         notificationBuilder.sendNotification(this);
@@ -142,6 +154,10 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         refresh();
 
     }
+
+    /**
+     * Metoda na klik gumba oduzima polaznika instruktoru i osvjezuje formu
+     */
     @OnClick(R.id.button_unassign_trainee)
     public void onUnassignButtonPressed(){
         String chosenTraineeId = getOnlyId(chosenTraineeForUnassigning);
@@ -172,11 +188,21 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         return id;
     }
 
+    /**
+     * Predefinirana metoda koja prati trenutnu poruku za slanje u notifikaciji
+     *
+     * @return Vraca poruku notifikacije
+     */
     @Override
     public String getNotificationMessage() {
         return notificationMessage;
     }
 
+    /**
+     * Predefinirana metoda koja prati trenutnog polaznika kojem treba slati notifikaciju
+     *
+     * @return Vraca id polaznika kojem se salje notifikacija
+     */
     @Override
     public String getUserId() {
         return notificationUserId;

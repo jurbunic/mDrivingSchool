@@ -41,6 +41,10 @@ public class TestoviMainFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
 
     }
+
+    /**
+     * Metoda na klik gumba otvara fragment za rjesavanje testova znanja propisa
+     */
     @OnClick(R.id.button_propisi)
     public void onPropisiButtonClicked(){
         ArrayList<Integer> poljeZadataka = new ArrayList<Integer>(5);
@@ -54,6 +58,9 @@ public class TestoviMainFragment extends Fragment {
         StartFragment.StartNewFragment(tpf,getActivity(),"propisi");
     }
 
+    /**
+     * Metoda na klik gumba otvara fragment za rjesavanje testova znanja prve pomoci
+     */
     @OnClick(R.id.button_prvaPomoc)
     public void onPrvaPomocClicked(){
         ArrayList<Integer> poljeZadataka = new ArrayList<>(5);

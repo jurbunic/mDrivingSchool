@@ -15,6 +15,11 @@ import java.util.ArrayList;
  */
 
 public class DbDataLoader extends DataLoader {
+    /**
+     * Metoda koja ucitava podatke o kontaktima iz lokalne baze podataka
+     *
+     * @param kontaktDataLoadedListener poseban listener koji ceka dolazak podataka o kontaktima
+     */
     @Override
     public void loadKontaktData(KontaktDataLoadedListener kontaktDataLoadedListener){
         super.loadKontaktData(kontaktDataLoadedListener);
@@ -27,6 +32,12 @@ public class DbDataLoader extends DataLoader {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metoda ucitava podatke o vozilima iz lokalne baze podataka
+     *
+     * @param voziloDataLoadedListener poseban listener koji ceka dolazak podataka o vozilima
+     */
     @Override
     public void loadVoziloData(VoziloDataLoadedListener voziloDataLoadedListener){
         super.loadVoziloData(voziloDataLoadedListener);
@@ -39,6 +50,13 @@ public class DbDataLoader extends DataLoader {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Metoda ucitava podatke o pitanjima, bilo da su propisi ili prva pomoc, iz lokalne baze podataka
+     *
+     * @param pitanjeDataLoadedListener poseban listener koji ceka dolazak podataka o pitanjima
+     * @param type predstavlja flag koji se koristi za raspoznavanje tipa pitanja, 1 = propisi, 2 = prva pomoc
+     */
     @Override
     public void loadPitanjeData(PitanjeDataLoadedListener pitanjeDataLoadedListener, int type) {
         super.loadPitanjeData(pitanjeDataLoadedListener, type);

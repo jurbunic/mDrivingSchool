@@ -18,6 +18,11 @@ import java.util.List;
  */
 
 public class AppDataLoader extends DataLoader{
+    /**
+     * Metoda ucitava podatke o kontaktima iz KontaktData klase
+     *
+     * @param kontaktDataLoadedListener poseban listener koji ceka dolazak podataka o kontaktima
+     */
     @Override
     public void loadKontaktData(KontaktDataLoadedListener kontaktDataLoadedListener){
         super.loadKontaktData(kontaktDataLoadedListener);
@@ -27,6 +32,12 @@ public class AppDataLoader extends DataLoader{
 
         mKontaktDataLoadedListener.onDataLoaded(listKontakt);
     }
+
+    /**
+     * Metoda ucitava podatke o vozilima iz VoziloData klase
+     *
+     * @param voziloDataLoadedListener poseban listener koji ceka dolazak podataka o vozilima
+     */
     @Override
     public void loadVoziloData(VoziloDataLoadedListener voziloDataLoadedListener){
         super.loadVoziloData(voziloDataLoadedListener);
@@ -36,6 +47,13 @@ public class AppDataLoader extends DataLoader{
 
         mVoziloDataLoadedListener.onDataLoaded(listVozilo);
     }
+
+    /**
+     * Metoda ucitava podatke o pitanjima, bilo da su propisi ili prva pomoc, iz PitanjaData klase
+     *
+     * @param pitanjeDataLoadedListener poseban listener koji ceka dolazak podataka o pitanjima
+     * @param type predstavlja flag koji se koristi za raspoznavanje tipa pitanja, 1 = propisi, 2 = prva pomoc
+     */
     @Override
     public void loadPitanjeData(PitanjeDataLoadedListener pitanjeDataLoadedListener, int type){
         super.loadPitanjeData(pitanjeDataLoadedListener, type);

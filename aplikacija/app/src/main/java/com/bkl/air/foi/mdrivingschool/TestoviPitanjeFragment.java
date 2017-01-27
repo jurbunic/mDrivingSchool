@@ -235,6 +235,11 @@ public class TestoviPitanjeFragment extends Fragment implements PitanjeDataLoade
         }
     }
 
+    /**
+     * Predefinirana metoda koja postavlja listu na koju moraju doci podaci sa pitanjima
+     *
+     * @param listPitanje Lista sa pitanjima
+     */
     @Override
     public void onDataLoaded(ArrayList<Pitanje> listPitanje) {
         this.listaPitanja = listPitanje;

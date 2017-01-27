@@ -32,21 +32,36 @@ public class AdministrationFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Administracija");
     }
 
+    /**
+     * Metoda na klik gumba otvara fragment za dodavanje novog polaznika
+     */
     @OnClick(R.id.button_new_trainee_add)
     public void onNewTraineeAddButtonClicked(){
         AddNewTraineeFragment adn = new AddNewTraineeFragment();
         StartFragment.StartNewFragment(adn,getActivity(), "novipolaznik");
     }
+
+    /**
+     * Metoda na klik gumba otvara fragment za dodjeljivanje polaznika instruktoru
+     */
     @OnClick(R.id.button_trainee_ins_add)
     public void onNewTraineeInsAddButtonClicked(){
         AssignTraineeToEmployeeFragment atef = new AssignTraineeToEmployeeFragment();
         StartFragment.StartNewFragment(atef,getActivity(), "polaznikinstruktor");
     }
+
+    /**
+     * Metoda na klik gumba otvara fragment za azuriranje statusa ispita polaznika
+     */
     @OnClick(R.id.button_exam_update)
     public void onExamUpdateButtonClicked(){
         UpdateExamStatusFragment axsf= new UpdateExamStatusFragment();
         StartFragment.StartNewFragment(axsf,getActivity(), "statustestova");
     }
+
+    /**
+     * Metoda na klik gumba otvara fragment za azuiranje satova voznje i datuma/vremena sljedece voznje
+     */
     @OnClick(R.id.button_driving_update)
     public void onDrivingUpdateButtonClicked(){
         UpdateDrivingStatusFragment adsf= new UpdateDrivingStatusFragment();

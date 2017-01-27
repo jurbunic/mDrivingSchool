@@ -57,6 +57,13 @@ public class RezultatiTestaAdapter extends RecyclerView.Adapter<RezultatiTestaAd
         return new MyViewHolder(itemView);
     }
 
+    /**
+     * Metoda postavlja tekst pitanja i slike u card-view na rezultatima testova znanja
+     * Tocne odgovore oboji zeleno kako bi korisnici lakse naucili gradivo
+     *
+     * @param holder
+     * @param position
+     */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Pitanje pitanje = listaPitanja.get(position);
@@ -70,6 +77,8 @@ public class RezultatiTestaAdapter extends RecyclerView.Adapter<RezultatiTestaAd
         if(pitanje.isTocan3()==true){holder.odg3.setTextColor(Color.GREEN);}
         imgId = context.getResources().getIdentifier(pitanje.getImgUrl(), "drawable", context.getPackageName());
         holder.slika.setImageDrawable(context.getResources().getDrawable(imgId));
+
+        //Prosljedeni su id-evi tocnih pitanja kako bi se moglo prikazati na koja je pitanja korisnik tocno/krivo odgovorio
         for (int i = 0; i < tocniIds.size(); i++) {
             if (pitanje.getId() == tocniIds.get(i)) {
                 holder.status.setText("STATUS: TOČNO");

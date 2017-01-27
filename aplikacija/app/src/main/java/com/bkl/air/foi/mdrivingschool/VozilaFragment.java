@@ -50,6 +50,11 @@ public class VozilaFragment extends Fragment implements VoziloDataLoadedListener
         mAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Predefinirana metoda koja postavlja listu vozila u koju moraju doci podaci
+     *
+     * @param listVozilo Lista vozila
+     */
     @Override
     public void onDataLoaded(ArrayList<Vozilo> listVozilo) {
         this.listaVozila = listVozilo;
