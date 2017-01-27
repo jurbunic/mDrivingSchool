@@ -3,11 +3,14 @@ package com.bkl.air.foi.mdrivingschool.maps;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.bkl.air.foi.mdrivingschool.MainActivity;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.LatLng;
@@ -46,9 +49,15 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
-        map.setMyLocationEnabled(true);
+        try{
+            map.setMyLocationEnabled(true);
+        }catch (SecurityException e){
+            Toast.makeText(getActivity().getApplicationContext(),"Nije moguće dohvatiti vašu lokaciju",Toast.LENGTH_SHORT).show();
+        }
+
         LatLng position = new LatLng(46.309999,16.341981);
-        map.addMarker(new MarkerOptions().position(position).title("Autoškola Premuž"));
+        map.addMarker(new MarkerOptions().position(position).title("Autoškola Premuž")).showInfoWindow();
+
         map.moveCamera(CameraUpdateFactory.newLatLng(position));
         map.moveCamera(CameraUpdateFactory.zoomTo(13));
     }

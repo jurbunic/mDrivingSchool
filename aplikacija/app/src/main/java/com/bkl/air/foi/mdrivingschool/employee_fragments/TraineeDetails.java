@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
+import com.bkl.air.foi.mdrivingschool.helpers.StringDateParser;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 
 /**
@@ -66,6 +67,8 @@ public class TraineeDetails extends Fragment {
         Korisnik korisnik;
         korisnik = info.getInfoById(traineeId);
 
+        StringDateParser dateParser = new StringDateParser();
+
         traineeName.setText(korisnik.getIme());
         traineeSurname.setText(korisnik.getPrezime());
         traineeAdress.setText(korisnik.getAdresa());
@@ -78,7 +81,7 @@ public class TraineeDetails extends Fragment {
         traineeFirstAid.setText(korisnik.getPrva_pomoc());
         traineeHoursOfDriving.setText(Integer.toString(korisnik.getSati_voznje()));
         traineeDrivingExam.setText(korisnik.getIspit_voznje());
-        traineeNextDrive.setText(korisnik.getDatum_voznje() + " u " + korisnik.getVrijeme_voznje());
+        traineeNextDrive.setText(dateParser.toUserForm(korisnik.getDatum_voznje()) + " u " + korisnik.getVrijeme_voznje());
 
     }
 }
