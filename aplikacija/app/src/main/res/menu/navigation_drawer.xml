@@ -39,7 +39,9 @@
             <item
                 android:id="@+id/prijava_navigation"
                 android:title="Prijava" />
-
+            <item
+                android:id="@+id/o_aplikaciji_navigation"
+                android:title="O aplikaciji" />
         </menu>
     </item>
 

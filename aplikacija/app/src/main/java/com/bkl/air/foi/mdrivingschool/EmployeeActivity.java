@@ -166,6 +166,10 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                 TestoviMainFragment tmf = new TestoviMainFragment();
                 StartFragment.StartNewFragment(tmf,this);
                 break;
+            case R.id.employee_o_aplikaciji_navigation:
+                AboutAppFragment aaf = new AboutAppFragment();
+                StartFragment.StartNewFragment(aaf, this);
+                break;
             case R.id.employee_odjava_navigation:
                 finish();
                 break;

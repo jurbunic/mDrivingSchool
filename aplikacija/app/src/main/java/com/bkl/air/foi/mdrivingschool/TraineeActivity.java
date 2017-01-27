@@ -171,6 +171,10 @@ public class TraineeActivity extends AppCompatActivity implements NavigationView
             MapFragment mf = new MapFragment();
             StartFragment.StartNewFragment(mf, this);
         }
+        else if (id == R.id.trainee_o_aplikaciji_navigation) {
+        AboutAppFragment aaf = new AboutAppFragment();
+        StartFragment.StartNewFragment(aaf, this);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_trainee);
 

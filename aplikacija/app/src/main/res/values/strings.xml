@@ -4,6 +4,15 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="premuz">Premuž</string>
+    <string name="app_general_name">APLIKACIJA</string>
+    <string name="version_general">Verzija</string>
+    <string name="app_version">1.0.0</string>
+    <string name="author_general">Razvojni tim</string>
+    <string name="authors">AIR1618 - FOI</string>
+    <string name="project_general">Projekt</string>
+    <string name="project_name">mDrivingSchool</string>
+    <string name="feedback">FEEDBACK</string>
+    <string name="feedback_info">Našli ste bug ili vidite mjesto za poboljšanje? Kontaktirajte nas!</string>
 
 
 </resources>

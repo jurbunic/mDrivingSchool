@@ -123,7 +123,7 @@ public class TraineeMSFragment extends Fragment {
 
                 alertDialog
                         .setTitle("Notifikacije")
-                        .setMessage("Želite li primati obavjeti na ovom uređaju?")
+                        .setMessage("Želite li primati obavijesti na ovom uređaju?")
                         .setCancelable(false)
                         .setPositiveButton("Da", new DialogInterface.OnClickListener() {
                             @Override

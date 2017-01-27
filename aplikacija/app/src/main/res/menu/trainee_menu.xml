@@ -46,7 +46,9 @@
             <item
                 android:id="@+id/trainee_odjava_navigation"
                 android:title="Odjava" />
-
+            <item
+                android:id="@+id/trainee_o_aplikaciji_navigation"
+                android:title="O aplikaciji" />
         </menu>
     </item>
 

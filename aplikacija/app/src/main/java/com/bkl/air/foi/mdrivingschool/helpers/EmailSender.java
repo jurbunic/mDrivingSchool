@@ -24,7 +24,7 @@ public class EmailSender{
         i.putExtra(Intent.EXTRA_TEXT, poruka);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         try {
-            mActivity.startActivity(Intent.createChooser(i, "Mail se šalje..."));
+            mActivity.startActivity(Intent.createChooser(i, "Odaberite e-mail client..."));
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(mActivity, "Nažalost, nije pronađen e-mail client na vašem uređaju.", Toast.LENGTH_LONG).show();
         }

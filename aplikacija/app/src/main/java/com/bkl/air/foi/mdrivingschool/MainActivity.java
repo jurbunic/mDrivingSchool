@@ -128,13 +128,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         int id = item.getItemId();
-        if (id == R.id.kontakt_navigation) {
 
+        if (id == R.id.kontakt_navigation) {
             KontaktFragment fk = new KontaktFragment();
             StartFragment.StartNewFragment(fk , this);
+
         } else if (id == R.id.vozila_navigation) {
             VozilaFragment fv = new VozilaFragment();
             StartFragment.StartNewFragment(fv, this);
+
         } else if (id == R.id.online_prijava_navigation) {
             OnlinePrijavaFragment opn = new OnlinePrijavaFragment();
             StartFragment.StartNewFragment(opn, this);
@@ -142,9 +144,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.o_nama_navigation) {
             OnamaFragment onf = new OnamaFragment();
             StartFragment.StartNewFragment(onf, this);
+
         } else if (id == R.id.prijava_navigation) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+
         } else if (id == R.id.pocetna_navigation) {
             MainScreenFragment msf = new MainScreenFragment();
             mFragmentManager.popBackStack(null,FragmentManager.POP_BACK_STACK_INCLUSIVE);
@@ -161,6 +165,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.test_znanja_navigation) {
             TestoviMainFragment tmf = new TestoviMainFragment();
             StartFragment.StartNewFragment(tmf, this);
+
+        } else if (id == R.id.o_aplikaciji_navigation) {
+            AboutAppFragment aaf = new AboutAppFragment();
+            StartFragment.StartNewFragment(aaf, this);
         }
 
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
