@@ -39,13 +39,21 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         openNotification(remoteMessage.getData().toString());
     }
 
+    /**
+     * Metoda za prikaz primljene notifikacije.
+     *
+     * @param messageBody podaci notifikacije (tip String)
+     */
     private void openNotification(String messageBody){
+        // Podaci su zapisani u JSON obliku, pa ih je potrebno parsirati
         String body = "";
         try {
             JSONObject jobject = new JSONObject(messageBody);
             body = jobject.getString("message");
         }catch(Exception e){
         }
+        // Notifikacije šaljemo koristeći _ umjesto razmaka, pa je za prikaz notifikacije
+        // potrebno zamijeniti _ sa razmakom.
         String full=body.replace('_',' ');
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -64,10 +72,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         notificationManager.notify(0,notificationBuilder.build());
-    }
-
-    public static void sendNotification(String messageBody, String TAG){
-
     }
 
 }

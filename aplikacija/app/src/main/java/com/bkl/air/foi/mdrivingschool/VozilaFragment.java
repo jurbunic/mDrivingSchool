@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 
 import com.bkl.air.foi.core.DataLoader;
 import com.bkl.air.foi.core.VoziloDataLoadedListener;
-import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
 import com.bkl.air.foi.mdrivingschool.adapters.VozilaAdapter;
 import com.bkl.air.foi.database.Vozilo;
 import com.bkl.air.foi.mdrivingschool.loaders.AppDataLoader;

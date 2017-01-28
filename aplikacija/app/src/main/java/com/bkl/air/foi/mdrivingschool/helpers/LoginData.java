@@ -2,17 +2,12 @@ package com.bkl.air.foi.mdrivingschool.helpers;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 
 import com.bkl.air.foi.mdrivingschool.EmployeeActivity;
-import com.bkl.air.foi.mdrivingschool.LoginActivity;
-import com.bkl.air.foi.mdrivingschool.MainActivity;
 import com.bkl.air.foi.mdrivingschool.TraineeActivity;
-import com.raizlabs.android.dbflow.sql.language.Condition;
 
 import org.json.JSONArray;
 import org.json.JSONException;

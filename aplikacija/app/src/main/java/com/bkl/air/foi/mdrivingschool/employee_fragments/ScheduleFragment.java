@@ -38,7 +38,6 @@ public class ScheduleFragment extends Fragment{
     private SchedulaAdapter mAdapter1;
     private SchedulaAdapter mAdapter2;
 
-    private String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +59,7 @@ public class ScheduleFragment extends Fragment{
             }
         });
 
+        // Dohvaćanje današnjeg dana
         Calendar calendar = Calendar.getInstance();
         Date currentDate = calendar.getTime();
         Date drivingDate;
@@ -74,7 +74,9 @@ public class ScheduleFragment extends Fragment{
 
         Korisnik korisnik;
 
-
+        // Ako je datum vožnje danas tada ga se zapisuje u listu todayAppointment, a ako je datum
+        // vožnje u budućnosti tada ga se zapisuje u futureAppointment (Datumi vožnje koiju su prošli
+        // se ne zapisuju).
         for(int i=0; i<korisnikList.size();i++){
             korisnik = korisnikList.get(i);
             drivingDate = convertStringToDate(korisnik.getDatum_voznje());
@@ -106,6 +108,12 @@ public class ScheduleFragment extends Fragment{
         mAdapter2.notifyDataSetChanged();
     }
 
+    /**
+     * Metoda za konverziju datuma zapisanog kao String u datum zapisan kao Date.
+     *
+     * @param sDate Datum zapisan kao String u obliku yyyy-MM-dd
+     * @return null ako je konverzija neispravna, datum u obliku Date ako je ispravna
+     */
     private Date convertStringToDate(String sDate){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date convertedDate = new Date();
@@ -117,6 +125,14 @@ public class ScheduleFragment extends Fragment{
 
     }
 
+    /**
+     * Metoda provjerava dali su dva datuma isti datum. Ako su datumi jednaki tada metoda vraća
+     * true, a ako nisu tada se vraća false
+     *
+     * @param date1 datum tipa Date za kojeg se provjerava dali je danas
+     * @param date2 datum na današnji dan
+     * @return boolean
+     */
     private boolean isToday(Date date1, Date date2){
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

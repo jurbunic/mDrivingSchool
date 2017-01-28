@@ -1,10 +1,9 @@
 package com.bkl.air.foi.mdrivingschool.employee_fragments;
 
-import android.app.AlertDialog;
+
 import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.widget.Toast;
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.DateAndTimeCheck;
 import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
-
-import java.util.concurrent.ExecutionException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -107,6 +104,7 @@ public class AddNewTraineeFragment extends Fragment {
             sUsername = username.getText().toString();
             sPassword = password.getText().toString();
 
+            // Provjerava se ispravnost unešenog vremena
             if (!(DateAndTimeCheck.isDateValid(sBornDate))) {
                 Toast.makeText(getActivity().getApplicationContext(), "Pogrešan datum", Toast.LENGTH_SHORT).show();
             } else {

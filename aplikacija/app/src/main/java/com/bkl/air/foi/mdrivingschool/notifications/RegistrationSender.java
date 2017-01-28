@@ -32,6 +32,12 @@ public class RegistrationSender extends AsyncTask<String, Void, Void> {
 
     }
 
+    /**
+     * Metoda šalje token i id korisnika na server koji potom navedene podatke sprema u bazu podataka.
+     * Token i id korisnika se dohvaćaju u konstruktoru klase
+     *
+     * @throws Exception
+     */
     private void sendData() throws Exception{
         OkHttpClient client = new OkHttpClient();
         RequestBody requestBody = new FormEncodingBuilder()

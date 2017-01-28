@@ -33,6 +33,12 @@ public class NotificationSender extends AsyncTask<String, Void, Void> {
         return null;
     }
 
+    /**
+     * Metoda šalje notifikaciju koja sadrži poruku na uređaj sa određenim tokenom.
+     *
+     * @param token token uređaja na koji se šalje notifikacija ( tip String )
+     * @param message poruka koja se šalje korisniku ( tip String )
+     */
     public void send(String token, String message){
         try{
             OkHttpClient client = new OkHttpClient();

@@ -14,7 +14,6 @@ import com.bkl.air.foi.core.DataLoader;
 import com.bkl.air.foi.core.KontaktDataLoadedListener;
 import com.bkl.air.foi.database.Kontakt;
 import com.bkl.air.foi.mdrivingschool.adapters.KontaktAdapter;
-import com.bkl.air.foi.mdrivingschool.helpers.KontaktData;
 import com.bkl.air.foi.mdrivingschool.loaders.AppDataLoader;
 import com.bkl.air.foi.mdrivingschool.loaders.DbDataLoader;
 import com.raizlabs.android.dbflow.sql.language.SQLite;

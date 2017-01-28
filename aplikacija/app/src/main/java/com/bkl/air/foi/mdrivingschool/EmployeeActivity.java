@@ -16,17 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import com.bkl.air.foi.database.Korisnik;
-import com.bkl.air.foi.mdrivingschool.employee_fragments.AddNewTraineeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.AdministrationFragment;
-import com.bkl.air.foi.mdrivingschool.employee_fragments.AssignTraineeToEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MainEmployeeFragment;
 import com.bkl.air.foi.mdrivingschool.employee_fragments.MyTraineesFragment;
-
 import com.bkl.air.foi.mdrivingschool.employee_fragments.ScheduleFragment;
-
-import com.bkl.air.foi.mdrivingschool.employee_fragments.UpdateDrivingStatusFragment;
-
-import com.bkl.air.foi.mdrivingschool.employee_fragments.UpdateExamStatusFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
@@ -96,6 +89,12 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
 
 }
 
+    /**
+     * Metoda postavlja toolbar na aktivnost. Toolbar će imati naslov "Početna stranica" i bit će ispian
+     * bijelom bojom
+     *
+     * @return toolbar sa naslovom
+     */
     private Toolbar SetToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(ContextCompat.getColor(getApplicationContext(), android.R.color.white));

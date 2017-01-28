@@ -49,12 +49,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        // Pokušaj dohvaćanja korisničke lokacije
         try{
             map.setMyLocationEnabled(true);
         }catch (SecurityException e){
             Toast.makeText(getActivity().getApplicationContext(),"Nije moguće dohvatiti vašu lokaciju",Toast.LENGTH_SHORT).show();
         }
 
+        // Postavljanje markera na lokaciju Autoškole Premuž
         LatLng position = new LatLng(46.309999,16.341981);
         map.addMarker(new MarkerOptions().position(position).title("Autoškola Premuž")).showInfoWindow();
 

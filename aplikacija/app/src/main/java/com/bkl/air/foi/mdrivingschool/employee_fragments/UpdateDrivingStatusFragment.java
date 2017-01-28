@@ -23,8 +23,6 @@ import com.bkl.air.foi.mdrivingschool.helpers.StringDateParser;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.notifications.NotificationBuilder;
 import com.bkl.air.foi.mdrivingschool.notifications.NotificationDataChangedListener;
-import com.bkl.air.foi.mdrivingschool.notifications.NotificationSender;
-import com.bkl.air.foi.mdrivingschool.notifications.TokenFetcher;
 
 import java.util.ArrayList;
 import java.util.List;

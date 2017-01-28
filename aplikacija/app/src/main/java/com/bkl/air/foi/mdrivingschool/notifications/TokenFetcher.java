@@ -23,6 +23,12 @@ public class TokenFetcher extends AsyncTask<String, Void, String> {
         this.userId = userId;
     }
 
+    /**
+     * Metoda dohvaća token iz baze na temelju korisničkog ID-a. Korisnički id se dohvaća u konstruktoru
+     * klase
+     *
+     * @return korisnički token za Firebase notifikacije ( tip String )
+     */
     private String fetchToken(){
         String token="";
         try {

@@ -1,12 +1,7 @@
 package com.bkl.air.foi.mdrivingschool.helpers;
 
 import com.bkl.air.foi.database.Pitanje;
-import com.bkl.air.foi.database.Pitanje_Table;
 import com.bkl.air.foi.database.TipPitanja;
-import com.bkl.air.foi.database.Vozilo;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

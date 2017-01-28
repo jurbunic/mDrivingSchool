@@ -1,26 +1,19 @@
 package com.bkl.air.foi.mdrivingschool;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bkl.air.foi.database.Pitanje;
-import com.bkl.air.foi.database.TipPitanja;
-import com.bkl.air.foi.mdrivingschool.helpers.PitanjaData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by Dalibor on 23.11.2016..

@@ -5,6 +5,13 @@ package com.bkl.air.foi.mdrivingschool.helpers;
  */
 
 public class DateAndTimeCheck {
+    /**
+     * Metoda služi za provjeru valjanosti datuma. Ako je datum neispravno unešeno, tada metoda vraća
+     * vrijednost false.
+     *
+     * @param date Datum zapisan u obliku dd.MM.yyyy (tip podataka String)
+     * @return boolean
+     */
     public static boolean isDateValid(String date){
         String[] splited = date.split("\\.");
         boolean valid = true;
@@ -28,6 +35,13 @@ public class DateAndTimeCheck {
         return valid;
     }
 
+    /**
+     * Metoda služi za provjeru valjanosti vremena. Ako je vrijeme neisprano unešeno, tada metoda vraća
+     * vrijednost false
+     *
+     * @param time Vrijeme zapisano u obliku hh:mm (tip podataka String)
+     * @return boolean
+     */
     public static boolean isTimeValid(String time){
         String[] splited = time.split("\\:");
         boolean valid = true;

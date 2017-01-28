@@ -16,7 +16,6 @@ import com.bkl.air.foi.mdrivingschool.helpers.EmailSender;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 /**
  * Created by Dalibor on 9.11.2016..

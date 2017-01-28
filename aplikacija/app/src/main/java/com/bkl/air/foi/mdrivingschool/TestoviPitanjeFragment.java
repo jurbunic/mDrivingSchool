@@ -1,8 +1,6 @@
 package com.bkl.air.foi.mdrivingschool;
 
 import android.app.Fragment;
-import android.media.Image;
-import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -11,23 +9,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bkl.air.foi.core.DataLoader;
 import com.bkl.air.foi.core.PitanjeDataLoadedListener;
 import com.bkl.air.foi.database.Pitanje;
 import com.bkl.air.foi.database.Pitanje_Table;
-import com.bkl.air.foi.database.TipPitanja;
-import com.bkl.air.foi.database.Vozilo;
-import com.bkl.air.foi.mdrivingschool.helpers.PitanjaData;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
-import com.bkl.air.foi.mdrivingschool.helpers.VozilaData;
 import com.bkl.air.foi.mdrivingschool.loaders.AppDataLoader;
 import com.bkl.air.foi.mdrivingschool.loaders.DbDataLoader;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +25,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 
 /**
@@ -96,6 +85,7 @@ public class TestoviPitanjeFragment extends Fragment implements PitanjeDataLoade
         super.onStart();
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Testovi znanja");
 
+        // Dohvaćanje gumbova za navigaciju po testovima, te njihovo spremanje u listu navButtons
         final Button navButton = (Button) getActivity().findViewById(R.id.button_nav_test1);
         navButtons.add(navButton);
         Button navButton1 = (Button) getActivity().findViewById(R.id.button_nav_test2);
@@ -107,7 +97,9 @@ public class TestoviPitanjeFragment extends Fragment implements PitanjeDataLoade
         Button navButton4 = (Button) getActivity().findViewById(R.id.button_nav_test5);
         navButtons.add(navButton4);
 
+
         navButton.setEnabled(false);
+
         for(int i=0; i<5;i++){
             Tocnost tocnost = new Tocnost();
             tocnost.brojPitanja = i+1;
