@@ -159,8 +159,9 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
 
             date = dateParser.toUserForm(date);
+            String[] time1 = time.split("\\:");
             //Slanje notifikacije pomocu notificationManagera
-            notificationMessage = date;
+            notificationMessage = "Sljedeća_vožnja$_"+date+"_u_"+time1[0]+"$"+time1[1];
             notificationBuilder.sendNotification(this);
 
             refresh();

@@ -51,10 +51,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             JSONObject jobject = new JSONObject(messageBody);
             body = jobject.getString("message");
         }catch(Exception e){
+            e.printStackTrace();
         }
         // Notifikacije šaljemo koristeći _ umjesto razmaka, pa je za prikaz notifikacije
         // potrebno zamijeniti _ sa razmakom.
-        String full=body.replace('_',' ');
+        String full=body.replace('_',' ').replace('$',':');
+
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         intent.putExtra("body",messageBody);
@@ -62,7 +64,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Uri defaultSounduri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.logo_icon)
+                .setSmallIcon(R.drawable.notification_icon)
                 .setContentTitle("Autoškola Premuž")
                 .setContentText(full)
                 .setAutoCancel(true)
