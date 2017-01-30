@@ -1,4 +1,4 @@
-package com.bkl.air.foi.mdrivingschool.helpers;
+package com.bkl.air.foi.mdrivingschool.webservice;
 
 import android.content.Context;
 import android.os.AsyncTask;

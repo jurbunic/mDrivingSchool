@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.bkl.air.foi.database.Korisnik;
 import com.bkl.air.foi.mdrivingschool.R;
-import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
+import com.bkl.air.foi.mdrivingschool.webservice.RetriveData;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.notifications.NotificationBuilder;
 import com.bkl.air.foi.mdrivingschool.notifications.NotificationDataChangedListener;

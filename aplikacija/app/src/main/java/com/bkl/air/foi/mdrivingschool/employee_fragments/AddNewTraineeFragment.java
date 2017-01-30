@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.bkl.air.foi.mdrivingschool.R;
 import com.bkl.air.foi.mdrivingschool.helpers.DateAndTimeCheck;
-import com.bkl.air.foi.mdrivingschool.helpers.RetriveData;
+import com.bkl.air.foi.mdrivingschool.webservice.RetriveData;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
