@@ -195,6 +195,9 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         refresh();
     }
 
+    /**
+     * Metoda koja ponovno pokreće fragment nakon što je ažurirano stranje
+     */
     public void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();

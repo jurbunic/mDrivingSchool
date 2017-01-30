@@ -150,6 +150,11 @@ public class UserInfo {
         return trainess;
     }
 
+    /**
+     * Metoda koja sprema podatke instruktora odabranog polaznika
+     * @param userId
+     * @return Spremljeni podaci u entiteskoj klasi korisnik
+     */
     public Korisnik getInstructor(String userId){
         Korisnik korisnik = new Korisnik();
         try{

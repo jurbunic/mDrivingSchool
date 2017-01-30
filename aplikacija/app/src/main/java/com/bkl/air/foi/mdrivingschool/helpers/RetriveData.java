@@ -32,7 +32,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
     }
 
     /**
-     * Metoda koja inicijalizira url sa php skriptom
+     * Metoda koja inicijalizira url sa php skriptama
      */
     @Override
     protected void onPreExecute() {
@@ -42,8 +42,8 @@ public class RetriveData extends AsyncTask <String, Void, String> {
 
     /**
      *
-     * @param params Paramtri koje se prosljeđuju preko execute metode()
-     * @return Vraca string koji je odgovor sa servera
+     * @param params parametri uneseni execute metodom
+     * @return response ili null ukoliko nije ni jedan uvijet zadovoljen
      */
     @Override
     protected String doInBackground(String... params) {
@@ -426,7 +426,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
     }
 
     /**
-     * Metoda koja vraća rezultat servera i vraća ga metodi execute
+     * Metoda koja vraća rezultat servera
      * @param s rezultat metode doInBackground tipa string
      */
     @Override

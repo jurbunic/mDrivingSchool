@@ -184,6 +184,9 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         return id;
     }
 
+    /**
+     * Metoda koja ponovno pokreće fragment
+     */
     public void refresh(){
         FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.detach(this).attach(this).commit();

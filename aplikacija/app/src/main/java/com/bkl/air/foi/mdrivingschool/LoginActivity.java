@@ -28,6 +28,9 @@ public class LoginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
+    /**
+     * Metoda koja na klik gumba poziva servis da napravi autentikaciju
+     */
     @OnClick(R.id.button_prijava)
     public void onButtonPrijavaClick(){
         login_name = username.getText().toString();

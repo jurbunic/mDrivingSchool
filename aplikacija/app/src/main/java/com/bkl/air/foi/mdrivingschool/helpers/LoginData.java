@@ -102,7 +102,7 @@ public class LoginData extends AsyncTask<String,Void,String> {
 
     /**
      * Metoda koja obrađuje odogvor metode doInBackground i priprema je za export
-     * @param s
+     * @param s string koji je u formatu JSON array-a i sadrži tip i id korinika koji se prijavljuje
      */
     @Override
     protected void onPostExecute(String s) {
