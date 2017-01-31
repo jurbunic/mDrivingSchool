@@ -1,0 +1,11 @@
+com.bkl.air.foi.core
+com.bkl.air.foi.database
+com.bkl.air.foi.mdrivingschool
+com.bkl.air.foi.mdrivingschool.adapters
+com.bkl.air.foi.mdrivingschool.employee_fragments
+com.bkl.air.foi.mdrivingschool.helpers
+com.bkl.air.foi.mdrivingschool.loaders
+com.bkl.air.foi.mdrivingschool.maps
+com.bkl.air.foi.mdrivingschool.notifications
+com.bkl.air.foi.mdrivingschool.trainee_fragments
+com.bkl.air.foi.mdrivingschool.webservice
