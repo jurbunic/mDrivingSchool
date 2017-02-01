@@ -24,6 +24,7 @@ public class NotificationSenderMail implements NotificationSenderInterface {
     @Override
     public void send() {
         try{
+            mes = mes.replace('_',' ').replace('$',':');
             OkHttpClient client = new OkHttpClient();
             RequestBody requestBody = new FormEncodingBuilder()
                     .add("email", dest)
