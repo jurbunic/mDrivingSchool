@@ -23,6 +23,7 @@ import com.bkl.air.foi.mdrivingschool.employee_fragments.ScheduleFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.StartFragment;
 import com.bkl.air.foi.mdrivingschool.helpers.UserInfo;
 import com.bkl.air.foi.mdrivingschool.maps.MapFragment;
+import com.bkl.air.foi.mdrivingschool.employee_fragments.EmployeeOptions;
 
 
 /**
@@ -171,6 +172,10 @@ public class EmployeeActivity extends AppCompatActivity implements NavigationVie
                 break;
             case R.id.employee_odjava_navigation:
                 finish();
+                break;
+            case  R.id.employee_options_navigation:
+                EmployeeOptions to = new EmployeeOptions();
+                StartFragment.StartNewFragment(to,this);
                 break;
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout_employee);

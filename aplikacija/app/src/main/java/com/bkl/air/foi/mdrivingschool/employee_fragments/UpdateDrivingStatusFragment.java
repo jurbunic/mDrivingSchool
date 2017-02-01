@@ -3,7 +3,9 @@ package com.bkl.air.foi.mdrivingschool.employee_fragments;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,8 +59,11 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     String dodajSat;
     String date;
     String time;
+    boolean isMail;
 
     String notificationMessage = "";
+
+
 
     ArrayList<Korisnik> allTrainees = new ArrayList<>();
     NotificationBuilder notificationBuilder = new NotificationBuilder();
@@ -94,6 +99,9 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(thisContext,android.R.layout.simple_spinner_item,allTraineesNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         traineeSpinner.setAdapter(dataAdapter);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        isMail = preferences.getBoolean("ISMAIL",false);
     }
 
     /**
@@ -161,6 +169,7 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
             date = dateParser.toUserForm(date);
             String[] time1 = time.split("\\:");
             //Slanje notifikacije pomocu notificationManagera
+
             notificationMessage = "Sljedeća_vožnja$_"+date+"_u_"+time1[0]+"$"+time1[1];
             notificationBuilder.sendNotification(this);
 
@@ -214,5 +223,10 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
     @Override
     public String getUserId() {
         return chosenTraineeID;
+    }
+
+    @Override
+    public boolean getUserPreference() {
+        return isMail;
     }
 }

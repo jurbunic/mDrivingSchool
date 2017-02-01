@@ -3,7 +3,9 @@ package com.bkl.air.foi.mdrivingschool.employee_fragments;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +55,7 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
     String chosenTraineeForUnassigning = "";
     String notificationMessage = "";
     String notificationUserId = "";
+    boolean isMail;
 
     NotificationBuilder notificationBuilder = new NotificationBuilder();
 
@@ -86,7 +89,8 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
 
         List<String> allTraineesNamesForUnassagning = new ArrayList<String>();
         ArrayList<Korisnik> allTraineesForUnassagning = new ArrayList<>();
-
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+        isMail = preferences.getBoolean("ISMAIL",false);
         //Dohvaćaju se podaci o polaznicima
         allTrainees = info.getFreeTrainees(getActivity().getIntent().getStringExtra("USER"));
         allTraineesForUnassagning = info.getTrainees(getActivity().getIntent().getStringExtra("USER"));
@@ -203,5 +207,11 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
     @Override
     public String getUserId() {
         return notificationUserId;
+    }
+
+
+    @Override
+    public boolean getUserPreference() {
+        return isMail;
     }
 }

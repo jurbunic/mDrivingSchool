@@ -3,7 +3,9 @@ package com.bkl.air.foi.mdrivingschool.employee_fragments;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +70,9 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
 
     String notificationMessage = "";
 
+    boolean isMail;
+    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+
     ArrayList<Korisnik> allTrainees = new ArrayList<>();
 
     NotificationBuilder notificationBuilder = new NotificationBuilder();
@@ -106,7 +111,7 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         propisiSpinner.setOnItemSelectedListener(this);
         prvaPomocSpinner.setOnItemSelectedListener(this);
         voznjaSpinner.setOnItemSelectedListener(this);
-
+        isMail = preferences.getBoolean("ISMAIL",false);
         //Postavljaju se adapteri za prikaz podataka
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(thisContext, android.R.layout.simple_spinner_item, allTraineesNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -123,6 +128,8 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         ArrayAdapter<String> dataAdapter4 = new ArrayAdapter<String>(thisContext, android.R.layout.simple_spinner_item, allStatuses);
         dataAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         voznjaSpinner.setAdapter(dataAdapter4);
+
+        isMail = preferences.getBoolean("ISMAIL",false);
     }
 
     /**
@@ -250,5 +257,10 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
     @Override
     public String getUserId() {
         return chosenTraineeId;
+    }
+
+    @Override
+    public boolean getUserPreference() {
+        return isMail;
     }
 }

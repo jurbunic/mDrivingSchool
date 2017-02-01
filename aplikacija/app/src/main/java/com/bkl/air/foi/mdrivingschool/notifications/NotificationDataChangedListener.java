@@ -7,4 +7,6 @@ package com.bkl.air.foi.mdrivingschool.notifications;
 public interface NotificationDataChangedListener {
     public String getNotificationMessage();
     public String getUserId();
+    public boolean getUserPreference();
+
 }

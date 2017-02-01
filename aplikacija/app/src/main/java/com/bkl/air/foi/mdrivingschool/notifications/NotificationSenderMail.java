@@ -1,7 +1,5 @@
 package com.bkl.air.foi.mdrivingschool.notifications;
 
-import android.os.AsyncTask;
-
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -11,35 +9,29 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 
 /**
- * Created by Jurica Bunić on 20.1.2017..
+ * Created by Jurica Bunić on 1.2.2017..
  */
 
-public class NotificationSender implements NotificationSenderInterface {
-    String tok;
+public class NotificationSenderMail implements NotificationSenderInterface {
+    String dest;
     String mes;
 
-    public NotificationSender(String tok, String mes) {
-        this.tok = tok;
+    public NotificationSenderMail(String dest, String mes) {
+        this.dest = dest;
         this.mes = mes;
     }
 
-    /**
-     * Metoda šalje notifikaciju koja sadrži poruku na uređaj sa određenim tokenom.
-     *
-     * @param token token uređaja na koji se šalje notifikacija ( tip String )
-     * @param message poruka koja se šalje korisniku ( tip String )
-     */
     @Override
-    public void send(){
+    public void send() {
         try{
             OkHttpClient client = new OkHttpClient();
             RequestBody requestBody = new FormEncodingBuilder()
-                    .add("token", tok)
-                    .add("message",mes)
+                    .add("email", dest)
+                    .add("poruka",mes)
                     .build();
 
             Request request = new Request.Builder()
-                    .url("https://mdrivingschool0.000webhostapp.com/notifications.php")
+                    .url("http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x045/servis/air.php")
                     .post(requestBody)
                     .build();
 
@@ -48,6 +40,5 @@ public class NotificationSender implements NotificationSenderInterface {
         }catch (IOException io){
             io.printStackTrace();
         }
-
     }
 }

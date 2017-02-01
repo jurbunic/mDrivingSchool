@@ -52,6 +52,9 @@
             <item
                 android:id="@+id/employee_o_aplikaciji_navigation"
                 android:title="O aplikaciji" />
+            <item
+                android:id="@+id/employee_options_navigation"
+                android:title="Opcije"/>
         </menu>
     </item>
 

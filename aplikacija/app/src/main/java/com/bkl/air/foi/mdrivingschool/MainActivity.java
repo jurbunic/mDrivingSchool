@@ -72,6 +72,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         preferences.edit().putBoolean("NOTIFICATION",true).apply();
 
+        if(preferences.contains("ISMAIL")){
+
+        }else {
+            preferences.edit().putBoolean("ISMAIL",false).apply();
+        }
+
+
         MainScreenFragment msf = new MainScreenFragment();
         StartFragment.StartNewFragment(msf, this,"1");
 
