@@ -90,7 +90,9 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         List<String> allTraineesNamesForUnassagning = new ArrayList<String>();
         ArrayList<Korisnik> allTraineesForUnassagning = new ArrayList<>();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
+
         isMail = preferences.getBoolean("ISMAIL",false);
+
         //Dohvaćaju se podaci o polaznicima
         allTrainees = info.getFreeTrainees(getActivity().getIntent().getStringExtra("USER"));
         allTraineesForUnassagning = info.getTrainees(getActivity().getIntent().getStringExtra("USER"));
@@ -209,7 +211,11 @@ public class AssignTraineeToEmployeeFragment extends Fragment implements Adapter
         return notificationUserId;
     }
 
-
+    /**
+     * Predefinirana metoda koja prati stanje korisnikove preference ako zeli slati obavijesti kao push ili email
+     *
+     * @return True - ako korisnik zeli slati email obavijesti, False - ako korisnik zeli slati push obavijesti
+     */
     @Override
     public boolean getUserPreference() {
         return isMail;

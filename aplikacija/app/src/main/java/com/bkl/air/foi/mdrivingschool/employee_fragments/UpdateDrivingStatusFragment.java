@@ -168,8 +168,8 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
 
             date = dateParser.toUserForm(date);
             String[] time1 = time.split("\\:");
-            //Slanje notifikacije pomocu notificationManagera
 
+            //Slanje notifikacije pomocu notificationManagera
             notificationMessage = "Sljedeća_vožnja$_"+date+"_u_"+time1[0]+"$"+time1[1];
             notificationBuilder.sendNotification(this);
 
@@ -225,6 +225,11 @@ public class UpdateDrivingStatusFragment extends Fragment implements AdapterView
         return chosenTraineeID;
     }
 
+    /**
+     * Predefinirana metoda koja prati stanje korisnikove preference ako zeli slati obavijesti kao push ili email
+     *
+     * @return True - ako korisnik zeli slati email obavijesti, False - ako korisnik zeli slati push obavijesti
+     */
     @Override
     public boolean getUserPreference() {
         return isMail;

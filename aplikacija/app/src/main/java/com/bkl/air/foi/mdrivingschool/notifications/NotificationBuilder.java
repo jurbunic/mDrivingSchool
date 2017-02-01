@@ -10,9 +10,12 @@ public class NotificationBuilder {
     private String notificationMessage;
     private String userId;
     private String token;
+    private String email;
+    private boolean isMail;
+
     private NotificationDataChangedListener mNotificationDataChangedListener;
     private NotificationSenderInterface senderInterface;
-    private boolean isMail;
+
     /**
      * Metoda pomocu TokerFetchera dobavlja token preko danog user id-a
      */
@@ -20,6 +23,18 @@ public class NotificationBuilder {
         TokenFetcher fetcher = new TokenFetcher(userId);
         try{
             token = fetcher.execute().get().toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Metoda pomocu EmailFetchera dohvaca email pojedinog polaznika preko user id-a
+     */
+    private void getUserEmail(){
+        EmailFetcher emailFetcher = new EmailFetcher(userId);
+        try{
+            email = emailFetcher.execute().get().toString();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -38,7 +53,8 @@ public class NotificationBuilder {
         isMail = mNotificationDataChangedListener.getUserPreference();
 
         if(isMail){
-            senderInterface = new NotificationSenderMail("jbunic94@gmail.com", notificationMessage);
+            getUserEmail();
+            senderInterface = new NotificationSenderMail(email, notificationMessage);
         }else{
             getUserToken();
             senderInterface = new NotificationSender(token, notificationMessage);

@@ -50,11 +50,11 @@
                 android:id="@+id/employee_odjava_navigation"
                 android:title="Odjava" />
             <item
-                android:id="@+id/employee_o_aplikaciji_navigation"
-                android:title="O aplikaciji" />
-            <item
                 android:id="@+id/employee_options_navigation"
                 android:title="Opcije"/>
+            <item
+                android:id="@+id/employee_o_aplikaciji_navigation"
+                android:title="O aplikaciji" />
         </menu>
     </item>
 

@@ -71,7 +71,6 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
     String notificationMessage = "";
 
     boolean isMail;
-    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
 
     ArrayList<Korisnik> allTrainees = new ArrayList<>();
 
@@ -111,7 +110,10 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         propisiSpinner.setOnItemSelectedListener(this);
         prvaPomocSpinner.setOnItemSelectedListener(this);
         voznjaSpinner.setOnItemSelectedListener(this);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity().getApplicationContext());
         isMail = preferences.getBoolean("ISMAIL",false);
+
         //Postavljaju se adapteri za prikaz podataka
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(thisContext, android.R.layout.simple_spinner_item, allTraineesNames);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -128,8 +130,6 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         ArrayAdapter<String> dataAdapter4 = new ArrayAdapter<String>(thisContext, android.R.layout.simple_spinner_item, allStatuses);
         dataAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         voznjaSpinner.setAdapter(dataAdapter4);
-
-        isMail = preferences.getBoolean("ISMAIL",false);
     }
 
     /**
@@ -259,6 +259,11 @@ public class UpdateExamStatusFragment extends Fragment implements AdapterView.On
         return chosenTraineeId;
     }
 
+    /**
+     * Predefinirana metoda koja prati stanje korisnikove preference ako zeli slati obavijesti kao push ili email
+     *
+     * @return True - ako korisnik zeli slati email obavijesti, False - ako korisnik zeli slati push obavijesti
+     */
     @Override
     public boolean getUserPreference() {
         return isMail;

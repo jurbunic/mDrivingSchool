@@ -26,8 +26,6 @@ public class NotificationSender implements NotificationSenderInterface {
     /**
      * Metoda šalje notifikaciju koja sadrži poruku na uređaj sa određenim tokenom.
      *
-     * @param token token uređaja na koji se šalje notifikacija ( tip String )
-     * @param message poruka koja se šalje korisniku ( tip String )
      */
     @Override
     public void send(){
