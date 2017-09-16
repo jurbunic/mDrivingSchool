@@ -80,6 +80,9 @@ public class ScheduleFragment extends Fragment{
         for(int i=0; i<korisnikList.size();i++){
             korisnik = korisnikList.get(i);
             drivingDate = convertStringToDate(korisnik.getDatum_voznje());
+            if(drivingDate==null){
+                continue;
+            }
             if(isToday(drivingDate,currentDate)){
                 todayAppointment.add(korisnik);
             }

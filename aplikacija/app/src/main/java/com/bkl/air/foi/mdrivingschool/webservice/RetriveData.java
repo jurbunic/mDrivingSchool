@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import com.bkl.air.foi.mdrivingschool.helpers.StringDateParser;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -26,6 +28,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
     String dataUrl = "";
     String notificationUrl = "";
     String jsonString = "";
+    StringDateParser sdp = new StringDateParser();
 
     public RetriveData(Context context){
         this.context = context;
@@ -36,8 +39,8 @@ public class RetriveData extends AsyncTask <String, Void, String> {
      */
     @Override
     protected void onPreExecute() {
-        dataUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x045/servis/json_query.php";
-        notificationUrl = "http://barka.foi.hr/WebDiP/2015_projekti/WebDiP2015x045/servis/notifikacije.php";
+        dataUrl = "http://mdrivingschool0.000webhostapp.com/json_query.php";
+        notificationUrl = "http://mdrivingschool0.000webhostapp.com/notifications.php";
     }
 
     /**
@@ -127,7 +130,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
             dataUrl += "?data_retrive=4&osoba="+specify;
             String ime = params[2];
             String prezime = params[3];
-            String datum_rodenja = params[4];
+            String datum_rodenja = sdp.toDatabase(params[4]);
             String mjesto_rodenja = params[5];
             String mobitel = params[6];
             String telefon = params[7];
@@ -135,6 +138,7 @@ public class RetriveData extends AsyncTask <String, Void, String> {
             String adresa = params[9];
             String user_name = params[10];
             String user_pass = params[11];
+            System.out.println(datum_rodenja);
             try {
                 URL url = new URL(dataUrl);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
